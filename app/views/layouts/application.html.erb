@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Mission Control</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body class="flex">
+
+    <input type="checkbox" id="nav-toggle">
+    <label id="nav-controls" for="nav-toggle">
+      <div id="nav-close" class="bg-gray-900">
+        <svg
+          height="37"
+          viewBox="0 0 21 21"
+          width="37"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g
+            fill="none"
+            fill-rule="evenodd"
+            stroke="#ffffff"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            transform="translate(5 5)"
+          >
+            <path d="m.5 10.5 10-10" />
+            <path d="m10.5 10.5-10-10z" />
+          </g>
+        </svg>
+      </div>
+      <div id="nav-open" class="bg-gray-800">
+        <svg
+          height="37"
+          viewBox="0 0 21 21"
+          width="37"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g fill="none" fill-rule="evenodd" transform="translate(5 5)">
+            <g stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m0 1.5h10" />
+              <path d="m0 5.498h10" />
+              <path d="m0 9.5h10" />
+            </g>
+          </g>
+        </svg>
+      </div>
+    </label>
+
+    <nav id="nav" class="bg-gray-900">
+      <div class="mx-4 my-6 text-sm text-white leading-tight">
+        <% if user_signed_in? %>
+          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'link', data: { confirm: 'Are you sure want to sign out?' } %>
+        <% else %>
+          <%= link_to 'Sign in', new_user_session_path, class: 'link' %>
+        <% end %>
+      </div>
+
+      <hr class="border-b border-gray-800 mx-4 my-3">
+
+      <%= link_to "#" do %>
+        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
+          Home
+        </div>
+      <% end %>
+
+      <hr class="border-b border-gray-800 mx-4 my-3">
+
+      <%= link_to "#" do %>
+        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
+          Goals
+        </div>
+      <% end %>
+
+      <%= link_to "#" do %>
+        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
+          Objectives
+        </div>
+      <% end %>
+
+      <%= link_to "#" do %>
+        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
+          People
+        </div>
+      <% end %>
+
+      <%= link_to "#" do %>
+        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
+          Organisations
+        </div>
+      <% end %>
+
+      <hr class="border-b border-gray-800 mx-4 my-3">
+
+      <div class="uppercase tracking-wide text-xs text-gray-400 px-4 py-3">Advanced</div>
+
+      <%= link_to "#" do %>
+        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
+          Tags
+        </div>
+      <% end %>
+
+      <%= link_to "#" do %>
+        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
+          Network
+        </div>
+      <% end %>
+
+      <%= link_to "#" do %>
+        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
+          Impact
+        </div>
+      <% end %>
+
+      <hr class="border-b border-gray-800 mx-4 my-3">
+
+      <div class="uppercase tracking-wide text-xs text-gray-400 px-4 py-3">Admin</div>
+
+      <%= link_to "#" do %>
+        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
+          Users
+        </div>
+      <% end %>
+
+      <a href="/blazer" target="_blank" rel="noopener noreferrer">
+        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800 external-link">
+          Blazer
+        </div>
+      </a>
+    </nav>
+
+    <main id="main" class="flex flex-col h-screen">
+
+      <div class="flex-1 bg-gray-200">
+
+        <header class="nav-pad bg-gray-800 sticky z-10">
+
+          <div class="flex max-w-screen-xl mx-auto px-4 py-2 text-sm">
+
+            <form class="navbar-form w-full mx-auto lg:px-32 pr-4" role= "search" action= "/search" method= "get">
+              <input class="px-2 py-1 border border-gray-400 w-full rounded" type="search" name="term" placeholder="Search" tabindex=1 value="<%= params[:term] %>">
+            </form>
+
+            <nav id="nav-dropdown" class="font-lexenddeca">
+              <button class="w-32 py-1 font-semibold rounded bg-orange-200 text-brand-navy cursor-pointer">
+                New
+              </button>
+              <ul id="nav-dropdown-menu" class="text-white bg-gray-900 rounded shadow">
+                <%= link_to "#", data: { turbolinks: false } do %>
+                  <li class="px-4 py-3 hover:bg-gray-800 border-b border-gray-800">Interaction</li>
+                <% end %>
+                <%= link_to "#" do %>
+                  <li class="px-4 py-3 hover:bg-gray-800 border-b border-gray-800">Person</li>
+                <% end %>
+                <%= link_to "#" do %>
+                  <li class="px-4 py-3 hover:bg-gray-800 border-b border-gray-800">Organisation</li>
+                <% end %>
+                <%= link_to "#" do %>
+                  <li class="px-4 py-3 hover:bg-gray-800 border-b border-gray-800">Initiative</li>
+                <% end %>
+                <%= link_to "#" do %>
+                  <li class="px-4 py-3 hover:bg-gray-800">Agreement</li>
+                <% end %>
+              </ul>
+            </nav>
+          </div>
+
+        </header>
+
+        <% if current_user%>
+          <div class="bg-blue-100">
+            <div class="outer-container py-2 text-sm text-blue-800">
+              You are logged in as <%= "#{current_user.name} (#{current_user.role.name})" %>.
+              <%= link_to "Return to #{true_user.name}", stop_impersonating_users_path, method: :post, class: 'link' %>.
+            </div>
+          </div>
+        <% end %>
+        <%- if notice %>
+          <div class="bg-blue-100">
+            <div class="outer-container py-2 text-sm text-blue-800">
+              <%= notice.html_safe %>
+            </div>
+          </div>
+        <% end %>
+        <%- if alert %>
+          <div class="bg-red-100">
+            <div class="outer-container py-2 text-sm text-red-800">
+              <%= alert.html_safe %>
+            </div>
+          </div>
+        <% end %>
+
+        <%= yield %>
+      </div>
+
+      <% unless controller_name == 'pages' && action_name == 'network' %>
+        <footer class="px-5 py-5 bg-gray-200 text-sm">
+          <hr class="mb-5 border-b border-gray-300">
+          <div class="inline-flex text-white text-xs font-semibold tracking-widest uppercase bg-rose-300 rounded px-2 py-1 mr-1">Alpha</div>
+          This is a new service – your
+          <a href="#" target="_blank" rel="noopener noreferrer" class="underline">feedback</a>
+          will help us to improve it.
+        </footer>
+      <% end %>
+    </main>
+  </body>
+</html>

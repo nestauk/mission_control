@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+  overflow: hidden;
+}
+
+body {
+  font-size: 16px;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  height: 100%;
+  overflow: auto;
+  overscroll-behavior-y: none;
+}
+
+/* Nav */
+/* ========================================================================== */
+
+#main {
+  width: 100%;
+  margin-left: 0;
+  transition: all 0.35s ease;
+}
+#nav {
+  position: fixed;
+  overflow-y: auto;
+  left: -220px;
+  width: 220px;
+  height: 100%;
+  transition: left 0.35s ease;
+  z-index: 20;
+}
+#nav-toggle,
+#nav-close {
+  display: none;
+}
+#nav-open,
+#nav-close {
+  cursor: pointer;
+  padding: 5px;
+  position: absolute;
+  transition: left 0.35s ease;
+  z-index: 20;
+}
+
+@media (max-width: 767px) {
+  #nav-toggle:checked ~ #main:before {
+    position: absolute;
+    content: "";
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.85);
+    z-index: 10;
+  }
+  #nav-toggle:checked ~ #nav {
+    left: 0;
+  }
+  #nav-toggle:checked ~ label #nav-open {
+    left: 220px;
+    opacity: 0;
+  }
+  #nav-toggle:checked ~ label #nav-close {
+    left: 220px;
+    position: fixed;
+  }
+  #nav-open {
+    position: fixed;
+    left: 0;
+  }
+  #nav-close {
+    display: block;
+    left: 0;
+  }
+  .nav-pad {
+    margin-left: 45px;
+  }
+}
+
+@media (min-width: 768px) {
+  #main {
+    margin-left: 220px;
+    opacity: 1;
+  }
+  #nav {
+    left: 0;
+  }
+  #nav-open {
+    left: 220px;
+    opacity: 0;
+  }
+  #nav-toggle:checked ~ #nav-controls #nav-close {
+    display: none;
+  }
+}
+
+/* Nav dropdown */
+/* ========================================================================== */
+
+#nav-dropdown {
+  position: relative;
+}
+#nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: all ease 0.15s;
+}
+#nav-dropdown:hover #nav-dropdown-menu {
+  height: auto;
+}
+
+/*
+
+@layer components {
+  .btn-primary {
+    @apply py-2 px-4 bg-blue-200;
+  }
+}
+
+*/
