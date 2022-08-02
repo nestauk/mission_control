@@ -4,7 +4,7 @@
   </div>
 
   <div class="mb-4">
-    <%= f.input :shortname %>
+    <%= f.input :objective %>
   </div>
 
   <div class="mb-4">
@@ -30,7 +30,16 @@
     <div class="hint"><%= f.hint :context %></div>
     <div class="error"><%= f.error :context %></div>
     <div class="w-full">
-    <%= f.rich_text_area :context, class: 'trix-editor' %>
+      <%= f.rich_text_area :context, class: 'trix-editor' %>
+    </div>
+  </div>
+
+  <div class="mb-4 <%= 'field_with_errors' if model.errors[:expectations].any? %>">
+    <div class="label"><%= f.label :expectations %></div>
+    <div class="hint"><%= f.hint :expectations %></div>
+    <div class="error"><%= f.error :expectations %></div>
+    <div class="w-full">
+      <%= f.rich_text_area :expectations, class: 'trix-editor' %>
     </div>
   </div>
 

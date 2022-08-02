@@ -8,9 +8,9 @@ class AddCoreTables < ActiveRecord::Migration[7.0]
 
     create_table :objectives do |t|
       t.string :title
-      t.string :shortname
       t.string :slug
       t.integer :status, default: 0
+      t.text :objective
       t.date :start_date
       t.date :end_date
       t.timestamps

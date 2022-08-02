@@ -88,9 +88,9 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
 
   create_table "objectives", force: :cascade do |t|
     t.string "title"
-    t.string "shortname"
     t.string "slug"
     t.integer "status", default: 0
+    t.text "objective"
     t.date "start_date"
     t.date "end_date"
     t.datetime "created_at", null: false

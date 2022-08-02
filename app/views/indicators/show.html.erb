@@ -16,7 +16,7 @@
         </div>
 
         <section class="mb-5">
-          <h2 class="font-lexenddeca text-l text-brand-navy leading-tight">
+          <h2 class="text-l text-brand-navy leading-tight">
             <%= @indicator.title %>
           </h2>
         </section>
@@ -37,19 +37,19 @@
         <% end %>
 
         <section>
-          <h2 class="font-lexenddeca text-sm text-brand-navy mb-2 leading-tight">Start date</h2>
+          <h2 class="text-sm text-brand-navy mb-2 leading-tight">Start date</h2>
           <%= @indicator.start_date.strftime("%e %b %Y") %>
         </section>
 
         <% if @indicator.end_date %>
           <section class="mt-5">
-            <h2 class="font-lexenddeca text-sm text-brand-navy mb-2 leading-tight">End date</h2>
+            <h2 class="text-sm text-brand-navy mb-2 leading-tight">End date</h2>
             <%= @indicator.end_date.strftime("%e %b %Y") %>
           </section>
         <% end %>
 
         <section class="mt-5">
-          <h2 class="font-lexenddeca text-sm text-brand-navy mb-2 leading-tight">Progress updates due</h2>
+          <h2 class="text-sm text-brand-navy mb-2 leading-tight">Progress updates due</h2>
           <%= @indicator.update_frequency.humanize %>
         </section>
       </div>
@@ -71,7 +71,7 @@
     <% end %>
 
     <div class="flex justify-between items-center">
-      <h2 class="font-lexenddeca text-lg text-brand-navy leading-tight">Progress updates</h2>
+      <h2 class="text-lg text-brand-navy leading-tight">Progress updates</h2>
 
       <%= link_to 'New progress update', new_indicator_progress_update_path(@indicator), class: 'btn shadow bg-brand-navy text-white', data: { turbolinks: false } %>
     </div>

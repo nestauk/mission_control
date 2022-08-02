@@ -36,7 +36,8 @@ class ObjectivesController < ApplicationController
 
   def form_params
     params.require(:objective).permit(
-      :context, :end_date, :shortname, :start_date, :status, :title, goal_ids: []
+      :context, :end_date, :expectations, :objective, :start_date, :status,
+      :title, goal_ids: []
     )
   end
 
