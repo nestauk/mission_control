@@ -5,17 +5,23 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "goals#index"
 
+  concern :memberable do
+    resources :memberships
+  end
+
   concern :targetable do
     resources :indicators
   end
 
-  resources :goals, concerns: %i[targetable] do
+  resources :goals, concerns: %i[memberable targetable] do
     get "objectives"
   end
 
-  resources :objectives, concerns: %i[targetable]
+  resources :objectives, concerns: %i[memberable targetable]
 
-  scope 'indicators/:indicator_id', as: 'indicator' do
+  scope "indicators/:indicator_id", as: "indicator" do
     resources :progress_updates
   end
+
+  resources :people, :organisations
 end

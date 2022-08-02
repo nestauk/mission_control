@@ -1,0 +1,71 @@
+<% content_for :title, "Team - #{@memberable.title}" %>
+
+<%= render partial: polymorphic_subnav(@memberable) %>
+
+<div class="outer-container">
+  <div class="my-5">
+    <%= link_to 'Add member', new_memberable_membership_path(@memberable), class: 'btn shadow bg-blue-800 text-white' %>
+  </div>
+
+  <%# TODO: responsive %>
+  <%- if @memberable.memberships.any? %>
+
+    <%- @memberable.memberships.order(:role).group_by(&:role_type).each do |role_type, memberships| %>
+
+      <section class="bg-white rounded shadow mb-6">
+
+        <div class="px-5 pt-4 pb-3 border-b border-gray-300">
+          <h4 class="text-lg text-blue-800 leading-tight">
+            <%= role_type.humanize %>
+          </h4>
+          <p class="text-sm text-gray-700 mt-1 mb-3">
+            <%= role_type_description(role_type) %>
+          </p>
+
+          <div class="flex justify-between">
+            <p class="w-3/12 mr-4 text-blue-800 leading-tight">Name</p>
+            <p class="w-3/12 mr-4 text-blue-800 leading-tight">Role</p>
+            <p class="w-5/12 mr-4 text-blue-800 leading-tight">Role notes</p>
+            <p class="w-3/12 mr-4 text-blue-800 leading-tight">Avg. % of time</p>
+            <p class="w-1/12 text-blue-800 leading-tight"></p>
+          </div>
+        </div>
+
+        <%- memberships.each do |membership| %>
+
+          <div class="flex justify-between border-b border-gray-300 px-5 py-3 text-sm">
+            <div class="w-3/12 mr-4">
+              <%= link_to membership.contact.name, membership.contact.person, class: 'link' %>
+              <div class="mt-1 text-sm text-gray-700 break-words"><%= membership.contact.email  %></div>
+            </div>
+            <div class="w-3/12 mr-4">
+              <%= membership.role.humanize %>
+              <%# if membership.contact.organisation %>
+                <%#= link_to membership.contact.organisation.name, membership.contact.organisation, class: 'link' %>
+              <%# else %>
+                <%#= with_default(nil) %>
+              <%# end %>
+            </div>
+            <div class="w-5/12 mr-4">
+              <%= with_default(membership.description) %>
+            </div>
+            <div class="w-3/12 mr-4">
+              <%= with_default(membership.avg_weekly_time_percentage) %>%
+            </div>
+            <div class="w-1/12">
+              <%= link_to 'Edit', edit_memberable_membership_path(@memberable, membership), class: 'link' %>
+            </div>
+          </div>
+        <% end %>
+      </section>
+
+    <% end %>
+
+  <% else %>
+
+    <div class="border-2 border-gray-400 border-dashed text-gray-700 italic text-center rounded w-full p-10">
+      No members
+    </div>
+
+  <% end %>
+</div>

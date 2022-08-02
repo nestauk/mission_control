@@ -1,0 +1,17 @@
+<div class="bg-gray-700">
+  <section class="outer-container py-4 text-white">
+    <div class="flex justify-between mb-3">
+      <div class="mr-4">
+        <%= link_to 'People', people_path, class: 'text-sm text-gray-200 tracking-wide hover:underline' %>
+        <h1 class="font-lexenddeca text-white text-xl">
+          <%= @person.name %>
+          <% if @person.pronouns.present? %>
+            <span class="text-base">(<%= @person.pronouns%>)</span>
+          <% end %>
+        </h1>
+      </div>
+
+      <%= link_to 'Edit', edit_person_path(@person), class: 'link text-gray-200' %>
+    </div>
+  </section>
+</div>

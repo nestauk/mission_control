@@ -21,8 +21,8 @@
     </div>
   </div>
 
-  <h2 class="mt-12 text-2xl text-brand-navy leading-tight">About the work</h2>
-  <hr class="mt-2 mb-4 border-brand-navy-10">
+  <h2 class="mt-12 text-2xl text-blue-800 leading-tight">About the work</h2>
+  <hr class="mt-2 mb-4 border-blue-800-10">
   <p class="mb-4">You will be able to add key contacts and collaborating organisations, as well as links to relevant documents, on the next page.</p>
 
   <div class="mb-4 <%= 'field_with_errors' if model.errors[:context].any? %>">
@@ -48,12 +48,12 @@
   </div>
 
   <% if ['new', 'create'].include?(action_name) %>
-    <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-blue-800 text-white' %>
     <%= link_to 'Cancel', objectives_path, class: 'link ml-6' %>
   <% end %>
 
   <% if ['edit', 'update'].include?(action_name) %>
-    <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-blue-800 text-white' %>
     <%= link_to 'Cancel', model, class: 'link ml-6' %>
 
     <%= link_to 'Delete', objective_path(model), method: :delete, class: 'link float-right', data: { confirm: 'Are you sure?' } %>

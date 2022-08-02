@@ -30,12 +30,12 @@
   </div>
 
   <%- if ['new', 'create'].include?(action_name) %>
-    <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-blue-800 text-white' %>
     <%= link_to 'Cancel', targetable_indicators_path(@targetable), class: 'link ml-6' %>
   <% end %>
 
   <%- if ['edit', 'update'].include?(action_name) %>
-    <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-blue-800 text-white' %>
     <%= link_to 'Cancel', targetable_indicator_path(@targetable, model), class: 'link ml-6' %>
     <%= link_to 'Delete', targetable_indicator_path(@targetable, model), method: 'delete', class: 'link float-right', data: { confirm: 'Are you sure?' } %>
   <% end %>

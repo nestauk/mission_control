@@ -10,7 +10,7 @@
 
   <div class="m-5 flex-1 lg:w-0 w-full">
     <div class="mb-5">
-      <%= link_to 'New goal', new_goal_path, class: 'btn bg-brand-navy text-white' %>
+      <%= link_to 'New goal', new_goal_path, class: 'btn bg-blue-800 text-white' %>
     </div>
 
     <div id="goals-list">
@@ -45,8 +45,8 @@
           <%= f.label :status_in, 'Status', class: 'label' %>
           <%= f.collection_select :status_in, Goal.statuses, :last, ->(o) { o.first.humanize }, { include_blank: true }, { class: 'input select mb-4' } %>
 
-          <%= f.button 'Filter', type: 'submit', class: "btn text-white bg-brand-navy" %>
-          <%= link_to 'Reset', goals_path, class: 'ml-1 btn bg-brand-navy-10' %>
+          <%= f.button 'Filter', type: 'submit', class: "btn text-white bg-blue-800" %>
+          <%= link_to 'Reset', goals_path, class: 'ml-1 btn bg-blue-200' %>
         <% end %>
       </div>
     </div>

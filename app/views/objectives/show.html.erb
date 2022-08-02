@@ -9,41 +9,44 @@
     <section class="bg-white rounded shadow pb-1 mb-6">
 
       <div class="px-5 pt-4 pb-3 border-b border-gray-300">
-        <h2 class="text-xl text-brand-navy leading-tight">
-          Brief
+        <h2 class="font-semibold text-xl text-blue-800 leading-tight">
+          The brief
         </h2>
       </div>
 
       <%- if @objective.context.present? %>
         <div class="px-5 my-5">
-          <h3 class="text-lg text-brand-navy leading-tight mb-2">Why the work is being done</h3>
+          <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Why the work is being done</h3>
           <%= @objective.context %>
         </div>
       <% end %>
 
       <div class="px-5 my-5">
-        <h3 class="text-lg text-brand-navy leading-tight mb-2">Objective</h3>
+        <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Objective</h3>
+        <p class="text-sm text-gray-700 mt-1 mb-2"><em>What</em> the team needs to acheve and <em>why</em>.</p>
         <%= @objective.objective   %>
       </div>
 
       <div class="px-5 my-5">
-        <h3 class="text-lg text-brand-navy leading-tight mb-2">Indicators</h3>
-        <p>How we know we're on track</p>
-        <%= link_to "Add indicator", new_objective_indicator_path(@objective) %>
+        <h3 class="text-blue-800 leading-tight">Indicators</h3>
+        <p class="text-sm text-gray-700 mt-1 mb-2">Results we need to see to know we're on the right track.</p>
 
         <% if @objective.indicators.any? %>
-          <section class="bg-white rounded shadow mb-6">
-            <div class="flex justify-between px-5 pt-4 pb-3">
-              <p class="w-3/12 mr-4 font-lexenddeca text-brand-navy leading-tight">Last progress update</p>
-              <p class="w-5/12 mr-4 font-lexenddeca text-brand-navy leading-tight">Progress indicator</p>
-              <p class="w-2/12 mr-4 font-lexenddeca text-brand-navy leading-tight">Start date</p>
-              <p class="w-2/12 font-lexenddeca text-brand-navy leading-tight">End date</p>
-            </div>
+          <section class="bg-white rounded shadow mb-4">
+
+            <div class="border-b border-gray-300"></div>
 
             <%- @objective.indicators.each do |indicator| %>
               <%# TODO: responsive %>
               <%= link_to targetable_indicator_path(@objective, indicator) do %>
-                <div class="flex justify-between px-5 py-2 border-t border-gray-300 hover:bg-gray-100">
+                <div class="flex justify-between p-2 border-b border-gray-300 hover:bg-gray-200">
+                  <div class="w-9/12 text-sm mr-4">
+                    <div class="text-xs text-gray-700">
+                      <%#= indicator.status.humanize %>
+                    </div>
+                    <%= indicator.title %>
+                  </div >
+
                   <div class="w-3/12 mr-4">
                     <% if indicator.requires_update? %>
                       <div class="px-2 py-1 mb-2 bg-orange-100 text-xs text-orange-800 rounded">
@@ -53,23 +56,23 @@
 
                     <% if indicator.last_progress_update_status %>
                       <p>
-                        <strong class="font-bold <%= indicator.last_update_status %>_with_icon"><%= indicator.last_update_status&.humanize %></strong>
-                        <small class="text-xs text-gray-700">
-                          <%= indicator.last_update_date.strftime("%e %b %Y") %>
-                        </small>
+                        <strong class="font-semibold <%= status_with_icon(indicator.last_progress_update_status) %>"><%= indicator.last_progress_update_status&.humanize %></strong>
                       </p>
+                      <small class="text-xs text-gray-700">
+                        <%= indicator.last_progress_update_date.strftime("%e %b %Y") %>
+                      </small>
 
-                      <% if indicator.last_update_value %>
+                      <% if indicator.last_progress_update_value %>
                         <div class="my-2">
                           <p class="text-xs mb-1">
-                            <%= number_with_precision(indicator.last_update_value, precision: 2, delimiter: ',', strip_insignificant_zeros: true) %>
+                            <%= number_with_precision(indicator.last_progress_update_value, precision: 2, delimiter: ',', strip_insignificant_zeros: true) %>
                             /
                             <%= number_with_precision(indicator.target_value, precision: 2, delimiter: ',', strip_insignificant_zeros: true) %>
                             <%= indicator.unit %>
                           </p>
                           <div class="relative rounded-full overflow-hidden w-full h-3">
                             <div class="absolute bg-gray-200 w-full h-3"></div>
-                            <div class="absolute h-3 bg-opacity-50 bg_<%= indicator.last_progress_update_status %>" style="width: <%= indicator.progress %>%"></div>
+                            <div class="absolute h-3 bg-opacity-50 <%= bg_status(indicator.last_progress_update_status) %>" style="width: <%= indicator.progress %>%"></div>
                           </div>
                         </div>
                       <% end %>
@@ -80,52 +83,68 @@
                     <% end %>
                   </div>
 
+                  <%# <div class="w-2/12 text-sm mr-4"> %>
+                    <%#= indicator.start_date.strftime("%e %b %Y") %>
+                  <%# </div> %>
 
-                  <div class="w-5/12 text-sm mr-4">
-                    <div class="text-xs text-gray-700">
-                      <%= indicator.status.humanize %>
-                    </div>
-                    <%= indicator.title %>
-                  </div >
-
-                  <div class="w-2/12 text-sm mr-4">
-                    <%= indicator.start_date.strftime("%e %b %Y") %>
-                  </div>
-
-                  <div class="w-2/12 text-sm">
-                    <%= with_default indicator.end_date&.strftime("%e %b %Y") %>
-                  </div>
+                  <%# <div class="w-2/12 text-sm"> %>
+                    <%#= with_default indicator.end_date&.strftime("%e %b %Y") %>
+                  <%# </div> %>
                 </div>
               <% end %>
 
             <% end %>
           </section>
         <% end %>
+
+        <%= link_to "Add indicator", new_objective_indicator_path(@objective), class: 'btn text-blue-800 bg-blue-200' %>
       </div>
 
       <%- if @objective.expectations.present? %>
         <div class="px-5 my-5">
-          <h3 class="text-lg text-brand-navy leading-tight mb-2">Boundaries & Expectations</h3>
+          <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Boundaries & expectations</h3>
           <%= @objective.expectations %>
         </div>
       <% end %>
     </section>
   </div>
 
-  <aside class="m-5 lg:w-64 w-full">
+  <aside class="m-5 lg:w-80 w-full">
 
     <section class="py-5 border-t-2 border-b-2 border-gray-300">
-      <h2 class="text-xl text-brand-navy mb-2 leading-tight">Sponsor</h2>
-      <h2 class="text-xl text-brand-navy mb-2 leading-tight">Team lead</h2>
+      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Sponsor</h2>
+
+      <%- if @objective.sponsors.any? %>
+        <%- @objective.sponsors.each do |t| %>
+          <div>
+            <%= link_to t.name, t.person, class: 'link' %>
+            <div class="mt-1 text-sm text-gray-700 break-words"><%= t.email  %></div>
+          </div>
+        <% end %>
+      <% else %>
+        <%= with_default(nil) %>
+      <% end %>
     </section>
 
     <section class="py-5 border-b-2 border-gray-300">
-      <h2 class="text-xl text-brand-navy mb-2 leading-tight">Start date - End date</h2>
+      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Team lead</h2>
+      <%- if @objective.team_leads.any? %>
+        <%- @objective.team_leads.each do |t| %>
+          <%= link_to t.name, t.person, class: 'link' %>
+          <div class="mt-1 text-sm text-gray-700 break-words"><%= t.email  %></div>
+        <% end %>
+      <% else %>
+        <%= with_default(nil) %>
+      <% end %>
+    </section>
+
+    <section class="py-5 border-b-2 border-gray-300">
+      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Start date - End date</h2>
       <%= @objective.start_date %> - <%= @objective.end_date %>
     </section>
 
     <section class="py-5 border-b-2 border-gray-300">
-      <h2 class="text-xl text-brand-navy mb-2 leading-tight">Contributing to goals</h2>
+      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Contributing to goals</h2>
       <ul>
         <%- @objective.goals.each do |g| %>
           <li><%= link_to g.title, g %></li>
@@ -134,13 +153,4 @@
     </section>
   </aside>
 
-</div>
-
-
-
-
-<div class="m-5">
-  <section class="mb-6">
-    <h2 class="text-xl">Team</h2>
-  </section>
 </div>

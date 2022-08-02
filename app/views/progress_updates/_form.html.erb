@@ -27,13 +27,13 @@
   </div>
 
   <%- if ['new', 'create'].include?(action_name) %>
-    <%= f.button :submit, 'Add update', data: { disable_with: 'Creating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= f.button :submit, 'Add update', data: { disable_with: 'Creating...' }, class: 'btn bg-blue-800 text-white' %>
     <%= link_to 'Cancel', targetable_indicator_path(@targetable, @indicator), class: 'link ml-6' %>
   <% end %>
 
   <%- if ['edit', 'update'].include?(action_name) %>
-    <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-blue-800 text-white' %>
     <%= link_to 'Cancel', targetable_indicator_path(@targetable, @indicator), class: 'link ml-6' %>
-    <%= link_to 'Delete', indicator_progress_update_path(@indicator, model), method: :delete, class: 'link float-right', data: { confirm: 'Are you sure?' } %>
+    <%= link_to 'Delete', indicator_progress_update_path(@indicator, model), class: 'link float-right', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
   <% end %>
 <% end %>

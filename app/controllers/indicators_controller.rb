@@ -19,6 +19,26 @@ class IndicatorsController < ApplicationController
     end
   end
 
+  def edit
+    @indicator = Indicator.find_by(id: params[:id])
+  end
+
+  def update
+    @indicator = Indicator.find_by(id: params[:id])
+
+    if @indicator.update(form_params)
+      redirect_to helpers.targetable_indicator_path(@targetable, @indicator), notice: 'Progress indicator updated'
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @indicator = Indicator.find_by(id: params[:id])
+    @indicator.destroy
+    redirect_to helpers.targetable_indicators_path(@targetable), notice: 'Progress indicator deleted'
+  end
+
   private
 
   def form_params

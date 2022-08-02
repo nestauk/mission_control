@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer components {
+  .my_bg {
+    @apply text-green-700;
+  }
+
   /* Form */
   /* ======================================================================== */
   .label {
@@ -22,7 +26,7 @@
   .input.text,
   .trix-editor,
   .selectize-input {
-    border: 3px solid teal;
+    border: 3px solid theme("colors.blue.800");
     @apply px-2 py-2 w-full;
   }
 
@@ -44,7 +48,7 @@
   .trix-editor.focus,
   .selectize-input:focus,
   .selectize-input.focus {
-    outline: 3px solid teal;
+    outline: 3px solid theme("colors.yellow.300");
     outline-offset: 0;
   }
 
@@ -74,7 +78,7 @@
     @apply mr-2 cursor-pointer font-semibold;
   }
   .radio .input:focus {
-    box-shadow: 0 0 0 3px teal;
+    box-shadow: 0 0 0 3px theme("colors.yellow.300");
   }
   .radio label {
     @apply cursor-pointer;
@@ -114,6 +118,67 @@
 
   .outer-container {
     @apply mx-auto max-w-screen-xl px-5;
+  }
+
+  /* Status colors */
+  /* ======================================================================== */
+
+  .on_track {
+    @apply text-green-700;
+  }
+  .at_risk {
+    @apply text-orange-700;
+  }
+  .off_track {
+    @apply text-red-700;
+  }
+
+  .bg_on_track {
+    @apply bg-green-500;
+  }
+  .bg_at_risk {
+    @apply bg-orange-500;
+  }
+  .bg_off_track {
+    @apply bg-red-500;
+  }
+
+  .on_track_with_icon:before,
+  .at_risk_with_icon:before,
+  .off_track_with_icon:before {
+    content: "";
+    display: inline-block;
+    position: relative;
+  }
+
+  .on_track_with_icon {
+    @apply text-green-700;
+  }
+  .on_track_with_icon:before {
+    margin: 2px 4px 1px 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-bottom: 10px solid theme("colors.green.700");
+  }
+
+  .at_risk_with_icon {
+    @apply text-orange-700;
+  }
+  .at_risk_with_icon:before {
+    margin: 2px 4px 3px 0;
+    border-left: 6px solid theme("colors.orange.700");
+    border-right: 6px solid theme("colors.orange.700");
+    border-bottom: 6px solid theme("colors.orange.700");
+  }
+
+  .off_track_with_icon {
+    @apply text-red-700;
+  }
+  .off_track_with_icon:before {
+    margin: 2px 4px 1px 0;
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 10px solid theme("colors.red.700");
   }
 }
 

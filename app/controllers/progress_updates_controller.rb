@@ -40,7 +40,8 @@ class ProgressUpdatesController < ApplicationController
   def form_params
     params.require(:progress_update).permit(
       :content, :status, :value, :date
-    ).with_defaults(author: current_user.contact)
+    )
+    # .with_defaults(author: current_user.contact)
   end
 
   def load_indicator

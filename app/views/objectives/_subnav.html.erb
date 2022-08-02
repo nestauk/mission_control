@@ -17,11 +17,11 @@
         </div>
       <% end %>
 
-      <%#= link_to objective_memberships_path(@objective) do %>
+      <%= link_to objective_memberships_path(@objective) do %>
         <div class="px-2 py-1 mr-1 mb-1 bg-gray-800 bg-opacity-25 hover:bg-gray-800 rounded">
-          Team (<%#= @objective.memberships.size %>)
+          Team (<%= @objective.memberships.size %>)
         </div>
-      <%# end %>
+      <% end %>
     </div>
   </section>
 </div>

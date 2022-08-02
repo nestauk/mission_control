@@ -16,7 +16,7 @@
         </div>
 
         <section class="mb-5">
-          <h2 class="text-l text-brand-navy leading-tight">
+          <h2 class="text-l text-blue-800 leading-tight">
             <%= @indicator.title %>
           </h2>
         </section>
@@ -30,26 +30,26 @@
               <%= @indicator.unit %>
             </p>
             <div class="relative rounded-full overflow-hidden w-full h-3">
-              <div class="absolute bg-brand-navy-5 w-full h-3"></div>
-              <div class="absolute h-3 bg-opacity-50 bg_<%= @indicator.last_progress_update_status %>" style="width: <%= @progress_indicator.progress %>%"></div>
+              <div class="absolute bg-blue-800-5 w-full h-3"></div>
+              <div class="absolute h-3 bg-opacity-50 <%= bg_status(@indicator.last_progress_update_status) %>" style="width: <%= @indicator.progress %>%"></div>
             </div>
           </section>
         <% end %>
 
         <section>
-          <h2 class="text-sm text-brand-navy mb-2 leading-tight">Start date</h2>
+          <h2 class="text-sm text-blue-800 mb-2 leading-tight">Start date</h2>
           <%= @indicator.start_date.strftime("%e %b %Y") %>
         </section>
 
         <% if @indicator.end_date %>
           <section class="mt-5">
-            <h2 class="text-sm text-brand-navy mb-2 leading-tight">End date</h2>
+            <h2 class="text-sm text-blue-800 mb-2 leading-tight">End date</h2>
             <%= @indicator.end_date.strftime("%e %b %Y") %>
           </section>
         <% end %>
 
         <section class="mt-5">
-          <h2 class="text-sm text-brand-navy mb-2 leading-tight">Progress updates due</h2>
+          <h2 class="text-sm text-blue-800 mb-2 leading-tight">Progress updates due</h2>
           <%= @indicator.update_frequency.humanize %>
         </section>
       </div>
@@ -71,9 +71,9 @@
     <% end %>
 
     <div class="flex justify-between items-center">
-      <h2 class="text-lg text-brand-navy leading-tight">Progress updates</h2>
+      <h2 class="text-lg text-blue-800 leading-tight">Progress updates</h2>
 
-      <%= link_to 'New progress update', new_indicator_progress_update_path(@indicator), class: 'btn shadow bg-brand-navy text-white', data: { turbolinks: false } %>
+      <%= link_to 'New progress update', new_indicator_progress_update_path(@indicator), class: 'btn shadow bg-blue-800 text-white', data: { turbolinks: false } %>
     </div>
 
     <% if @indicator.progress_updates.any? %>
@@ -84,22 +84,20 @@
         <div class="py-5 border-b border-gray-400 rounded">
           <div class="mb-1 flex justify-between">
             <p>
-              <span class="font-bold <%= update.status %>_with_icon"><%= update.status.humanize %></span>
+              <span class="font-bold <%= status_with_icon(update.status) %>"><%= update.status.humanize %></span>
               <%- if update.value && @indicator.target_value %>
                 <span class="text-sm text-gray-700">
                   (<%= number_with_precision(update.value, precision: 2, delimiter: ',', strip_insignificant_zeros: true) %> <%= @indicator.unit %>)
                 </span>
               <% end %>
             </p>
-            <% if can? :update, update %>
-              <%= link_to 'Edit', edit_indicator_progress_update_path(@indicator, update), class: 'link text-sm' %>
-            <% end %>
+            <%= link_to 'Edit', edit_indicator_progress_update_path(@indicator, update), class: 'link text-sm' %>
           </div>
 
           <div class="my-2"><%= update.content %></div>
 
           <p class="text-sm text-gray-700">
-            <%= update.date&.strftime("%e %b %Y") %> by <%= update.author.name %>
+            <%= update.date&.strftime("%e %b %Y") %> by <%#= update.author.name %>
           </p>
         </div>
       <% end %>

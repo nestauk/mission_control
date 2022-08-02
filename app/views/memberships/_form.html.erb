@@ -1,0 +1,176 @@
+<%= simple_form_for model, url: url do |f| %>
+  <div class="mb-6">
+    <div class="label"><%= model.memberable.class %></div>
+    <%= model.memberable.title %>
+  </div>
+
+  <div class="mb-6">
+    <%= f.association :contact, collection: Contact.order(:first_name, :last_name), label_method: ->(o) { "#{o.name} (#{o.email})" }, input_html: { data: { controller: "choices" } }, label: "Who will be working on this #{to_var(@memberable)}?" %>
+  </div>
+
+  <div class="mb-6">
+    <%= f.label :role, class: "label", label: "What type of role will they be playing?" %>
+
+    <h3 class="my-3 text-gray-700">Team - <%= role_type_description(:team) %></h3>
+
+    <div class="mb-3">
+      <label for="membership_role_team_lead">
+        <div class="flex items-center inline-flex hover:cursor-pointer">
+          <input type="radio" value="team_lead" name="membership[role]" id="membership_role_team_lead" class="mx-3">
+          <strong>Team lead</strong>
+        </div>
+      </label>
+      <details class="text-sm ml-11">
+        <summary>Key responsibilities</summary>
+        <ul class="list-disc text-gray-800 p-3 bg-gray-200">
+          <li class="ml-3">Leading the team to develop, deliver, and if needed adapt, an approach to achieve the strategic intent of the team's objective.</li>
+          <li class="ml-3">Ensuring the team is appropriately considering social impact/harm, user/stakeholder value, scale and sustainability in its work.</li>
+          <li class="ml-3">Ensuring the team is identifying key risks/uncertainties and adapting based on real-world feedback.</li>
+          <li class="ml-3">Ensuring necessary monitoring and reporting is completed.</li>
+          <li class="ml-3">Identifying and bringing in collaborators as needed.</li>
+          <li class="ml-3">Facilitating, and if necessary making, decisions in the interest of the team's common goal and Nesta's values.</li>
+          <li class="ml-3">Contributing to the development of a clear brief for the team's objective.</li>
+          <li class="ml-3">Practically using their skills, knowledge and experience to deliver on the strategic intent of the team's objective.</li>
+          <li class="ml-3">Providing expert guidance and informing decisions relating to their areas of specialism.</li>
+          <li class="ml-3">Ensuring Nesta's values are upheld and enacted through the team's work.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="mb-3">
+      <label for="membership_role_team_member">
+        <div class="flex items-center inline-flex hover:cursor-pointer">
+          <input type="radio" value="team_member" name="membership[role]" id="membership_role_team_member" class="mx-3">
+          <strong>Team member</strong>
+        </div>
+      </label>
+      <details class="text-sm ml-11">
+        <summary>Key responsibilities</summary>
+        <ul class="list-disc text-gray-800 p-3 bg-gray-200">
+          <li class="ml-3">Contributing to the development of a clear brief for the team's objective.</li>
+          <li class="ml-3">Practically using their skills, knowledge and experience to deliver on the strategic intent of the team's objective.</li>
+          <li class="ml-3">Providing expert guidance and informing decisions relating to their areas of specialism.</li>
+          <li class="ml-3">Ensuring Nesta's values are upheld and enacted through the team's work.</li>
+        </ul>
+      </details>
+    </div>
+
+    <h3 class="mb-3 text-gray-700">Collaborators - <%= role_type_description(:collaborators) %></h3>
+
+    <div class="mb-3">
+      <label for="membership_role_collaborator">
+        <div class="flex items-center inline-flex hover:cursor-pointer">
+          <input type="radio" value="collaborator" name="membership[role]" id="membership_role_collaborator" class="mx-3">
+          <strong>Collaborator</strong>
+        </div>
+      </label>
+      <details class="text-sm ml-11">
+        <summary>Key responsibilities</summary>
+        <ul class="list-disc text-gray-800 p-3 bg-gray-200">
+          <li class="ml-3">Providing expert guidance and practical support relating to their areas of specialism at key moments and as requested.</li>
+          <li class="ml-3">Represent other teams to reduce dependencies and blockers.</li>
+          <li class="ml-3">Share learning across teams.</li>
+        </ul>
+      </details>
+    </div>
+
+    <h3 class="mb-3 text-gray-700">Supporters - <%= role_type_description(:supporters) %></h3>
+
+    <div class="mb-3">
+      <label for="membership_role_sponsor">
+        <div class="flex items-center inline-flex hover:cursor-pointer">
+          <input type="radio" value="sponsor" name="membership[role]" id="membership_role_sponsor" class="mx-3">
+          <strong>Sponsor</strong>
+        </div>
+      </label>
+      <details class="text-sm ml-11">
+        <summary>Key responsibilities</summary>
+        <ul class="list-disc text-gray-800 p-3 bg-gray-200">
+          <li class="ml-3">Ultimate decision for investment to set up a team on the objective.</li>
+          <li class="ml-3">Ensuring alignment with broader strategy.</li>
+          <li class="ml-3">Ensuring a balanced portfolio of objectives.</li>
+          <li class="ml-3">Shaping and approving a clear brief for the team's objective.</li>
+          <li class="ml-3">Providing feedback and guidance at key moments and as requested.</li>
+          <li class="ml-3">Attending key team events, like kick-off, review and wrap-up sessions.</li>
+          <li class="ml-3">(Can be delegated to Coach) Leading a structured process to set up empowered multi-skilled teams around important objectives.</li>
+          <li class="ml-3">(Can be delegated to Coach) Ensuring teams and supporters co-develop and are aligned on a clear brief for the team's objective.</li>
+          <li class="ml-3">(Can be delegated to Coach) Supporting teams to develop and align on an initial delivery plan for their objective that's mindful of key risks/uncertainties and the need to adapt based on real-world feedback.</li>
+          <li class="ml-3">(Can be delegated to Coach) Ensuring teams are appropriately considering social impact/harm, user/stakeholder value, scale and sustainability in their work.</li>
+          <li class="ml-3">(Can be delegated to Coach) Ensuring the team is adapting based on real-world feedback.</li>
+          <li class="ml-3">(Can be delegated to Coach) Ensuring Nesta's values are upheld and enacted through the team's work.</li>
+          <li class="ml-3">(Can be delegated to Coach) Providing regular advice, guidance and practical support to team leads to navigate challenges and remove obstacles.</li>
+          <li class="ml-3">(Can be delegated to Coach) Connecting teams to support from across Nesta and beyond.</li>
+          <li class="ml-3">(Can be delegated to Coach) Convening and facilitating regular learning and progress review sessions with teams, supporters and wider networks.</li>
+          <li class="ml-3">(Can be delegated to Coach) Facilitating a structured process for teams and supporters to wrap up key stages of work and make decisions about next steps based on learning.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="mb-3">
+      <label for="membership_role_coach">
+        <div class="flex items-center inline-flex hover:cursor-pointer">
+          <input type="radio" value="coach" name="membership[role]" id="membership_role_coach" class="mx-3">
+          <strong>Coach</strong>
+        </div>
+      </label>
+      <details class="text-sm ml-11">
+        <summary>Key responsibilities</summary>
+        <ul class="list-disc text-gray-800 p-3 bg-gray-200">
+          <li class="ml-3">Leading a structured process to set up empowered multi-skilled teams around important objectives.</li>
+          <li class="ml-3">Ensuring teams and supporters co-develop and are aligned on a clear brief for the team's objective.</li>
+          <li class="ml-3">Supporting teams to develop and align on an initial delivery plan for their objective that's mindful of key risks/uncertainties and the need to adapt based on real-world feedback.</li>
+          <li class="ml-3">Ensuring teams are appropriately considering social impact/harm, user/stakeholder value, scale and sustainability in their work.</li>
+          <li class="ml-3">Ensuring the team is adapting based on real-world feedback.</li>
+          <li class="ml-3">Ensuring Nesta's values are upheld and enacted through the team's work.</li>
+          <li class="ml-3">Providing regular advice, guidance and practical support to team leads to navigate challenges and remove obstacles.</li>
+          <li class="ml-3">Connecting teams to support from across Nesta and beyond.</li>
+          <li class="ml-3">Convening and facilitating regular learning and progress review sessions with teams, supporters and wider networks.</li>
+          <li class="ml-3">Facilitating a structured process for teams and supporters to wrap up key stages of work and make decisions about next steps based on learning.</li>
+        </ul>
+      </details>
+    </div>
+
+    <div class="mb-3">
+      <label for="membership_role_advisor">
+        <div class="flex items-center inline-flex hover:cursor-pointer">
+          <input type="radio" value="advisor" name="membership[role]" id="membership_role_advisor" class="mx-3">
+          <strong>Advisor</strong>
+        </div>
+      </label>
+      <details class="text-sm ml-11">
+        <summary>Key responsibilities</summary>
+        <ul class="list-disc text-gray-800 p-3 bg-gray-200">
+          <li class="ml-3">Contributing to the development of a clear brief for the team's objective.</li>
+          <li class="ml-3">Providing expert advice and guidance to teams and sponsors to inform activities and decisions at key moments and as requested.</li>
+          <li class="ml-3">Attending key team events, like kick-off, review and wrap-up sessions.</li>
+        </ul>
+      </details>
+    </div>
+  </div>
+
+  <div class="mb-6">
+    <%= f.input :description, label: "(Optional) Role notes" %>
+  </div>
+
+  <div class="mb-6">
+    <%= f.input :avg_weekly_time_percentage, label: "(Optional) Estimated average weekly % of time in this role", hint: "E.g. Input 50 for an average 50% of someones time in this role between the start and end date for the #{to_var(@memberable)}." %>
+  </div>
+
+  <div class="flex justify-between items-center">
+    <div>
+      <% if ['new', 'create'].include?(action_name) %>
+        <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-blue-800 text-white' %>
+      <% end %>
+
+      <% if ['edit', 'update'].include?(action_name) %>
+        <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-blue-800 text-white' %>
+      <% end %>
+
+      <%= link_to 'Cancel', memberable_memberships_path(@memberable), class: 'link ml-6' %>
+    </div>
+
+    <% if ['edit', 'update'].include?(action_name) %>
+      <%= link_to 'Remove member', url, method: :delete, class: 'link  ml-6', data: { confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+<% end %>

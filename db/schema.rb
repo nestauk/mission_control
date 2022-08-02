@@ -52,6 +52,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "contacts", force: :cascade do |t|
+    t.bigint "person_id"
+    t.bigint "organisation_id"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "slug"
+    t.string "email"
+    t.string "phone"
+    t.string "position"
+    t.integer "status", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["organisation_id"], name: "index_contacts_on_organisation_id"
+    t.index ["person_id"], name: "index_contacts_on_person_id"
+  end
+
   create_table "contributions", force: :cascade do |t|
     t.bigint "goal_id"
     t.bigint "objective_id"
@@ -69,6 +85,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
   end
 
   create_table "indicators", force: :cascade do |t|
+    t.string "targetable_type"
+    t.bigint "targetable_id"
     t.string "title"
     t.integer "status", default: 0
     t.date "start_date"
@@ -80,10 +98,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
     t.float "last_progress_update_value"
     t.integer "update_frequency", default: 0
     t.datetime "last_reminded_at"
-    t.string "targetable_type"
-    t.bigint "targetable_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["targetable_type", "targetable_id"], name: "index_indicators_on_targetable"
+  end
+
+  create_table "memberships", force: :cascade do |t|
+    t.bigint "contact_id"
+    t.string "memberable_type"
+    t.bigint "memberable_id"
+    t.integer "role", null: false
+    t.integer "role_type", null: false
+    t.string "description"
+    t.float "avg_weekly_time_percentage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["contact_id"], name: "index_memberships_on_contact_id"
+    t.index ["memberable_type", "memberable_id"], name: "index_memberships_on_memberable"
   end
 
   create_table "objectives", force: :cascade do |t|
@@ -93,6 +124,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
     t.text "objective"
     t.date "start_date"
     t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "organisations", force: :cascade do |t|
+    t.string "name"
+    t.string "slug"
+    t.string "website"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "people", force: :cascade do |t|
+    t.string "pronouns"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -119,6 +167,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "contact_id"
+    t.index ["contact_id"], name: "index_users_on_contact_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

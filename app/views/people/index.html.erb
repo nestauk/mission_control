@@ -1,8 +1,8 @@
-<% content_for :title, 'Objectives' %>
+<% content_for :title, 'People' %>
 
 <div class="bg-gray-700">
   <section class="outer-container py-4 text-white">
-    <h1 class="leading-tight text-2xl">Objectives</h1>
+    <h1 class="leading-tight text-2xl">People</h1>
   </section>
 </div>
 
@@ -10,11 +10,11 @@
 
   <div class="m-5 flex-1 lg:w-0 w-full">
     <div class="mb-5">
-      <%= link_to 'New objective', new_objective_path, class: 'btn bg-blue-800 text-white' %>
+      <%= link_to 'New person', new_person_path, class: 'btn bg-blue-800 text-white' %>
     </div>
 
-    <div id="objectives-list">
-      <%= render 'list', objectives: @objectives %>
+    <div id="people-list">
+      <%= render 'list', people: @people %>
     </div>
   </div>
 
@@ -30,14 +30,19 @@
 
       <div id="filter-body" class="p-4 bg-white rounded-b">
         <%= search_form_for @q do |f| %>
-          <%= f.label :title_cont, 'Search by title', class: 'label' %>
-          <%= f.search_field :title_cont, class: 'input string mb-4' %>
+          <%= f.label :name_cont, 'Name', class: 'label' %>
+          <%= f.search_field :name_cont, class: 'input string mb-4' %>
+
+          <%= f.label :contacts_email_cont, 'Email', class: 'label' %>
+          <%= f.search_field :contacts_email_cont, class: 'input string mb-4' %>
+
+          <%= f.label :contacts_organisation_id_in, 'Organisations', class: 'label' %>
+          <%= f.collection_select :contacts_organisation_id_in, Organisation.ordered, :id, :name, { include_blank: true }, { multiple: true, class: 'input selectize mb-4' } %>
 
           <%= f.button 'Filter', type: 'submit', class: "btn text-white bg-blue-800" %>
-          <%= link_to 'Reset', objectives_path, class: 'ml-1 btn bg-blue-200' %>
+          <%= link_to 'Reset', people_path, class: 'ml-1 btn bg-blue-200' %>
         <% end %>
       </div>
     </div>
   </aside>
-
 </div>
