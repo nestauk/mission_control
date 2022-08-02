@@ -1,0 +1,32 @@
+<%= simple_form_for model do |f| %>
+  <div class="mb-4">
+    <%= f.input :title %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :status, as: :radio_buttons, collection: Goal.statuses.keys, label_method: :humanize, item_wrapper_class: 'inline-block mr-6' %>
+  </div>
+
+  <div class="mb-4 <%= 'field_with_errors' if model.errors[:context].any? %>">
+    <div class="label"><%= f.label :context %></div>
+    <div class="hint"><%= f.hint :context %></div>
+    <div class="error"><%= f.error :context %></div>
+    <%= f.rich_text_area :context, class: 'trix-editor' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.association :objectives, collection: Objective.all, input_html: { data: { controller: "choices" } } %>
+  </div>
+
+  <% if ['new', 'create'].include?(action_name) %>
+    <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= link_to 'Cancel', goals_path, class: 'link ml-6' %>
+  <% end %>
+
+  <% if ['edit', 'update'].include?(action_name) %>
+    <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= link_to 'Cancel', model, class: 'link ml-6' %>
+
+    <%= link_to 'Delete', goal_path(model), method: :delete, class: 'link float-right', data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>

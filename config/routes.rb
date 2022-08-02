@@ -4,4 +4,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "goals#index"
+
+  concern :targetable do
+    resources :indicators
+  end
+
+  resources :goals, concerns: %i[targetable] do
+    get "objectives"
+  end
+
+  resources :objectives, concerns: %i[targetable]
 end

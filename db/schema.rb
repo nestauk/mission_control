@@ -10,9 +10,104 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_01_091824) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
+
+  create_table "active_storage_attachments", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
+    t.datetime "created_at", null: false
+    t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
+    t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
+  end
+
+  create_table "active_storage_blobs", force: :cascade do |t|
+    t.string "key", null: false
+    t.string "filename", null: false
+    t.string "content_type"
+    t.text "metadata"
+    t.string "service_name", null: false
+    t.bigint "byte_size", null: false
+    t.string "checksum"
+    t.datetime "created_at", null: false
+    t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
+  end
+
+  create_table "active_storage_variant_records", force: :cascade do |t|
+    t.bigint "blob_id", null: false
+    t.string "variation_digest", null: false
+    t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "contributions", force: :cascade do |t|
+    t.bigint "goal_id"
+    t.bigint "objective_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["goal_id"], name: "index_contributions_on_goal_id"
+    t.index ["objective_id"], name: "index_contributions_on_objective_id"
+  end
+
+  create_table "goals", force: :cascade do |t|
+    t.string "title"
+    t.integer "status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "indicators", force: :cascade do |t|
+    t.string "title"
+    t.integer "status", default: 0
+    t.date "start_date"
+    t.date "end_date"
+    t.string "unit"
+    t.float "target_value"
+    t.date "last_progress_update_date"
+    t.integer "last_progress_update_status"
+    t.float "last_progress_update_value"
+    t.integer "update_frequency", default: 0
+    t.datetime "last_reminded_at"
+    t.string "targetable_type"
+    t.bigint "targetable_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "objectives", force: :cascade do |t|
+    t.string "title"
+    t.string "shortname"
+    t.string "slug"
+    t.integer "status", default: 0
+    t.date "start_date"
+    t.date "end_date"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "progress_updates", force: :cascade do |t|
+    t.bigint "indicators_id"
+    t.bigint "user_id"
+    t.date "date"
+    t.float "value"
+    t.integer "status"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["indicators_id"], name: "index_progress_updates_on_indicators_id"
+    t.index ["user_id"], name: "index_progress_updates_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
@@ -28,4 +123,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_091824) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
 end

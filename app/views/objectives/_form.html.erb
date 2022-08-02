@@ -1,0 +1,52 @@
+<%= simple_form_for model do |f| %>
+  <div class="mb-4">
+    <%= f.input :title %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :shortname %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :status, as: :radio_buttons, collection: Objective.statuses.keys, label_method: :humanize, item_wrapper_class: 'inline-block mr-6' %>
+  </div>
+
+  <%#= TODO: flex wrap %>
+  <div class="md:flex justify-between mb-4 ">
+    <div class="w-full md:mr-2 md:mb-0 mb-4">
+      <%= f.input :start_date, html5: true, placeholder: 'dd mmm yyyy', input_html: { value: model.start_date || Date.today } %>
+    </div>
+    <div class="w-full md:ml-2">
+      <%= f.input :end_date, html5: true, placeholder: 'dd mmm yyyy' %>
+    </div>
+  </div>
+
+  <h2 class="mt-12 text-2xl text-brand-navy leading-tight">About the work</h2>
+  <hr class="mt-2 mb-4 border-brand-navy-10">
+  <p class="mb-4">You will be able to add key contacts and collaborating organisations, as well as links to relevant documents, on the next page.</p>
+
+  <div class="mb-4 <%= 'field_with_errors' if model.errors[:context].any? %>">
+    <div class="label"><%= f.label :context %></div>
+    <div class="hint"><%= f.hint :context %></div>
+    <div class="error"><%= f.error :context %></div>
+    <div class="w-full">
+    <%= f.rich_text_area :context, class: 'trix-editor' %>
+    </div>
+  </div>
+
+  <div class="mb-4">
+    <%= f.association :goals, collection: Goal.all, input_html: { data: { controller: "choices" } } %>
+  </div>
+
+  <% if ['new', 'create'].include?(action_name) %>
+    <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= link_to 'Cancel', objectives_path, class: 'link ml-6' %>
+  <% end %>
+
+  <% if ['edit', 'update'].include?(action_name) %>
+    <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= link_to 'Cancel', model, class: 'link ml-6' %>
+
+    <%= link_to 'Delete', objective_path(model), method: :delete, class: 'link float-right', data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>

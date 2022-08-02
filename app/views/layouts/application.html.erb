@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Mission Control</title>
+    <title><%= "#{yield(:title)} | ".html_safe if content_for?(:title) %>Mission Control</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -9,6 +9,9 @@
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+
+    <link rel="stylesheet" href="https://ga.jspm.io/npm:choices.js@10.1.0/public/assets/styles/choices.min.css" />
+    <link rel="stylesheet" href="https://ga.jspm.io/npm:vis-timeline@7.7.0/styles/vis-timeline-graph2d.min.css" />
   </head>
   <body class="flex">
 
@@ -71,13 +74,13 @@
 
       <hr class="border-b border-gray-800 mx-4 my-3">
 
-      <%= link_to "#" do %>
+      <%= link_to goals_path do %>
         <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
           Goals
         </div>
       <% end %>
 
-      <%= link_to "#" do %>
+      <%= link_to objectives_path do %>
         <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
           Objectives
         </div>
@@ -146,7 +149,7 @@
               <input class="px-2 py-1 border border-gray-400 w-full rounded" type="search" name="term" placeholder="Search" tabindex=1 value="<%= params[:term] %>">
             </form>
 
-            <nav id="nav-dropdown" class="font-lexenddeca">
+            <nav id="nav-dropdown">
               <button class="w-32 py-1 font-semibold rounded bg-orange-200 text-brand-navy cursor-pointer">
                 New
               </button>

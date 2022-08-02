@@ -1,0 +1,43 @@
+<% content_for :title, 'Objectives' %>
+
+<div class="bg-gray-700">
+  <section class="outer-container py-4 text-white">
+    <h1 class="leading-tight text-2xl">Objectives</h1>
+  </section>
+</div>
+
+<div class="flex flex-wrap-reverse mx-auto max-w-screen-xl">
+
+  <div class="m-5 flex-1 lg:w-0 w-full">
+    <div class="mb-5">
+      <%= link_to 'New initiative', new_objective_path, class: 'btn bg-brand-navy text-white' %>
+    </div>
+
+    <div id="objectives-list">
+      <%= render 'list', objectives: @objectives %>
+    </div>
+  </div>
+
+  <aside class="m-5 lg:w-64 w-full">
+    <div class="shadow">
+      <input type="checkbox" id="filter-toggle">
+      <label id="filter-control" for="filter-toggle" class="px-4 py-2 block w-full bg-white">
+        <div class="flex justify-between align-items leading-tight">
+          Filter
+          <%= image_tag 'chevron-down.svg', id: 'chevron-down' %>
+        </div>
+      </label>
+
+      <div id="filter-body" class="p-4 bg-white rounded-b">
+        <%= search_form_for @q do |f| %>
+          <%= f.label :title_cont, 'Search by title', class: 'label' %>
+          <%= f.search_field :title_cont, class: 'input string mb-4' %>
+
+          <%= f.button 'Filter', type: 'submit', class: "btn text-white bg-brand-navy" %>
+          <%= link_to 'Reset', objectives_path, class: 'ml-1 btn bg-brand-navy-10' %>
+        <% end %>
+      </div>
+    </div>
+  </aside>
+
+</div>

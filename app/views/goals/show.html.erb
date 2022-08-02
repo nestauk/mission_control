@@ -1,0 +1,25 @@
+<div class="m-5">
+  <section class="mb-6">
+    <em>Goal</em>
+    <h1 class="text-xl"><%= @goal.title %></h1>
+    <%= link_to "Edit", edit_goal_path(@goal) %>
+  </section>
+
+  <section class="mb-6">
+    <%= @goal.context %>
+  </section>
+
+  <section class="mb-6">
+    <h2 class="text-xl">Indicators</h2>
+    <%= link_to "Add indicator", new_goal_indicator_path(@goal) %>
+    <%- @goal.indicators.each do |i| %>
+      <li><%= i.title %></li>
+    <% end %>
+  </section>
+
+  <section class="mb-6">
+    <h2 class="text-xl">Roadmap</h2>
+    <p>Objectives/Projects we're planning or working on towards this goal.</p>
+    <div data-controller="timeline" data-timeline-goal-id-value="<%= @goal.id %>"></div>
+  </section>
+</div>

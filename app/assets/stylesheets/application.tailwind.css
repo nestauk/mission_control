@@ -2,6 +2,114 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer components {
+  /* Form */
+  /* ======================================================================== */
+  .label {
+    @apply font-semibold block mb-1;
+  }
+
+  .hint {
+    @apply text-sm mb-1 text-gray-700;
+  }
+
+  .input.string,
+  .input.password,
+  .input.select,
+  .input.numeric,
+  .input.date,
+  .input.datetime,
+  .input.text,
+  .trix-editor,
+  .selectize-input {
+    border: 3px solid teal;
+    @apply px-2 py-2 w-full;
+  }
+
+  .input.string:focus,
+  .input.string.focus,
+  .input.password:focus,
+  .input.password.focus,
+  .input.select:focus,
+  .input.select.focus,
+  .input.numeric:focus,
+  .input.numeric.focus,
+  .input.date:focus,
+  .input.date.focus,
+  .input.datetime:focus,
+  .input.datetime.focus,
+  .input.text:focus,
+  .input.text.focus,
+  .trix-editor:focus,
+  .trix-editor.focus,
+  .selectize-input:focus,
+  .selectize-input.focus {
+    outline: 3px solid teal;
+    outline-offset: 0;
+  }
+
+  .input.label,
+  .input.selectize,
+  .input.selectize-organisations,
+  .input.selectize-contacts,
+  .input.flatpickr-input {
+    border: none;
+    padding: 0;
+  }
+
+  .input.select:not(.selectize):not(.selectize-organisations):not(.selectize-contacts) {
+    background: #fff
+      url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+)
+      no-repeat right 4px center !important;
+    padding-right: 22px !important;
+    appearance: none;
+    -moz-osx-appearance: none;
+    -webkit-appearance: none;
+  }
+
+  .radio {
+    @apply block my-1;
+  }
+  .radio .input {
+    @apply mr-2 cursor-pointer font-semibold;
+  }
+  .radio .input:focus {
+    box-shadow: 0 0 0 3px teal;
+  }
+  .radio label {
+    @apply cursor-pointer;
+  }
+
+  .field_with_errors .error {
+    @apply text-sm text-red-600;
+  }
+  .field_with_errors .error:first-letter {
+    text-transform: capitalize;
+  }
+
+  .field_with_errors .input,
+  .field_with_errors .trix-editor {
+    @apply border-red-600;
+  }
+
+  /* Button */
+  /* ======================================================================== */
+
+  .btn {
+    @apply inline-flex font-semibold rounded shadow px-3 py-1 transition-all duration-200 cursor-pointer;
+  }
+  .btn:hover {
+    @apply bg-opacity-75;
+  }
+
+  .btn-wide {
+    @apply inline-flex font-semibold rounded-md px-8 py-3 transition-all duration-200 cursor-pointer w-full;
+  }
+  .btn-wide:hover {
+    @apply bg-opacity-75;
+  }
+}
+
 html {
   overflow: hidden;
 }
@@ -117,12 +225,49 @@ body {
   height: auto;
 }
 
-/*
+/* Filter toggle */
+/* ========================================================================== */
 
-@layer components {
-  .btn-primary {
-    @apply py-2 px-4 bg-blue-200;
+#filter-body {
+  display: none;
+}
+#filter-toggle {
+  display: none;
+}
+#filter-control {
+  cursor: default;
+}
+#chevron-down {
+  transition: all ease 0.25s;
+}
+#filter-toggle:checked ~ #filter-body {
+  display: block;
+}
+#filter-toggle:checked ~ #filter-control #chevron-down {
+  transform: rotate(180deg);
+}
+
+@media (max-width: 767px) {
+  #filter-control {
+    cursor: pointer;
+  }
+  #chevron-down {
+    display: block;
+  }
+  #filter-body {
+    display: none;
   }
 }
 
-*/
+@media (min-width: 768px) {
+  #chevron-down {
+    display: none;
+  }
+  #filter-toggle:checked ~ #chevron-down {
+    transform: rotate(180deg);
+  }
+  #filter-body {
+    display: block;
+  }
+}
+@import 'actiontext.css';

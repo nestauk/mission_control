@@ -1,0 +1,29 @@
+<div class="m-5">
+  <section class="mb-6">
+    <h2 class="text-xl"><%= @objective.title %></h2>
+    <%= link_to "Edit", edit_objective_path(@objective) %>
+  </section>
+
+  <section class="mb-6">
+    <%= @objective.context %>
+  </section>
+
+  <section class="mb-6">
+    <h2 class="text-xl">Indicators</h2>
+    <%= link_to "Add indicator", new_objective_indicator_path(@objective) %>
+    <ul>
+      <%- @objective.indicators.each do |i| %>
+        <li><%= i.title %></li>
+      <% end %>
+    </ul>
+  </section>
+
+  <section class="mb-6">
+    <h2 class="text-xl">Contributing to goals</h2>
+    <ul>
+      <%- @objective.goals.each do |g| %>
+        <li><%= link_to g.title, g %></li>
+      <% end %>
+    </ul>
+  </section>
+</div>
