@@ -40,7 +40,7 @@ class AddCoreTables < ActiveRecord::Migration[7.0]
     end
 
     create_table :progress_updates do |t|
-      t.references :indicators
+      t.references :indicator
       t.references :user
       t.date :date
       t.float :value

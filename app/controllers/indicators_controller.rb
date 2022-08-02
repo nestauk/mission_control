@@ -1,6 +1,10 @@
 class IndicatorsController < ApplicationController
   before_action :load_targetable
 
+  def show
+    @indicator = Indicator.find_by(id: params[:id])
+  end
+
   def new
     @indicator = @targetable.indicators.new
   end

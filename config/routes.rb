@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   end
 
   resources :objectives, concerns: %i[targetable]
+
+  scope 'indicators/:indicator_id', as: 'indicator' do
+    resources :progress_updates
+  end
 end

@@ -1,0 +1,39 @@
+<%= simple_form_for model, url: url do |f| %>
+  <div class="mb-4">
+    <div class="label">Progress indicator</div>
+    <%= model.indicator.title %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :date, html5: true, placeholder: 'dd mmm yyyy', input_html: { value: model.date || Date.today } %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :status, as: :radio_buttons, collection: ProgressUpdate.statuses.keys, label_method: lambda {|k| k.humanize}, item_wrapper_class: 'inline-block mr-6' %>
+  </div>
+
+  <%- if model.indicator.target_value %>
+    <div class="mb-4">
+      <%= f.input :value, required: true, wrapper_html: { class: 'inline-block w-1/2' } %>
+      <%= model.indicator.unit %> (Target: <%= number_with_precision(model.indicator.target_value, precision: 2, delimiter: ',', strip_insignificant_zeros: true) %>)
+    </div>
+  <% end %>
+
+  <div class="mb-6 <%= 'field_with_errors' if model.errors[:content].any? %>">
+    <div class="label"><%= f.label :content %></div>
+    <div class="hint"><%= f.hint :content %></div>
+    <div class="error"><%= f.error :content %></div>
+    <%= f.rich_text_area :content, class: 'trix-editor' %>
+  </div>
+
+  <%- if ['new', 'create'].include?(action_name) %>
+    <%= f.button :submit, 'Add update', data: { disable_with: 'Creating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= link_to 'Cancel', targetable_indicator_path(@targetable, @indicator), class: 'link ml-6' %>
+  <% end %>
+
+  <%- if ['edit', 'update'].include?(action_name) %>
+    <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-brand-navy text-white' %>
+    <%= link_to 'Cancel', targetable_indicator_path(@targetable, @indicator), class: 'link ml-6' %>
+    <%= link_to 'Delete', indicator_progress_update_path(@indicator, model), method: :delete, class: 'link float-right', data: { confirm: 'Are you sure?' } %>
+  <% end %>
+<% end %>

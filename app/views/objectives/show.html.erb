@@ -13,7 +13,7 @@
     <%= link_to "Add indicator", new_objective_indicator_path(@objective) %>
     <ul>
       <%- @objective.indicators.each do |i| %>
-        <li><%= i.title %></li>
+        <li><%= link_to i.title, targetable_indicator_path(@objective, i) %></li>
       <% end %>
     </ul>
   </section>
