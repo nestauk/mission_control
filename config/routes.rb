@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
   devise_for :users
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")
   root "goals#index"
+
+  concern :impactable do
+    resources :impact_ratings
+  end
 
   concern :memberable do
     resources :memberships
@@ -13,11 +15,11 @@ Rails.application.routes.draw do
     resources :indicators
   end
 
-  resources :goals, concerns: %i[memberable targetable] do
+  resources :goals, concerns: %i[impactable memberable targetable] do
     get "objectives"
   end
 
-  resources :objectives, concerns: %i[memberable targetable]
+  resources :objectives, concerns: %i[impactable memberable targetable]
   get "timeline", to: "objectives#timeline", as: "timeline_objectives"
 
   scope "indicators/:indicator_id", as: "indicator" do

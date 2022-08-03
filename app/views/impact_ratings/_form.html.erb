@@ -1,0 +1,48 @@
+<%= simple_form_for model, url: url do |f| %>
+  <div class="mb-4">
+    <div class="label"><%= model.impactable.class %></div>
+    <%= model.impactable.title %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :contribution_type, as: :radio_buttons, collection: ImpactRating.contribution_types.keys, label_method: lambda {|k| k.humanize}, item_wrapper_class: 'inline-block mr-6' %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :hypothesis %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :confidence, as: :radio_buttons, collection: ImpactRating::CONFIDENCE_SCALE %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :audience_description %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :no_people_reached %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :potential_reach %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :scale_likelihood, input_html: { min: 0, max: 100 } %>
+  </div>
+
+  <div class="flex justify-between items-center">
+    <div>
+      <% if ['new', 'create'].include?(action_name) %>
+        <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-blue-800 text-white' %>
+      <% end %>
+
+      <% if ['edit', 'update'].include?(action_name) %>
+        <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-blue-800 text-white' %>
+      <% end %>
+
+      <%= link_to 'Cancel', impactable_impact_ratings_path(@impactable), class: 'link ml-6' %>
+    </div>
+  </div>
+<% end %>

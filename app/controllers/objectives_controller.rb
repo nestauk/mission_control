@@ -44,7 +44,7 @@ class ObjectivesController < ApplicationController
   def form_params
     params.require(:objective).permit(
       :context, :end_date, :expectations, :objective, :start_date, :status,
-      :title, goal_ids: []
+      :title, :estimated_cost, oal_ids: []
     )
   end
 

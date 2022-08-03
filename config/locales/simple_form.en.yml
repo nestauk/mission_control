@@ -1,15 +1,27 @@
 en:
   simple_form:
-    "yes": 'Yes'
-    "no": 'No'
+    "yes": "Yes"
+    "no": "No"
     required:
-      text: 'required'
-      mark: '*'
+      text: "required"
+      mark: "*"
       # You can uncomment the line below if you need to overwrite the whole required html.
       # When using html, text and mark won't be used.
       # html: '<abbr title="required">*</abbr>'
     error_notification:
       default_message: "Please review the problems below:"
+    labels:
+      impact_rating:
+        hypothesis: "What is our hypothesis?"
+        confidence: "How confident are we in the hypothesis?"
+        audience_description: "Who does this hypothesis reach?"
+        no_people_reached: "How many people have been reached so far?"
+        potential_reach: "What is the size of the potential attainable market for this hypothesis?"
+        scale_likelihood: "How likely is it that the full attainable market will be reached by 2030?"
+    hints:
+      impact_rating:
+        scale_likelihood: "0 (impossible) - 100 (certain)"
+        potential_reach: "E.g. 20-30 million"
     # Examples
     # labels:
     #   defaults:

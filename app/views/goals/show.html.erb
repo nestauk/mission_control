@@ -135,6 +135,21 @@
       <% end %>
     </section>
 
+    <section class="py-5 border-b-2 border-gray-300">
+      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Impact rating</h2>
+      <%- if @goal.impact_rating %>
+        <p class="mb-2">
+          <span class="text-lg font-semibold <%= score_color(@goal.impact_rating.score) %>"><%= @goal.impact_rating.score %></span>
+          <small>/5 &middot; Updated <%= @goal.impact_rating.updated_at.strftime("%e %b %Y") %></small>
+        </p>
+        <div>
+          <%= link_to "Edit impact rating", edit_goal_impact_rating_path(@goal), class: 'btn text-blue-800 bg-blue-200' %>
+        </div>
+      <% else %>
+        <%= link_to "Add impact rating", new_goal_impact_rating_path(@goal), class: 'btn text-blue-800 bg-blue-200' %>
+      <% end %>
+    </section>
+
   </aside>
 
 </div>

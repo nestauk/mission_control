@@ -47,6 +47,10 @@
     <%= f.association :goals, collection: Goal.all, input_html: { data: { controller: "choices" } } %>
   </div>
 
+  <div class="mb-4">
+    <%= f.input :estimated_cost %>
+  </div>
+
   <% if ['new', 'create'].include?(action_name) %>
     <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-blue-800 text-white' %>
     <%= link_to 'Cancel', objectives_path, class: 'link ml-6' %>

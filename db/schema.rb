@@ -85,6 +85,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "impact_ratings", force: :cascade do |t|
+    t.string "impactable_type"
+    t.bigint "impactable_id"
+    t.integer "contribution_type", null: false
+    t.string "hypothesis"
+    t.integer "confidence", null: false
+    t.integer "no_people_reached"
+    t.string "audience_description"
+    t.string "potential_reach"
+    t.integer "scale_likelihood"
+    t.float "score"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["impactable_type", "impactable_id"], name: "index_impact_ratings_on_impactable"
+  end
+
   create_table "indicators", force: :cascade do |t|
     t.string "targetable_type"
     t.bigint "targetable_id"
@@ -122,9 +138,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
     t.string "title"
     t.string "slug"
     t.integer "status", default: 0
-    t.text "objective"
+    t.string "objective"
     t.date "start_date"
     t.date "end_date"
+    t.integer "estimated_cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

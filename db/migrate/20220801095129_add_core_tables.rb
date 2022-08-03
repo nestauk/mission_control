@@ -11,9 +11,10 @@ class AddCoreTables < ActiveRecord::Migration[7.0]
       t.string :title
       t.string :slug
       t.integer :status, default: 0
-      t.text :objective
+      t.string :objective
       t.date :start_date
       t.date :end_date
+      t.integer :estimated_cost
       t.timestamps
     end
 
@@ -85,6 +86,19 @@ class AddCoreTables < ActiveRecord::Migration[7.0]
       t.integer :role_type, null: false
       t.string :description
       t.float :avg_weekly_time_percentage
+      t.timestamps
+    end
+
+    create_table :impact_ratings do |t|
+      t.references :impactable, polymorphic: true
+      t.integer :contribution_type, null: false
+      t.string :hypothesis
+      t.integer :confidence, null: false
+      t.integer :no_people_reached
+      t.string :audience_description
+      t.string :potential_reach
+      t.integer :scale_likelihood
+      t.float :score
       t.timestamps
     end
   end

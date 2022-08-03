@@ -1,4 +1,6 @@
 class Objective < ApplicationRecord
+  has_one :impact_rating, as: :impactable, dependent: :destroy
+
   has_many :indicators, as: :targetable, dependent: :destroy
 
   has_many :contributions, dependent: :destroy
