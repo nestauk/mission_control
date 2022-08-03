@@ -58,7 +58,7 @@
     <nav id="nav" class="bg-gray-900">
       <div class="mx-4 my-6 text-sm text-white leading-tight">
         <% if user_signed_in? %>
-          <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'link', data: { confirm: 'Are you sure want to sign out?' } %>
+          <%= link_to 'Sign out', destroy_user_session_path, class: 'link', data: { turbo_method: :delete, turbo_confirm: 'Are you sure want to sign out?' } %>
         <% else %>
           <%= link_to 'Sign in', new_user_session_path, class: 'link' %>
         <% end %>

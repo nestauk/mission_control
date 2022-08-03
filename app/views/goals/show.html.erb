@@ -22,12 +22,6 @@
       <% end %>
 
       <div class="px-5 my-5">
-        <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Objective</h3>
-        <p class="text-sm text-gray-700 mt-1 mb-2"><em>What</em> the team needs to acheve and <em>why</em>.</p>
-        <%#= @objective.objective   %>
-      </div>
-
-      <div class="px-5 my-5">
         <h3 class="text-blue-800 leading-tight">Indicators</h3>
         <p class="text-sm text-gray-700 mt-1 mb-2">Results we need to see to know we're on the right track.</p>
 
@@ -109,7 +103,7 @@
   <aside class="m-5 lg:w-80 w-full">
 
     <section class="py-5 border-t-2 border-b-2 border-gray-300">
-      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Sponsor</h2>
+      <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Sponsor</h2>
 
       <%- if @goal.sponsors.any? %>
         <%- @goal.sponsors.each do |t| %>
@@ -124,7 +118,7 @@
     </section>
 
     <section class="py-5 border-b-2 border-gray-300">
-      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Team lead</h2>
+      <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Team lead</h2>
       <%- if @goal.team_leads.any? %>
         <%- @goal.team_leads.each do |t| %>
           <%= link_to t.name, t.person, class: 'link' %>
@@ -136,7 +130,27 @@
     </section>
 
     <section class="py-5 border-b-2 border-gray-300">
-      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Impact rating</h2>
+      <div class="mb-2 flex justify-between">
+        <h2 class="text-lg font-semibold text-blue-800 leading-tight">Key resources</h2>
+        <%= link_to "+ Add", new_linkable_link_path(@goal), class: 'px-1 rounded font-semibold text-blue-800 bg-blue-200' %>
+      </div>
+      <%- if @goal.links.any? %>
+        <ul>
+          <%- @goal.links.each do |l| %>
+            <li class="mb-2">
+              <%= link_to l.name, l.url, class: "link", target: "_blank", rel: "noopener noreferrer" %>
+              &middot;
+              <small><%= link_to "Edit", edit_linkable_link_path(@goal, l), class: "link" %></small>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= with_default(nil, text: "None") %>
+      <% end %>
+    </section>
+
+    <section class="py-5 border-b-2 border-gray-300">
+      <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Impact rating</h2>
       <%- if @goal.impact_rating %>
         <p class="mb-2">
           <span class="text-lg font-semibold <%= score_color(@goal.impact_rating.score) %>"><%= @goal.impact_rating.score %></span>

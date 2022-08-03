@@ -170,7 +170,7 @@
     </div>
 
     <% if ['edit', 'update'].include?(action_name) %>
-      <%= link_to 'Remove member', url, method: :delete, class: 'link  ml-6', data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Remove member', url, class: 'link  ml-6', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
     <% end %>
   </div>
 <% end %>

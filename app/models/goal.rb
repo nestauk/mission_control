@@ -1,10 +1,11 @@
 class Goal < ApplicationRecord
   has_one :impact_rating, as: :impactable, dependent: :destroy
 
-  has_many :indicators, as: :targetable, dependent: :destroy
-
   has_many :contributions, dependent: :destroy
   has_many :objectives, through: :contributions
+
+  has_many :indicators, as: :targetable, dependent: :destroy
+  has_many :links, as: :linkable, dependent: :destroy
 
   has_many :memberships, as: :memberable, dependent: :destroy
   has_many :members, through: :memberships, source: :contact

@@ -112,7 +112,7 @@
   <aside class="m-5 lg:w-80 w-full">
 
     <section class="py-5 border-t-2 border-b-2 border-gray-300">
-      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Sponsor</h2>
+      <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Sponsor</h2>
 
       <%- if @objective.sponsors.any? %>
         <%- @objective.sponsors.each do |t| %>
@@ -127,7 +127,7 @@
     </section>
 
     <section class="py-5 border-b-2 border-gray-300">
-      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Team lead</h2>
+      <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Team lead</h2>
       <%- if @objective.team_leads.any? %>
         <%- @objective.team_leads.each do |t| %>
           <%= link_to t.name, t.person, class: 'link' %>
@@ -139,21 +139,45 @@
     </section>
 
     <section class="py-5 border-b-2 border-gray-300">
-      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Start date - End date</h2>
-      <%= @objective.start_date %> - <%= @objective.end_date %>
+      <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Start date - End date</h2>
+      <%= @objective.start_date %> - <%= with_default(@objective.end_date) %>
     </section>
 
     <section class="py-5 border-b-2 border-gray-300">
-      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Contributing to goals</h2>
-      <ul>
-        <%- @objective.goals.each do |g| %>
-          <li><%= link_to g.title, g %></li>
-        <% end %>
-      </ul>
+      <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Contributing to goals</h2>
+      <%- if @objective.goals.any? %>
+        <ul>
+          <%- @objective.goals.each do |g| %>
+            <li><%= link_to g.title, g %></li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= with_default(nil, text: "None") %>
+      <% end %>
     </section>
 
     <section class="py-5 border-b-2 border-gray-300">
-      <h2 class="text-xl text-blue-800 mb-2 leading-tight">Impact rating</h2>
+      <div class="mb-2 flex justify-between">
+        <h2 class="text-lg font-semibold text-blue-800 leading-tight">Key resources</h2>
+        <%= link_to "+ Add", new_linkable_link_path(@objective), class: 'px-1 rounded font-semibold text-blue-800 bg-blue-200' %>
+      </div>
+      <%- if @objective.links.any? %>
+        <ul>
+          <%- @objective.links.each do |l| %>
+            <li class="mb-2">
+              <%= link_to l.name, l.url, class: "link", target: "_blank", rel: "noopener noreferrer" %>
+              &middot;
+              <small><%= link_to "Edit", edit_linkable_link_path(@objective, l), class: "link" %></small>
+            </li>
+          <% end %>
+        </ul>
+      <% else %>
+        <%= with_default(nil, text: "None") %>
+      <% end %>
+    </section>
+
+    <section class="py-5 border-b-2 border-gray-300">
+      <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Impact rating</h2>
       <%- if @objective.impact_rating %>
         <p class="mb-2">
           <span class="text-lg font-semibold <%= score_color(@objective.impact_rating.score) %>"><%= @objective.impact_rating.score %></span>

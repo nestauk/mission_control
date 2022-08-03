@@ -1,0 +1,13 @@
+<% content_for :title, "Edit link - #{@linkable.title}" %>
+
+<div class="outer-container md:w-4/5 my-5">
+  <div class="mb-5">
+    <%= link_to '‹ Back', linkable_path(@linkable), class: 'link' %>
+  </div>
+
+  <section class="p-5 bg-white rounded-lg shadow mb-6">
+    <h1 class="text-xl text-blue-800 leading-tight">Edit link</h1>
+    <hr class="mt-2 mb-6 border-gray-300">
+    <%= render 'form', model: @link, url: linkable_link_path(@linkable, @link) %>
+  </section>
+</div>

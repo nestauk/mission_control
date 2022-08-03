@@ -120,6 +120,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
     t.index ["targetable_type", "targetable_id"], name: "index_indicators_on_targetable"
   end
 
+  create_table "links", force: :cascade do |t|
+    t.string "linkable_type"
+    t.bigint "linkable_id"
+    t.string "url", null: false
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["linkable_type", "linkable_id"], name: "index_links_on_linkable"
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.bigint "contact_id"
     t.string "memberable_type"
@@ -173,6 +183,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
     t.datetime "updated_at", null: false
     t.index ["indicator_id"], name: "index_progress_updates_on_indicator_id"
     t.index ["user_id"], name: "index_progress_updates_on_user_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "taggable_type"
+    t.bigint "taggable_id"
+    t.string "title", null: false
+    t.string "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["taggable_type", "taggable_id"], name: "index_tags_on_taggable"
   end
 
   create_table "users", force: :cascade do |t|

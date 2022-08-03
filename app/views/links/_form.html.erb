@@ -1,0 +1,32 @@
+<%= simple_form_for model, url: url do |f| %>
+  <div class="mb-4">
+    <div class="label"><%= model.linkable.class %></div>
+    <%= model.linkable.title %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :url %>
+  </div>
+
+  <div class="mb-4">
+    <%= f.input :name %>
+  </div>
+
+  <div class="flex justify-between items-center">
+    <div>
+      <% if ['new', 'create'].include?(action_name) %>
+        <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-blue-800 text-white' %>
+      <% end %>
+
+      <% if ['edit', 'update'].include?(action_name) %>
+        <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-blue-800 text-white' %>
+      <% end %>
+
+      <%= link_to 'Cancel', linkable_links_path(@linkable), class: 'link ml-6' %>
+    </div>
+
+    <% if ['edit', 'update'].include?(action_name) %>
+      <%= link_to 'Delete', url, class: 'link  ml-6', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
+    <% end %>
+  </div>
+<% end %>

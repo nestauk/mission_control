@@ -7,6 +7,10 @@ Rails.application.routes.draw do
     resources :impact_ratings
   end
 
+  concern :linkable do
+    resources :links
+  end
+
   concern :memberable do
     resources :memberships
   end
@@ -15,11 +19,11 @@ Rails.application.routes.draw do
     resources :indicators
   end
 
-  resources :goals, concerns: %i[impactable memberable targetable] do
+  resources :goals, concerns: %i[impactable linkable memberable targetable] do
     get "objectives"
   end
 
-  resources :objectives, concerns: %i[impactable memberable targetable]
+  resources :objectives, concerns: %i[impactable linkable memberable targetable]
   get "timeline", to: "objectives#timeline", as: "timeline_objectives"
 
   scope "indicators/:indicator_id", as: "indicator" do
