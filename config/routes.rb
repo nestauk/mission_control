@@ -30,5 +30,5 @@ Rails.application.routes.draw do
     resources :progress_updates
   end
 
-  resources :people, :organisations
+  resources :people, :organisations, :tags
 end

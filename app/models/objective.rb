@@ -4,6 +4,9 @@ class Objective < ApplicationRecord
   has_many :contributions, dependent: :destroy
   has_many :goals, through: :contributions
 
+  has_many :taggings, as: :taggable, dependent: :destroy
+  has_many :tags, through: :taggings
+
   has_many :indicators, as: :targetable, dependent: :destroy
   has_many :links, as: :linkable, dependent: :destroy
 

@@ -185,6 +185,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
     t.index ["user_id"], name: "index_progress_updates_on_user_id"
   end
 
+  create_table "taggings", force: :cascade do |t|
+    t.string "taggable_type"
+    t.bigint "taggable_id"
+    t.bigint "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["tag_id"], name: "index_taggings_on_tag_id"
+    t.index ["taggable_type", "taggable_id"], name: "index_taggings_on_taggable"
+  end
+
   create_table "tags", force: :cascade do |t|
     t.string "taggable_type"
     t.bigint "taggable_id"

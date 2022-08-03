@@ -115,5 +115,11 @@ class AddCoreTables < ActiveRecord::Migration[7.0]
       t.string :description
       t.timestamps
     end
+
+    create_table :taggings do |t|
+      t.references :taggable, polymorphic: true
+      t.references :tag
+      t.timestamps
+    end
   end
 end

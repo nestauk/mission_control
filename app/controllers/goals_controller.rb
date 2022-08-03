@@ -37,7 +37,9 @@ class GoalsController < ApplicationController
   private
 
   def form_params
-    params.require(:goal).permit(:context, :status, :title, :shortname, objective_ids: [])
+    params.require(:goal).permit(
+      :context, :status, :title, :shortname, objective_ids: [], tag_ids: []
+    )
   end
 
   def load_goal

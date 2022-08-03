@@ -22,6 +22,10 @@
     <%= f.association :objectives, collection: Objective.all, input_html: { data: { controller: "choices" } } %>
   </div>
 
+  <div class="mb-4">
+    <%= f.association :tags, collection: Tag.all, input_html: { data: { controller: "choices" } } %>
+  </div>
+
   <% if ['new', 'create'].include?(action_name) %>
     <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-blue-800 text-white' %>
     <%= link_to 'Cancel', goals_path, class: 'link ml-6' %>

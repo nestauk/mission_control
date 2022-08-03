@@ -33,17 +33,8 @@
           <%= f.label :title_cont, 'Search by title', class: 'label' %>
           <%= f.search_field :title_cont, class: 'input string mb-4' %>
 
-          <%#= f.label :progress_indicators_last_progress_update_status_in, 'Last progress update', class: 'label' %>
-          <%#= f.collection_select :progress_indicators_last_progress_update_status_in, ProgressUpdate.statuses, :last, ->(o) { o.first.humanize }, { include_blank: true }, { multiple: true, class: 'input selectize mb-4' } %>
-
-          <%#= f.label :level_in, 'Level', class: 'label' %>
-          <%#= f.collection_select :level_in, Goal.pluck(:level).uniq.map { |i| [i] }, :first, :first, { include_blank: true }, { multiple: true, class: 'input selectize mb-4' } %>
-
-          <%#= f.label :source_in, 'Source', class: 'label' %>
-          <%#= f.collection_select :source_in, Goal.pluck(:source).uniq.map { |i| [i] }, :first, :first, { include_blank: true }, { multiple: true, class: 'input selectize mb-4' } %>
-
-          <%= f.label :status_in, 'Status', class: 'label' %>
-          <%= f.collection_select :status_in, Goal.statuses, :last, ->(o) { o.first.humanize }, { include_blank: true }, { class: 'input select mb-4' } %>
+          <%= f.label :tags_id_in, 'Tags', class: 'label' %>
+          <%= f.collection_select :tags_id_in, Tag.order(:title), :id, :title, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
 
           <%= f.button 'Filter', type: 'submit', class: "btn text-white bg-blue-800" %>
           <%= link_to 'Reset', goals_path, class: 'ml-1 btn bg-blue-200' %>
