@@ -66,7 +66,7 @@
 
       <hr class="border-b border-gray-800 mx-4 my-3">
 
-      <%= link_to "#" do %>
+      <%= link_to root_path do %>
         <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
           Home
         </div>
@@ -110,31 +110,9 @@
 
       <%= link_to "#" do %>
         <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
-          Network
-        </div>
-      <% end %>
-
-      <%= link_to "#" do %>
-        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
           Impact
         </div>
       <% end %>
-
-      <hr class="border-b border-gray-800 mx-4 my-3">
-
-      <div class="uppercase tracking-wide text-xs text-gray-400 px-4 py-3">Admin</div>
-
-      <%= link_to "#" do %>
-        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800">
-          Users
-        </div>
-      <% end %>
-
-      <a href="/blazer" target="_blank" rel="noopener noreferrer">
-        <div class="px-4 py-2 text-gray-300 leading-tight hover:bg-gray-800 external-link">
-          Blazer
-        </div>
-      </a>
     </nav>
 
     <main id="main" class="flex flex-col h-screen">
@@ -154,20 +132,14 @@
                 New
               </button>
               <ul id="nav-dropdown-menu" class="text-white bg-gray-900 rounded shadow">
-                <%= link_to "#", data: { turbolinks: false } do %>
-                  <li class="px-4 py-3 hover:bg-gray-800 border-b border-gray-800">Interaction</li>
+                <%= link_to new_objective_path, data: { turbolinks: false } do %>
+                  <li class="px-4 py-3 hover:bg-gray-800 border-b border-gray-800">Objective</li>
                 <% end %>
-                <%= link_to "#" do %>
+                <%= link_to new_goal_path do %>
+                  <li class="px-4 py-3 hover:bg-gray-800 border-b border-gray-800">Goal</li>
+                <% end %>
+                <%= link_to new_person_path do %>
                   <li class="px-4 py-3 hover:bg-gray-800 border-b border-gray-800">Person</li>
-                <% end %>
-                <%= link_to "#" do %>
-                  <li class="px-4 py-3 hover:bg-gray-800 border-b border-gray-800">Organisation</li>
-                <% end %>
-                <%= link_to "#" do %>
-                  <li class="px-4 py-3 hover:bg-gray-800 border-b border-gray-800">Initiative</li>
-                <% end %>
-                <%= link_to "#" do %>
-                  <li class="px-4 py-3 hover:bg-gray-800">Agreement</li>
                 <% end %>
               </ul>
             </nav>
@@ -204,9 +176,9 @@
       <% unless controller_name == 'pages' && action_name == 'network' %>
         <footer class="px-5 py-5 bg-gray-200 text-sm">
           <hr class="mb-5 border-b border-gray-300">
-          <div class="inline-flex text-white text-xs font-semibold tracking-widest uppercase bg-rose-300 rounded px-2 py-1 mr-1">Alpha</div>
-          This is a new service – your
-          <a href="#" target="_blank" rel="noopener noreferrer" class="underline">feedback</a>
+          <div class="inline-flex text-white text-xs font-semibold tracking-widest uppercase bg-indigo-900 rounded px-2 py-1 mr-1">Pre-Alpha</div>
+          This tool is still in development - your
+          <a href="https://forms.gle/gPz9DJQYKWbivHDk7" target="_blank" rel="noopener noreferrer" class="underline">feedback</a>
           will help us to improve it.
         </footer>
       <% end %>

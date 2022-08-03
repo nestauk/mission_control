@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   resources :objectives, concerns: %i[memberable targetable]
+  get "timeline", to: "objectives#timeline", as: "timeline_objectives"
 
   scope "indicators/:indicator_id", as: "indicator" do
     resources :progress_updates

@@ -1,0 +1,22 @@
+<div class="flex flex-wrap-reverse mx-auto max-w-screen-xl">
+
+  <div class="m-5 flex-1 lg:w-0 w-full">
+    <div data-controller="timeline" data-timeline-data-url-value="<%= timeline_objectives_path + ".json" %>" data-timeline-groups-value="<%= @groups %>"></div>
+  </div>
+
+  <aside class="m-5 lg:w-64 w-full">
+    <div class="shadow">
+      <input type="checkbox" id="filter-toggle">
+      <label id="filter-control" for="filter-toggle" class="px-4 py-2 block w-full bg-white">
+        <div class="flex justify-between align-items leading-tight">
+          Filter
+          <%= image_tag 'chevron-down.svg', id: 'chevron-down' %>
+        </div>
+      </label>
+
+      <div id="filter-body" class="p-4 bg-white rounded-b">
+
+      </div>
+    </div>
+  </aside>
+</div>

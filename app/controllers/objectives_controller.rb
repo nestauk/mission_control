@@ -32,6 +32,13 @@ class ObjectivesController < ApplicationController
     end
   end
 
+  def timeline
+    # @q = Objective.ransack(params[:q])
+    # @objectives = @q.result(distinct: true).page(params[:page])
+    @objectives = Objective.joins(:goals).group("objectives.id", "goals.title").select("goals.title AS goal_title", "objectives.*")
+    @groups = Goal.pluck(:title)
+  end
+
   private
 
   def form_params

@@ -4,7 +4,8 @@ import { DataSet } from "https://ga.jspm.io/npm:vis-data@7.1.4/peer/umd/vis-data
 
 export default class extends Controller {
   static values = {
-    goalId: Number,
+    dataUrl: String,
+    groups: Array,
   };
 
   connect() {
@@ -12,19 +13,41 @@ export default class extends Controller {
 
     const options = {
       orientation: "top",
+      // start: null,
+      // end: null,
+      groupTemplate: function (data, element) {
+        element.classList.add("w-64", "text-sm");
+        return data.content;
+      },
+      stack: true,
     };
 
-    fetch(`/goals/${this.goalIdValue}/objectives`, {
+    let groups = new DataSet(
+      this.groupsValue.map((i) => {
+        return { id: i, content: i };
+      })
+    );
+
+    fetch(this.dataUrlValue, {
       method: "GET",
       headers: { "X-CSRF-Token": this.csrfToken },
     })
       .then((res) => res.json())
       .then((data) => {
-        this.timeline = new vis.Timeline(
-          this.element,
-          new DataSet(data),
-          options
-        );
+        if (this.groupsValue.length === 0) {
+          this.timeline = new vis.Timeline(
+            this.element,
+            new DataSet(data),
+            options
+          );
+        } else {
+          this.timeline = new vis.Timeline(
+            this.element,
+            new DataSet(data),
+            groups,
+            options
+          );
+        }
       });
   }
 }
