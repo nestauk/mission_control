@@ -13,13 +13,16 @@ export default class extends Controller {
 
     const options = {
       orientation: "top",
+      zoomMin: 604_800_000, // 7 days
+      zoomMax: 31_556_952_000 * 10, // 10 years
+      minHeight: "250px",
+      selectable: false,
       // start: null,
       // end: null,
       groupTemplate: function (data, element) {
         element.classList.add("w-64", "text-sm");
         return data.content;
       },
-      stack: true,
     };
 
     let groups = new DataSet(

@@ -1,8 +1,9 @@
 json.array! @objectives do |o|
   json.id o.object_id
-  json.content o.title
+  json.title o.title
+  json.content "<span>[#{o.status.humanize}]</span> #{link_to o.title, o}"
   json.start o.start_date
   json.end o.end_date
-  json.group o.goal_title
   json.className o.status
+  json.group o.goal_title
 end

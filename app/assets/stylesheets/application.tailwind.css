@@ -278,6 +278,45 @@ body {
   }
 }
 
+/* TODO: refactor to use tailwind @apply - avoid css purge by ensuring class names are explicit in source files */
+.vis-item.planning {
+  background-color: #e9d5ff; /* bg-purple-200 */
+  border-color: #a855f7; /* bg-purple-500 */
+}
+.vis-item.committed {
+  background-color: #bfdbfe; /* bg-blue-200 */
+  border-color: #3b82f6; /* bg-blue-500 */
+}
+.vis-item.complete {
+  background-color: #d1fae5; /* bg-emerald-100 */
+  border-color: #10b981; /* bg-emerald-500 */
+}
+.vis-item.not_pursued {
+  background-color: #e7e5e4; /* bg-stone-200 */
+  border-color: #78716c; /* bg-stone-500 */
+}
+
+.vis-saturday,
+.vis-sunday {
+  background-color: #f5f5f4; /* bg-stone-100 */
+}
+
+.vis-major {
+  font-weight: 600;
+}
+.vis-minor,
+.vis-major {
+  color: #292524; /* bg-stone-800 */
+}
+
+.vis-item a {
+  text-decoration: underline;
+  font-weight: 600;
+}
+.vis-item a:hover {
+  text-decoration: none;
+}
+
 /* Nav dropdown */
 /* ========================================================================== */
 
