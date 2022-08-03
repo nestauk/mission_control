@@ -4,6 +4,10 @@
   </div>
 
   <div class="mb-4">
+    <%= f.input :shortname %>
+  </div>
+
+  <div class="mb-4">
     <%= f.input :status, as: :radio_buttons, collection: Goal.statuses.keys, label_method: :humanize, item_wrapper_class: 'inline-block mr-6' %>
   </div>
 

@@ -1,0 +1,27 @@
+<div class="bg-indigo-800">
+  <section class="outer-container py-4 text-white">
+    <div class="flex justify-between mb-3">
+      <div class="mr-4">
+        <p class="text-sm text-gray-200 tracking-wide"><%= @goal.status.humanize %></p>
+        <h1 class="text-white text-xl"><%= @goal.title %></h1>
+      </div>
+
+      <%= link_to 'Edit', edit_goal_path(@goal), class: 'link text-gray-200' %>
+    </div>
+
+    <div class="flex flex-wrap items-center text-white text-sm">
+
+      <%= link_to @goal do %>
+        <div class="px-2 py-1 mr-1 mb-1 bg-gray-800 bg-opacity-25 hover:bg-gray-800 rounded">
+          Overview
+        </div>
+      <% end %>
+
+      <%= link_to goal_memberships_path(@goal) do %>
+        <div class="px-2 py-1 mr-1 mb-1 bg-gray-800 bg-opacity-25 hover:bg-gray-800 rounded">
+          Team (<%= @goal.memberships.size %>)
+        </div>
+      <% end %>
+    </div>
+  </section>
+</div>

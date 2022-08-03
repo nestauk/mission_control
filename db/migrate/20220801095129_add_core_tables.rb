@@ -2,6 +2,7 @@ class AddCoreTables < ActiveRecord::Migration[7.0]
   def change
     create_table :goals do |t|
       t.string :title
+      t.string :shortname
       t.integer :status, default: 0
       t.timestamps
     end
