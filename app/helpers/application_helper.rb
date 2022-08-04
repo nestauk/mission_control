@@ -1,4 +1,10 @@
 module ApplicationHelper
+  def last_progress_updates(hash)
+    sanitize(hash.map { |k, v|
+      "<div class='mr-2 #{k}'>#{v} #{k&.gsub('_', ' ') || 'no updates'}</div>"
+    }.join)
+  end
+
   def link_to_add_fields(name, form_builder, association)
     new_object = form_builder.object.send(association).klass.new
 

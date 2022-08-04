@@ -15,6 +15,18 @@
         </h2>
         <p><%= objective.objective %></p>
       </div>
+
+      <%- if objective.indicators.any? %>
+        <%# TODO: responsive %>
+        <div class="px-4 py-3 border-t border-gray-300">
+          <div class="flex text-sm text-gray-700">
+            <div class="mr-2">
+              Progress indicators:
+            </div>
+            <%= last_progress_updates(objective.indicators.group(:last_progress_update_status).count) %>
+          </div>
+        </div>
+      <% end %>
     </div>
 
   <% end %>
