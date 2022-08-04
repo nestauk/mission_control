@@ -12,9 +12,11 @@ class Goal < ApplicationRecord
 
   has_many :memberships, as: :memberable, dependent: :destroy
   has_many :members, through: :memberships, source: :contact
-  has_many :team_leads, -> { where('memberships.role': 101) },
+  has_many :team_leads, -> { where('memberships.role': Membership.roles[:team_lead]) },
            through: :memberships, source: :contact
-  has_many :sponsors, -> { where('memberships.role': 301) },
+  has_many :team, -> { where('memberships.role': [Membership.roles[:team_lead], Membership.roles[:team_member]]) },
+           through: :memberships, source: :contact
+  has_many :sponsors, -> { where('memberships.role': Membership.roles[:sponsor]) },
            through: :memberships, source: :contact
 
   enum status: { planning: 0, active: 1, inactive: 2 }

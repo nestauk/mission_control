@@ -34,6 +34,15 @@
           <%= f.label :title_cont, 'Search by title', class: 'label' %>
           <%= f.search_field :title_cont, class: 'input string mb-4' %>
 
+          <%= f.label :members_id_in, 'People', class: 'label' %>
+          <%= f.collection_select :memberships_contact_id_in, Contact.all, :id, ->(o) { "#{o.name} (#{o.email})" }, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
+
+          <%= f.label :memberships_role_in, 'Roles', class: 'label' %>
+          <%= f.collection_select :memberships_role_in, Membership.roles, :last, ->(o) { o.first.humanize }, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
+
+          <%= f.label :progress_indicators_last_progress_update_status_in, 'Last progress update', class: 'label' %>
+          <%= f.collection_select :indicators_last_progress_update_status_in, ProgressUpdate.statuses, :last, ->(o) { o.first.humanize }, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
+
           <%= f.label :tags_id_in, 'Tags', class: 'label' %>
           <%= f.collection_select :tags_id_in, Tag.order(:title), :id, :title, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
 

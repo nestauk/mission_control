@@ -10,19 +10,31 @@
         <h2 class="font-semibold text-lg text-blue-800 leading-tight">
           <%= link_to goal.title, goal, class: 'hover:underline' %>
         </h2>
+
+        <%- goal.tags.each do |tag| %>
+          <%= link_to goals_path(q: { tags_id_in: tag.id }), class: 'inline-block mr-2 text-sm text-gray-700 hover:underline' do %>
+            #<%= tag.title.parameterize %>
+          <% end %>
+        <% end %>
       </div>
 
-      <%- if goal.indicators.any? %>
-        <%# TODO: responsive %>
-        <div class="px-4 py-3 border-t border-gray-300">
-          <div class="flex text-sm text-gray-700">
-            <div class="mr-2">
-              Progress indicators:
-            </div>
-            <%= last_progress_updates(goal.indicators.group(:last_progress_update_status).count) %>
-          </div>
-        </div>
-      <% end %>
+      <%# TODO: responsive %>
+      <div class="px-4 py-3 border-t border-gray-300 text-sm text-gray-700 flex">
+        <%= pluralize(goal.team.size, "team member") %>
+        <span class="ml-2"><%= pluralize(goal.sponsors.size, "sponsor") %></span>
+
+        <%- if goal.indicators.any? %>
+          <span class="mx-2">&middot;</span>
+          Progress indicators:
+          <%= last_progress_updates(goal.indicators.group(:last_progress_update_status).count) %>
+        <% end %>
+
+        <%- if goal.impact_rating %>
+          <span class="mx-2">&middot;</span>
+          Impact rating:
+          <span class="ml-1 <%= score_color(goal.impact_rating.score) %>"><%= goal.impact_rating.score %></span>
+        <% end %>
+      </div>
     </div>
 
   <% end %>

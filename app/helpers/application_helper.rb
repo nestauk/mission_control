@@ -1,7 +1,7 @@
 module ApplicationHelper
   def last_progress_updates(hash)
     sanitize(hash.map { |k, v|
-      "<div class='mr-2 #{k}'>#{v} #{k&.gsub('_', ' ') || 'no updates'}</div>"
+      "<span class='ml-2 #{k}'>#{v} #{k&.gsub('_', ' ') || 'no updates'}</span>"
     }.join)
   end
 
