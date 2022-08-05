@@ -1,4 +1,10 @@
 module ApplicationHelper
+  def active_nav?(controller: nil, action: nil, classes: 'bg-indigo-800')
+    return controller_name.match(controller) && action_name.match(action) ? classes : nil if controller && action
+    return controller_name.match(controller) ? classes : nil if controller
+    action_name.match(action) ? classes : nil if action
+  end
+
   def last_progress_updates(hash)
     sanitize(hash.map { |k, v|
       "<span class='ml-2 #{k}'>#{v} #{k&.gsub('_', ' ') || 'no updates'}</span>"

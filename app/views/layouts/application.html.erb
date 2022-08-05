@@ -63,7 +63,7 @@
         </svg>
       <% end %>
 
-      <%= link_to objectives_path, class: "border-t border-b border-neutral-700 hover:bg-indigo-800 block w-full flex flex-col items-center pt-3" do %>
+      <%= link_to objectives_path, class: "#{active_nav?(controller: 'objectives')} border-t border-b border-neutral-700 hover:bg-indigo-800 block w-full flex flex-col items-center pt-3" do %>
         <svg width="24" stroke-width="1.5" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5 19.5V5C5 3.89543 5.89543 3 7 3H18.4C18.7314 3 19 3.26863 19 3.6V21" stroke="currentColor"  stroke-linecap="round"/>
           <path d="M9 7L15 7" stroke="currentColor"  stroke-linecap="round"/>
@@ -78,7 +78,7 @@
         </span>
       <% end %>
 
-      <%= link_to people_path, class: "border-b border-neutral-700 hover:bg-teal-800 block w-full flex flex-col items-center pt-3" do %>
+      <%= link_to people_path, class: "#{active_nav?(controller: 'people', classes: 'bg-teal-800')} border-b border-neutral-700 hover:bg-teal-800 block w-full flex flex-col items-center pt-3" do %>
         <svg width="24" height="24" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M1 20V19C1 15.134 4.13401 12 8 12V12C11.866 12 15 15.134 15 19V20" stroke="currentColor" stroke-linecap="round"/>
           <path d="M13 14V14C13 11.2386 15.2386 9 18 9V9C20.7614 9 23 11.2386 23 14V14.5" stroke="currentColor" stroke-linecap="round"/>
@@ -90,7 +90,7 @@
         </span>
       <% end %>
 
-      <%= link_to goals_path, class: "border-b border-neutral-700 hover:bg-purple-800 block w-full flex flex-col items-center pt-3" do %>
+      <%= link_to goals_path, class: "#{active_nav?(controller: 'goals', classes: 'bg-purple-800')} border-b border-neutral-700 hover:bg-purple-800 block w-full flex flex-col items-center pt-3" do %>
         <svg width="24" height="24" stroke-width="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M7 12H18M7 12L5 10H1L3 12L1 14H5L7 12ZM18 12L16 10M18 12L16 14" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M17.5 22C20.5376 22 23 17.5228 23 12C23 6.47715 20.5376 2 17.5 2C14.4624 2 12 6.47715 12 12C12 17.5228 14.4624 22 17.5 22Z" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"/>
