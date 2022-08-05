@@ -1,14 +1,14 @@
-<div class="bg-indigo-800">
+<div class="bg-purple-800">
   <section class="outer-container py-4 text-white">
-    <div class="flex justify-between mb-3">
+    <div class="flex justify-between mb-2">
       <div class="mr-4">
         <p class="text-sm text-gray-200 tracking-wide"><%= @goal.status.humanize %></p>
-        <h1 class="text-white text-xl"><%= @goal.title %></h1>
+        <h1 class="text-white text-xl font-semibold"><%= @goal.title %></h1>
       </div>
       <%= link_to 'Edit', edit_goal_path(@goal), class: 'link text-gray-200' %>
     </div>
 
-    <div class="mb-3">
+    <div class="mb-2">
       <%- @goal.tags.each do |tag| %>
         <%= link_to goals_path(q: { tags_id_in: tag.id }), class: 'inline-block mr-2 text-sm hover:underline' do %>
           #<%= tag.title.parameterize %>

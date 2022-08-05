@@ -222,8 +222,8 @@ body {
 #nav {
   position: fixed;
   overflow-y: auto;
-  left: -150px;
-  width: 150px;
+  left: -80px;
+  width: 80px;
   height: 100%;
   transition: left 0.35s ease;
   z-index: 20;
@@ -256,11 +256,11 @@ body {
     left: 0;
   }
   #nav-toggle:checked ~ label #nav-open {
-    left: 150px;
+    left: 80px;
     opacity: 0;
   }
   #nav-toggle:checked ~ label #nav-close {
-    left: 150px;
+    left: 80px;
     position: fixed;
   }
   #nav-open {
@@ -278,14 +278,14 @@ body {
 
 @media (min-width: 768px) {
   #main {
-    margin-left: 150px;
+    margin-left: 80px;
     opacity: 1;
   }
   #nav {
     left: 0;
   }
   #nav-open {
-    left: 150px;
+    left: 80px;
     opacity: 0;
   }
   #nav-toggle:checked ~ #nav-controls #nav-close {

@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root "goals#index"
+  root "objectives#index"
 
   concern :impactable do
     resources :impact_ratings
