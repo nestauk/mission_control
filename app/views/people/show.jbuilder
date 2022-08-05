@@ -5,5 +5,5 @@ json.array! @objectives do |o|
   json.start o.start_date
   json.end o.end_date
   json.className o.status
-  json.group o.goal_id
+  json.group o.membership_role
 end

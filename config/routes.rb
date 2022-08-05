@@ -23,8 +23,11 @@ Rails.application.routes.draw do
     get "objectives"
   end
 
-  resources :objectives, concerns: %i[impactable linkable memberable targetable]
-  get "timeline", to: "objectives#timeline", as: "timeline_objectives"
+  resources :objectives, concerns: %i[impactable linkable memberable targetable] do
+    get :timeline, on: :collection
+  end
+
+  # get "timeline", to: "objectives#timeline", as: "timeline_objectives"
 
   scope "indicators/:indicator_id", as: "indicator" do
     resources :progress_updates

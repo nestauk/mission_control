@@ -22,7 +22,7 @@
     <div class="shadow">
       <input type="checkbox" id="filter-toggle">
       <label id="filter-control" for="filter-toggle" class="px-4 py-2 block w-full bg-white">
-        <div class="flex justify-between align-items leading-tight">
+        <div class="flex justify-between align-items font-semibold">
           Filter
           <%= image_tag 'chevron-down.svg', id: 'chevron-down' %>
         </div>
@@ -32,6 +32,9 @@
         <%= search_form_for @q do |f| %>
           <%= f.label :title_cont, 'Search by title', class: 'label' %>
           <%= f.search_field :title_cont, class: 'input string mb-4' %>
+
+          <%= f.label :status_in, 'Status', class: 'label' %>
+          <%= f.collection_select :status_in, Goal.statuses, :last, ->(o) { o.first.humanize }, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
 
           <%= f.label :members_id_in, 'People', class: 'label' %>
           <%= f.collection_select :memberships_contact_id_in, Contact.all, :id, ->(o) { "#{o.name} (#{o.email})" }, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>

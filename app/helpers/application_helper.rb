@@ -17,6 +17,12 @@ module ApplicationHelper
     link_to(name, '#', class: 'add_fields link', data: { id: id, fields: fields.gsub("\n", '') })
   end
 
+  def params_active_class(params, param, match_value, classes = 'font-bold no-underline', partial: false)
+    param_value = params[:q].try(:fetch, param, nil)
+    return classes if partial && param_value == match_value.to_s
+    return classes if param_value&.include? match_value.to_s
+  end
+
   def polymorphic_subnav(polymorph)
     "#{to_var(polymorph)}s/subnav"
   end

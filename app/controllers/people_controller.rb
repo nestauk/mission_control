@@ -6,7 +6,22 @@ class PeopleController < ApplicationController
     @people = @q.result(distinct: true).order(:first_name, :last_name).page(params[:page])
   end
 
-  def show; end
+  def show
+    if params[:q]
+      @objectives = @person.objectives
+        .select("memberships.role AS membership_role", "objectives.*")
+        .ransack(params[:q]).result(distinct: true)
+      @groups = @objectives.pluck("memberships.role").map do |role|
+        { id: Membership.roles[role], content: role.humanize }
+      end.to_json
+    else
+      @objectives = @person.objectives.where(status: [:planning, :committed])
+        .select("memberships.role AS membership_role", "objectives.*")
+      @groups = @objectives.pluck("memberships.role").map do |role|
+        { id: Membership.roles[role], content: role.humanize }
+      end.to_json
+    end
+  end
 
   def new
     @person = Person.new

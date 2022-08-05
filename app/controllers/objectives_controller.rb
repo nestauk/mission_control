@@ -33,10 +33,12 @@ class ObjectivesController < ApplicationController
   end
 
   def timeline
-    # @q = Objective.ransack(params[:q])
-    # @objectives = @q.result(distinct: true).page(params[:page])
-    @objectives = Objective.joins(:goals).group("objectives.id", "goals.title").select("goals.title AS goal_title", "objectives.*")
-    @groups = Goal.pluck(:title)
+    @q = Objective.joins(:goals).group("objectives.id", "goals.id", "goals.title")
+      .select("goals.id AS goal_id", "goals.title AS goal_title", "objectives.*").ransack(params[:q])
+    @objectives = @q.result(distinct: true)
+    @groups = Goal.pluck(:id, :title).map do |id, title|
+      { id: id, content: helpers.link_to(title, goal_path(id)) }
+    end.to_json
   end
 
   private

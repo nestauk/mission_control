@@ -20,18 +20,14 @@ export default class extends Controller {
       // start: null,
       // end: null,
       groupTemplate: function (data, element) {
-        element.classList.add("w-64", "text-sm");
+        element.classList.add("vis-group-custom");
         return data.content;
       },
     };
 
-    let groups = new DataSet(
-      this.groupsValue.map((i) => {
-        return { id: i, content: i };
-      })
-    );
+    let groups = new DataSet(this.groupsValue);
 
-    fetch(this.dataUrlValue, {
+    fetch(this.dataUrlValue + window.location.search, {
       method: "GET",
       headers: { "X-CSRF-Token": this.csrfToken },
     })
