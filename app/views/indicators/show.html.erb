@@ -36,18 +36,6 @@
           </section>
         <% end %>
 
-        <section>
-          <h2 class="text-sm text-blue-800 mb-2 leading-tight">Start date</h2>
-          <%= @indicator.start_date.strftime("%e %b %Y") %>
-        </section>
-
-        <% if @indicator.end_date %>
-          <section class="mt-5">
-            <h2 class="text-sm text-blue-800 mb-2 leading-tight">End date</h2>
-            <%= @indicator.end_date.strftime("%e %b %Y") %>
-          </section>
-        <% end %>
-
         <section class="mt-5">
           <h2 class="text-sm text-blue-800 mb-2 leading-tight">Progress updates due</h2>
           <%= @indicator.update_frequency.humanize %>

@@ -14,6 +14,13 @@
       <%= link_to "Timeline", timeline_objectives_path %>
     </div>
 
+    <div class="mb-5">
+      <span class="font-semibold">Sort:</span>
+      <%= sort_link(@q, :updated_at) %>
+      &middot;
+      <%= sort_link(@q, :title) %>
+    </div>
+
     <div id="objectives-list">
       <%= render 'list', objectives: @objectives %>
     </div>

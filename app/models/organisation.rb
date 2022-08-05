@@ -12,8 +12,8 @@ class Organisation < ApplicationRecord
   private
 
   def set_slug
-    return unless slug.nil? || name_changed? || public_uid_changed?
+    return unless slug.nil? || name_changed?
 
-    update(slug: generate_slug("#{public_uid}-#{name}"))
+    update(slug: generate_slug(name))
   end
 end

@@ -161,7 +161,7 @@
       <%- if @objective.goals.any? %>
         <ul>
           <%- @objective.goals.each do |g| %>
-            <li><%= link_to g.title, g %></li>
+            <li class="mb-2 text-sm"><%= link_to g.title, g, class: 'link' %></li>
           <% end %>
         </ul>
       <% else %>

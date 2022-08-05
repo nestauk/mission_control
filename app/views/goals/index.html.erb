@@ -13,6 +13,13 @@
       <%= link_to 'New goal', new_goal_path, class: 'btn bg-blue-800 text-white' %>
     </div>
 
+    <div class="mb-5">
+      <span class="font-semibold">Sort:</span>
+      <%= sort_link(@q, :updated_at) %>
+      &middot;
+      <%= sort_link(@q, :title) %>
+    </div>
+
     <div id="goals-list">
       <%= render 'list', goals: @goals %>
     </div>
