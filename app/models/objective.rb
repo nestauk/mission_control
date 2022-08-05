@@ -23,4 +23,6 @@ class Objective < ApplicationRecord
 
   has_rich_text :context
   has_rich_text :expectations
+
+  validates :title, :objective, presence: true
 end

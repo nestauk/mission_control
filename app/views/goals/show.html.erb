@@ -10,16 +10,27 @@
 
       <div class="px-5 pt-4 pb-3 border-b border-gray-300">
         <h2 class="font-semibold text-xl text-blue-800 leading-tight">
-          The goal
+          Overview
         </h2>
       </div>
 
-      <%- if @goal.context.present? %>
-        <div class="px-5 my-5">
-          <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Why the work is being done</h3>
+     <div class="px-5 my-5">
+        <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Why the work is being done</h3>
+        <%- if @goal.context.present? %>
           <%= @goal.context %>
-        </div>
-      <% end %>
+        <% else %>
+          <p class="p-2 bg-yellow-100 text-yellow-900 flex items-center text-sm">
+            <%= image_tag "warning-triangle-outline.svg", class: "mr-2" %>
+            Not provided, please add before committing to this <%= to_var @goal %>.
+          </p>
+        <% end %>
+      </div>
+
+      <div class="px-5 my-5">
+        <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Goal</h3>
+        <p class="text-sm text-gray-700 mt-1 mb-2"><em>What</em> the team needs to acheve and <em>why</em>.</p>
+        <%= @goal.title   %>
+      </div>
 
       <div class="px-5 my-5">
         <h3 class="text-blue-800 leading-tight">Indicators</h3>
@@ -81,6 +92,11 @@
 
             <% end %>
           </section>
+        <% else %>
+          <p class="p-2 bg-yellow-100 text-yellow-900 flex items-center text-sm mb-3">
+            <%= image_tag "warning-triangle-outline.svg", class: "mr-2" %>
+            No indicators, please add some before committing to this <%= to_var @goal %>.
+          </p>
         <% end %>
 
         <%= link_to "Add indicator", new_goal_indicator_path(@goal), class: 'btn text-blue-800 bg-blue-200' %>
@@ -93,10 +109,18 @@
           Roadmap
         </h2>
         <p class="text-sm text-gray-700 mt-1">
-          Objectives we're planning or working on towards this goal.
+          Projects we're planning or working on towards this goal.
         </p>
       </div>
-      <div class="p-5" data-controller="timeline" data-timeline-data-url-value="<%= goal_objectives_path(@goal) %>"></div>
+      <%- if @goal.objectives.any? %>
+        <div class="p-5" data-controller="timeline" data-timeline-data-url-value="<%= goal_objectives_path(@goal) %>"></div>
+      <% else %>
+        <div class="p-5">
+          <div class="border-2 border-gray-400 border-dashed text-gray-700 italic text-center rounded w-full p-8">
+            Edit the goal and add projects to see a timeline.
+          </div>
+        </div>
+      <% end %>
     </section>
   </div>
 

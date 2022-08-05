@@ -14,12 +14,17 @@
         </h2>
       </div>
 
-      <%- if @objective.context.present? %>
-        <div class="px-5 my-5">
-          <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Why the work is being done</h3>
+      <div class="px-5 my-5">
+        <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Why the work is being done</h3>
+        <%- if @objective.context.present? %>
           <%= @objective.context %>
-        </div>
-      <% end %>
+        <% else %>
+          <p class="p-2 bg-yellow-100 text-yellow-900 flex items-center text-sm">
+            <%= image_tag "warning-triangle-outline.svg", class: "mr-2" %>
+            Not provided, please add before committing to this <%= to_var @objective %>.
+          </p>
+        <% end %>
+      </div>
 
       <div class="px-5 my-5">
         <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Objective</h3>
@@ -87,17 +92,27 @@
 
             <% end %>
           </section>
+        <% else %>
+          <p class="p-2 bg-yellow-100 text-yellow-900 flex items-center text-sm mb-3">
+            <%= image_tag "warning-triangle-outline.svg", class: "mr-2" %>
+            No indicators, please add some before committing to this <%= to_var @objective %>.
+          </p>
         <% end %>
 
         <%= link_to "Add indicator", new_objective_indicator_path(@objective), class: 'btn text-blue-800 bg-blue-200' %>
       </div>
 
-      <%- if @objective.expectations.present? %>
-        <div class="px-5 my-5">
-          <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Boundaries & expectations</h3>
+      <div class="px-5 my-5">
+        <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Boundaries & expectations</h3>
+        <%- if @objective.expectations.present? %>
           <%= @objective.expectations %>
-        </div>
-      <% end %>
+        <% else %>
+          <p class="p-2 bg-yellow-100 text-yellow-900 flex items-center text-sm">
+            <%= image_tag "warning-triangle-outline.svg", class: "mr-2" %>
+            Not provided, please add before committing to this <%= to_var @objective %>.
+          </p>
+        <% end %>
+      </div>
     </section>
   </div>
 
@@ -114,7 +129,10 @@
           </div>
         <% end %>
       <% else %>
-        <%= with_default(nil) %>
+        <p class="p-2 bg-yellow-100 text-yellow-900 flex items-center text-sm">
+          <%= image_tag "warning-triangle-outline.svg", class: "mr-2" %>
+          No sponsor
+        </p>
       <% end %>
     </section>
 
@@ -126,7 +144,10 @@
           <div class="mt-1 text-sm text-gray-700 break-words"><%= t.email  %></div>
         <% end %>
       <% else %>
-        <%= with_default(nil) %>
+        <p class="p-2 bg-yellow-100 text-yellow-900 flex items-center text-sm">
+          <%= image_tag "warning-triangle-outline.svg", class: "mr-2" %>
+          No team lead
+        </p>
       <% end %>
     </section>
 

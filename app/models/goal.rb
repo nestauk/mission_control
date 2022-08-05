@@ -22,4 +22,6 @@ class Goal < ApplicationRecord
   enum status: { planning: 0, active: 1, inactive: 2 }
 
   has_rich_text :context
+
+  validates :title, presence: true
 end

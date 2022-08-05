@@ -18,6 +18,8 @@ en:
         no_people_reached: "How many people have been reached so far?"
         potential_reach: "What is the size of the potential attainable market for this hypothesis?"
         scale_likelihood: "How likely is it that the full attainable market will be reached by 2030?"
+      objective:
+        expectations: "Boundaries & expectations"
     hints:
       impact_rating:
         scale_likelihood: "0 (impossible) - 100 (certain)"

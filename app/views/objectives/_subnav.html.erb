@@ -9,6 +9,14 @@
       <%= link_to 'Edit', edit_objective_path(@objective), class: 'link text-gray-200' %>
     </div>
 
+    <div class="mb-3">
+      <%- @objective.tags.each do |tag| %>
+        <%= link_to objectives_path(q: { tags_id_in: tag.id }), class: 'inline-block mr-2 text-sm hover:underline' do %>
+          #<%= tag.title.parameterize %>
+        <% end %>
+      <% end %>
+    </div>
+
     <div class="flex flex-wrap items-center text-white text-sm">
 
       <%= link_to @objective do %>

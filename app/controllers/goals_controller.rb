@@ -32,6 +32,11 @@ class GoalsController < ApplicationController
     end
   end
 
+  def destroy
+    @goal.destroy
+    redirect_to goals_path, notice: 'Goal deleted'
+  end
+
   def objectives; end
 
   private

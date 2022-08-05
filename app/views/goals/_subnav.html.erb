@@ -10,7 +10,9 @@
 
     <div class="mb-3">
       <%- @goal.tags.each do |tag| %>
-        <span class="text-sm">#<%= tag.title %></span>
+        <%= link_to goals_path(q: { tags_id_in: tag.id }), class: 'inline-block mr-2 text-sm hover:underline' do %>
+          #<%= tag.title.parameterize %>
+        <% end %>
       <% end %>
     </div>
 
