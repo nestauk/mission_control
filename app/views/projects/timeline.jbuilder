@@ -1,4 +1,4 @@
-json.array! @objectives do |o|
+json.array! @projects do |o|
   json.id o.object_id
   json.title o.title
   json.content "<span>[#{o.status.humanize}]</span> #{link_to o.title, o}"

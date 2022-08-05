@@ -5,7 +5,7 @@ class Person < ApplicationRecord
 
   has_many :memberships, through: :contacts
   has_many :goals, through: :memberships, source: :memberable, source_type: 'Goal'
-  has_many :objectives, through: :memberships, source: :memberable, source_type: 'Objective'
+  has_many :projects, through: :memberships, source: :memberable, source_type: 'Project'
 
   accepts_nested_attributes_for :contacts, allow_destroy: true
 

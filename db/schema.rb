@@ -70,11 +70,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
 
   create_table "contributions", force: :cascade do |t|
     t.bigint "goal_id"
-    t.bigint "objective_id"
+    t.bigint "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_contributions_on_goal_id"
-    t.index ["objective_id"], name: "index_contributions_on_objective_id"
+    t.index ["project_id"], name: "index_contributions_on_project_id"
   end
 
   create_table "goals", force: :cascade do |t|
@@ -144,18 +144,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
     t.index ["memberable_type", "memberable_id"], name: "index_memberships_on_memberable"
   end
 
-  create_table "objectives", force: :cascade do |t|
-    t.string "title"
-    t.string "slug"
-    t.integer "status", default: 0
-    t.string "objective"
-    t.date "start_date"
-    t.date "end_date"
-    t.integer "estimated_cost"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "organisations", force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -183,6 +171,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
     t.datetime "updated_at", null: false
     t.index ["indicator_id"], name: "index_progress_updates_on_indicator_id"
     t.index ["user_id"], name: "index_progress_updates_on_user_id"
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.string "title"
+    t.string "slug"
+    t.integer "status", default: 0
+    t.string "objective"
+    t.date "start_date"
+    t.date "end_date"
+    t.integer "estimated_cost"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "taggings", force: :cascade do |t|

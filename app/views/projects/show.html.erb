@@ -1,4 +1,4 @@
-<% content_for :title, @objective.title %>
+<% content_for :title, @project.title %>
 
 <%= render partial: 'subnav' %>
 
@@ -16,34 +16,34 @@
 
       <div class="px-5 my-5">
         <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Why the work is being done</h3>
-        <%- if @objective.context.present? %>
-          <%= @objective.context %>
+        <%- if @project.context.present? %>
+          <%= @project.context %>
         <% else %>
           <p class="p-2 bg-yellow-100 text-yellow-900 flex items-center text-sm">
             <%= image_tag "warning-triangle-outline.svg", class: "mr-2" %>
-            Not provided, please add before committing to this <%= to_var @objective %>.
+            Not provided, please add before committing to this <%= to_var @project %>.
           </p>
         <% end %>
       </div>
 
       <div class="px-5 my-5">
-        <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Objective</h3>
+        <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Project</h3>
         <p class="text-sm text-gray-700 mt-1 mb-2"><em>What</em> the team needs to acheve and <em>why</em>.</p>
-        <%= @objective.objective   %>
+        <%= @project.objective   %>
       </div>
 
       <div class="px-5 my-5">
         <h3 class="text-blue-800 leading-tight">Indicators</h3>
         <p class="text-sm text-gray-700 mt-1 mb-2">Results we need to see to know we're on the right track.</p>
 
-        <% if @objective.indicators.any? %>
+        <% if @project.indicators.any? %>
           <section class="mb-4">
 
             <div class="border-b border-gray-300"></div>
 
-            <%- @objective.indicators.each do |indicator| %>
+            <%- @project.indicators.each do |indicator| %>
               <%# TODO: responsive %>
-              <%= link_to targetable_indicator_path(@objective, indicator) do %>
+              <%= link_to targetable_indicator_path(@project, indicator) do %>
                 <div class="flex justify-between p-2 border-b border-gray-300 hover:bg-gray-200">
                   <div class="w-9/12 text-sm mr-4">
                     <div class="text-xs text-gray-700">
@@ -95,21 +95,21 @@
         <% else %>
           <p class="p-2 bg-yellow-100 text-yellow-900 flex items-center text-sm mb-3">
             <%= image_tag "warning-triangle-outline.svg", class: "mr-2" %>
-            No indicators, please add some before committing to this <%= to_var @objective %>.
+            No indicators, please add some before committing to this <%= to_var @project %>.
           </p>
         <% end %>
 
-        <%= link_to "Add indicator", new_objective_indicator_path(@objective), class: 'btn text-blue-800 bg-blue-200' %>
+        <%= link_to "Add indicator", new_project_indicator_path(@project), class: 'btn text-blue-800 bg-blue-200' %>
       </div>
 
       <div class="px-5 my-5">
         <h3 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Boundaries & expectations</h3>
-        <%- if @objective.expectations.present? %>
-          <%= @objective.expectations %>
+        <%- if @project.expectations.present? %>
+          <%= @project.expectations %>
         <% else %>
           <p class="p-2 bg-yellow-100 text-yellow-900 flex items-center text-sm">
             <%= image_tag "warning-triangle-outline.svg", class: "mr-2" %>
-            Not provided, please add before committing to this <%= to_var @objective %>.
+            Not provided, please add before committing to this <%= to_var @project %>.
           </p>
         <% end %>
       </div>
@@ -121,8 +121,8 @@
     <section class="py-5 border-t-2 border-b-2 border-gray-300">
       <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Sponsor</h2>
 
-      <%- if @objective.sponsors.any? %>
-        <%- @objective.sponsors.each do |t| %>
+      <%- if @project.sponsors.any? %>
+        <%- @project.sponsors.each do |t| %>
           <div>
             <%= link_to t.name, t.person, class: 'link' %>
             <div class="mt-1 text-sm text-gray-700 break-words"><%= t.email  %></div>
@@ -138,8 +138,8 @@
 
     <section class="py-5 border-b-2 border-gray-300">
       <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Team lead</h2>
-      <%- if @objective.team_leads.any? %>
-        <%- @objective.team_leads.each do |t| %>
+      <%- if @project.team_leads.any? %>
+        <%- @project.team_leads.each do |t| %>
           <%= link_to t.name, t.person, class: 'link' %>
           <div class="mt-1 text-sm text-gray-700 break-words"><%= t.email  %></div>
         <% end %>
@@ -153,14 +153,14 @@
 
     <section class="py-5 border-b-2 border-gray-300">
       <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Start date - End date</h2>
-      <%= @objective.start_date %> - <%= with_default(@objective.end_date) %>
+      <%= @project.start_date %> - <%= with_default(@project.end_date) %>
     </section>
 
     <section class="py-5 border-b-2 border-gray-300">
       <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Contributing to goals</h2>
-      <%- if @objective.goals.any? %>
+      <%- if @project.goals.any? %>
         <ul>
-          <%- @objective.goals.each do |g| %>
+          <%- @project.goals.each do |g| %>
             <li class="mb-2 text-sm"><%= link_to g.title, g, class: 'link' %></li>
           <% end %>
         </ul>
@@ -172,15 +172,15 @@
     <section class="py-5 border-b-2 border-gray-300">
       <div class="mb-2 flex justify-between">
         <h2 class="text-lg font-semibold text-blue-800 leading-tight">Key resources</h2>
-        <%= link_to "+ Add", new_linkable_link_path(@objective), class: 'px-1 rounded font-semibold text-blue-800 bg-blue-200' %>
+        <%= link_to "+ Add", new_linkable_link_path(@project), class: 'px-1 rounded font-semibold text-blue-800 bg-blue-200' %>
       </div>
-      <%- if @objective.links.any? %>
+      <%- if @project.links.any? %>
         <ul>
-          <%- @objective.links.each do |l| %>
+          <%- @project.links.each do |l| %>
             <li class="mb-2">
               <%= link_to l.name, l.url, class: "link", target: "_blank", rel: "noopener noreferrer" %>
               &middot;
-              <small><%= link_to "Edit", edit_linkable_link_path(@objective, l), class: "link" %></small>
+              <small><%= link_to "Edit", edit_linkable_link_path(@project, l), class: "link" %></small>
             </li>
           <% end %>
         </ul>
@@ -191,16 +191,16 @@
 
     <section class="py-5 border-b-2 border-gray-300">
       <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Impact rating</h2>
-      <%- if @objective.impact_rating %>
+      <%- if @project.impact_rating %>
         <p class="mb-2">
-          <span class="text-lg font-semibold <%= score_color(@objective.impact_rating.score) %>"><%= @objective.impact_rating.score %></span>
-          <small>/5 &middot; Updated <%= @objective.impact_rating.updated_at.strftime("%e %b %Y") %></small>
+          <span class="text-lg font-semibold <%= score_color(@project.impact_rating.score) %>"><%= @project.impact_rating.score %></span>
+          <small>/5 &middot; Updated <%= @project.impact_rating.updated_at.strftime("%e %b %Y") %></small>
         </p>
         <div>
-          <%= link_to "Edit impact rating", edit_objective_impact_rating_path(@objective), class: 'btn text-blue-800 bg-blue-200' %>
+          <%= link_to "Edit impact rating", edit_project_impact_rating_path(@project), class: 'btn text-blue-800 bg-blue-200' %>
         </div>
       <% else %>
-        <%= link_to "Add impact rating", new_objective_impact_rating_path(@objective), class: 'btn text-blue-800 bg-blue-200' %>
+        <%= link_to "Add impact rating", new_project_impact_rating_path(@project), class: 'btn text-blue-800 bg-blue-200' %>
       <% end %>
     </section>
   </aside>

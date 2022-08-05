@@ -37,13 +37,13 @@ class GoalsController < ApplicationController
     redirect_to goals_path, notice: 'Goal deleted'
   end
 
-  def objectives; end
+  def projects; end
 
   private
 
   def form_params
     params.require(:goal).permit(
-      :context, :status, :title, :shortname, objective_ids: [], tag_ids: []
+      :context, :status, :title, :shortname, project_ids: [], tag_ids: []
     )
   end
 

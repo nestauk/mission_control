@@ -40,9 +40,9 @@ class ImpactRatingsController < ApplicationController
   end
 
   def load_impactable
-    @impactable = Goal.find_by(id: params[:goal_id]) || Objective.find_by(id: params[:objective_id])
-    @objective = @impactable
+    @impactable = Goal.find_by(id: params[:goal_id]) || Project.find_by(id: params[:project_id])
+    @project = @impactable
     @goal = @impactable
-    redirect_back fallback_location: root_path, alert: 'Objective or Goal not found' if @impactable.nil?
+    redirect_back fallback_location: root_path, alert: 'Project or Goal not found' if @impactable.nil?
   end
 end

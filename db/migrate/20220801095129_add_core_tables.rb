@@ -7,7 +7,7 @@ class AddCoreTables < ActiveRecord::Migration[7.0]
       t.timestamps
     end
 
-    create_table :objectives do |t|
+    create_table :projects do |t|
       t.string :title
       t.string :slug
       t.integer :status, default: 0
@@ -20,7 +20,7 @@ class AddCoreTables < ActiveRecord::Migration[7.0]
 
     create_table :contributions do |t|
       t.references :goal
-      t.references :objective
+      t.references :project
       t.timestamps
     end
 

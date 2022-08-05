@@ -23,7 +23,7 @@ class TagsController < ApplicationController
 
   def update
     if @tag.update(form_params)
-      redirect_to tags_path(@objective), notice: 'Tag updated'
+      redirect_to tags_path(@project), notice: 'Tag updated'
     else
       render :edit
     end

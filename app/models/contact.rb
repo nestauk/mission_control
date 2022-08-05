@@ -9,7 +9,7 @@ class Contact < ApplicationRecord
 
   has_many :memberships, dependent: :destroy
   has_many :goals, through: :memberships, source: :memberable, source_type: 'Goal'
-  has_many :objectives, through: :memberships, source: :memberable, source_type: 'Objective'
+  has_many :projects, through: :memberships, source: :memberable, source_type: 'Project'
 
   validates :first_name, :last_name, :email, :status, presence: true
   validates_uniqueness_of :email

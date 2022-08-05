@@ -2,7 +2,7 @@ class Goal < ApplicationRecord
   has_one :impact_rating, as: :impactable, dependent: :destroy
 
   has_many :contributions, dependent: :destroy
-  has_many :objectives, through: :contributions
+  has_many :projects, through: :contributions
 
   has_many :taggings, as: :taggable, dependent: :destroy
   has_many :tags, through: :taggings

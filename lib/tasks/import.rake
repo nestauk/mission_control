@@ -54,19 +54,19 @@ namespace :import do
     end
   end
 
-  desc "Add objectives from a remote CSV, usage: `rake import:objectives'[http://...]'`"
-  task :objectives, [:url] => [:environment] do |_task, args|
+  desc "Add projects from a remote CSV, usage: `rake import:projects'[http://...]'`"
+  task :projects, [:url] => [:environment] do |_task, args|
     raise 'No url supplied' unless args.url.present?
 
     CSV.parse(URI.parse(args.url).open, headers: true) do |row|
-      objective = Objective.find_or_initialize_by(title: row["objectives_title"])
-      objective.status = row["objectives_status"]
-      objective.objective = row["objectives_objective"]
-      objective.start_date = row["objectives_start_date"]
-      objective.end_date = row["objectives_end_date"]
-      objective.context = row["objectives_context"]
-      objective.expectations = row["objectives_expectations"]
-      objective.save!
+      project = Project.find_or_initialize_by(title: row["projects_title"])
+      project.status = row["projects_status"]
+      project.objective = row["projects_objective"]
+      project.start_date = row["projects_start_date"]
+      project.end_date = row["projects_end_date"]
+      project.context = row["projects_context"]
+      project.expectations = row["projects_expectations"]
+      project.save!
     end
   end
 
@@ -77,7 +77,7 @@ namespace :import do
     CSV.parse(URI.parse(args.url).open, headers: true) do |row|
       Contribution.find_or_create_by!(
         goal: Goal.find_by(title: row["goals_title"]),
-        objective: Objective.find_by(title: row["objectives_title"])
+        project: Project.find_by(title: row["projects_title"])
       )
     end
   end
@@ -90,8 +90,8 @@ namespace :import do
       case row['taggings_taggable_type']
       when 'Goal'
         taggable = Goal.find_by(title: row['taggings_taggable_title'])
-      when 'Objective'
-        taggable = Objective.find_by(title: row['taggings_taggable_title'])
+      when 'Project'
+        taggable = Project.find_by(title: row['taggings_taggable_title'])
       end
 
       Tagging.find_or_create_by!(
@@ -109,8 +109,8 @@ namespace :import do
       case row['memberships_memberable_type']
       when 'Goal'
         memberable = Goal.find_by(title: row['memberships_memberable_title'])
-      when 'Objective'
-        memberable = Objective.find_by(title: row['memberships_memberable_title'])
+      when 'Project'
+        memberable = Project.find_by(title: row['memberships_memberable_title'])
       end
 
       Membership.find_or_create_by!(
@@ -131,8 +131,8 @@ namespace :import do
       case row['indicators_targetable_type']
       when 'Goal'
         targetable = Goal.find_by(title: row['indicators_targetable_title'])
-      when 'Objective'
-        targetable = Objective.find_by(title: row['indicators_targetable_title'])
+      when 'Project'
+        targetable = Project.find_by(title: row['indicators_targetable_title'])
       end
 
       Indicator.create!(

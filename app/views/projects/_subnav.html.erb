@@ -1,0 +1,36 @@
+<div class="bg-indigo-800">
+  <section class="outer-container py-4 text-white">
+    <div class="flex justify-between mb-2">
+      <div class="mr-4">
+        <p class="inline-flex text-white text-xs font-semibold tracking-widest uppercase bg-indigo-900 rounded px-2 py-1 mb-1"><%= @project.status.humanize %></p>
+        <h1 class="text-white text-xl font-semibold"><%= @project.title %></h1>
+        <p><%= @project.objective %></p>
+      </div>
+
+      <%= link_to 'Edit', edit_project_path(@project), class: 'link text-gray-200' %>
+    </div>
+
+    <div class="mb-2">
+      <%- @project.tags.each do |tag| %>
+        <%= link_to projects_path(q: { tags_id_in: tag.id }), class: 'inline-block mr-2 text-sm hover:underline' do %>
+          #<%= tag.title.parameterize %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="flex flex-wrap items-center text-white text-sm">
+
+      <%= link_to @project do %>
+        <div class="px-2 py-1 mr-1 mb-1 bg-gray-800 bg-opacity-25 hover:bg-gray-800 rounded">
+          Brief
+        </div>
+      <% end %>
+
+      <%= link_to project_memberships_path(@project) do %>
+        <div class="px-2 py-1 mr-1 mb-1 bg-gray-800 bg-opacity-25 hover:bg-gray-800 rounded">
+          Team (<%= @project.memberships.size %>)
+        </div>
+      <% end %>
+    </div>
+  </section>
+</div>

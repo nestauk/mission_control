@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  root "objectives#index"
+  root "projects#index"
 
   concern :impactable do
     resources :impact_ratings
@@ -20,14 +20,14 @@ Rails.application.routes.draw do
   end
 
   resources :goals, concerns: %i[impactable linkable memberable targetable] do
-    get "objectives"
+    get "projects"
   end
 
-  resources :objectives, concerns: %i[impactable linkable memberable targetable] do
+  resources :projects, concerns: %i[impactable linkable memberable targetable] do
     get :timeline, on: :collection
   end
 
-  # get "timeline", to: "objectives#timeline", as: "timeline_objectives"
+  # get "timeline", to: "projects#timeline", as: "timeline_projects"
 
   scope "indicators/:indicator_id", as: "indicator" do
     resources :progress_updates

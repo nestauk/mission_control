@@ -63,7 +63,7 @@
         </svg>
       <% end %>
 
-      <%= link_to objectives_path, class: "#{active_nav?(controller: 'objectives')} border-t border-b border-neutral-700 hover:bg-indigo-800 block w-full flex flex-col items-center pt-3" do %>
+      <%= link_to projects_path, class: "#{active_nav?(controller: 'projects')} border-t border-b border-neutral-700 hover:bg-indigo-800 block w-full flex flex-col items-center pt-3" do %>
         <svg width="24" stroke-width="1.5" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M5 19.5V5C5 3.89543 5.89543 3 7 3H18.4C18.7314 3 19 3.26863 19 3.6V21" stroke="currentColor"  stroke-linecap="round"/>
           <path d="M9 7L15 7" stroke="currentColor"  stroke-linecap="round"/>
@@ -118,7 +118,7 @@
                 New
               </button>
               <ul id="nav-dropdown-menu" class="text-white bg-gray-900 rounded shadow">
-                <%= link_to new_objective_path, data: { turbolinks: false } do %>
+                <%= link_to new_project_path, data: { turbolinks: false } do %>
                   <li class="px-4 py-3 hover:bg-gray-800 border-b border-gray-800">Project</li>
                 <% end %>
                 <%= link_to new_person_path do %>
@@ -160,7 +160,7 @@
       </div>
 
       <% unless controller_name == 'pages' && action_name == 'network' %>
-        <footer class="px-5 py-5 bg-gray-200 text-sm">
+        <footer class="px-5 py-5 bg-stone-200 text-sm">
           <hr class="mb-5 border-b border-gray-300">
           <div class="inline-flex text-white text-xs font-semibold tracking-widest uppercase bg-indigo-900 rounded px-2 py-1 mr-1">Pre-Alpha</div>
           This tool in development - not everything will work - your

@@ -1,4 +1,4 @@
-class Objective < ApplicationRecord
+class Project < ApplicationRecord
   has_one :impact_rating, as: :impactable, dependent: :destroy
 
   has_many :contributions, dependent: :destroy

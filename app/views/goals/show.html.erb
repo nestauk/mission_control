@@ -112,8 +112,8 @@
           Projects we're planning or working on towards this goal.
         </p>
       </div>
-      <%- if @goal.objectives.any? %>
-        <div class="p-5" data-controller="timeline" data-timeline-data-url-value="<%= goal_objectives_path(@goal) %>"></div>
+      <%- if @goal.projects.any? %>
+        <div class="p-5" data-controller="timeline" data-timeline-data-url-value="<%= goal_projects_path(@goal) %>"></div>
       <% else %>
         <div class="p-5">
           <div class="border-2 border-gray-400 border-dashed text-gray-700 italic text-center rounded w-full p-8">

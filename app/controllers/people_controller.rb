@@ -8,16 +8,16 @@ class PeopleController < ApplicationController
 
   def show
     if params[:q]
-      @objectives = @person.objectives
-        .select("memberships.role AS membership_role", "objectives.*")
+      @projects = @person.projects
+        .select("memberships.role AS membership_role", "projects.*")
         .ransack(params[:q]).result(distinct: true)
-      @groups = @objectives.pluck("memberships.role").map do |role|
+      @groups = @projects.pluck("memberships.role").map do |role|
         { id: Membership.roles[role], content: role.humanize }
       end.to_json
     else
-      @objectives = @person.objectives.where(status: [:planning, :committed])
-        .select("memberships.role AS membership_role", "objectives.*")
-      @groups = @objectives.pluck("memberships.role").map do |role|
+      @projects = @person.projects.where(status: [:planning, :committed])
+        .select("memberships.role AS membership_role", "projects.*")
+      @groups = @projects.pluck("memberships.role").map do |role|
         { id: Membership.roles[role], content: role.humanize }
       end.to_json
     end

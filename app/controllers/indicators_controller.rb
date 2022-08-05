@@ -48,9 +48,9 @@ class IndicatorsController < ApplicationController
   end
 
   def load_targetable
-    @targetable = Goal.find_by(id: params[:goal_id]) || Objective.find_by(id: params[:objective_id])
-    @objective = @targetable
+    @targetable = Goal.find_by(id: params[:goal_id]) || Project.find_by(id: params[:project_id])
+    @project = @targetable
     @goal = @targetable
-    redirect_back fallback_location: root_path, alert: 'Objective or Goal not found' if @targetable.nil?
+    redirect_back fallback_location: root_path, alert: 'Project or Goal not found' if @targetable.nil?
   end
 end

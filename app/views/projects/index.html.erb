@@ -1,40 +1,48 @@
-<div class="flex flex-wrap-reverse gap-6 mx-5">
+<% content_for :title, 'Projects' %>
 
-  <div class="my-5 flex-1 lg:w-0 w-full">
+<div class="bg-indigo-800">
+  <section class="outer-container py-4 text-white">
+    <h1 class="leading-tight text-xl font-semibold">Projects</h1>
+  </section>
+</div>
+
+<div class="flex flex-wrap-reverse mx-auto max-w-screen-xl">
+
+  <div class="m-5 flex-1 lg:w-0 w-full">
     <div class="mb-5">
-      <%= link_to '‹ Back', objectives_path, class: 'link' %>
+      <%= link_to 'New project', new_project_path, class: 'btn bg-blue-800 text-white' %>
+      <%= link_to "Timeline", timeline_projects_path %>
     </div>
 
-    <section class="bg-white rounded shadow mb-6">
-      <div class="px-5 pt-4 pb-3 border-b border-gray-300">
-        <h2 class="font-semibold text-xl text-blue-800 leading-tight">
-          Portfolio
-        </h2>
-        <p class="text-sm text-gray-700 mt-1">
-          Projects grouped by goal.
-        </p>
-      </div>
-      <div class="p-5" data-controller="timeline" data-timeline-data-url-value="<%= timeline_objectives_path + ".json" %>" data-timeline-groups-value="<%= @groups %>"></div>
-    </section>
+    <div class="mb-5">
+      <span class="font-semibold">Sort:</span>
+      <%= sort_link(@q, :updated_at) %>
+      &middot;
+      <%= sort_link(@q, :title) %>
+    </div>
+
+    <div id="projects-list">
+      <%= render 'list', projects: @projects %>
+    </div>
   </div>
 
-  <aside class="my-5 lg:w-64 w-full">
+  <aside class="m-5 lg:w-64 w-full">
     <div class="shadow">
       <input type="checkbox" id="filter-toggle">
       <label id="filter-control" for="filter-toggle" class="px-4 py-2 block w-full bg-white">
         <div class="flex justify-between align-items font-semibold">
-          Filter projects
+          Filter
           <%= image_tag 'chevron-down.svg', id: 'chevron-down' %>
         </div>
       </label>
 
       <div id="filter-body" class="p-4 bg-white rounded-b">
-        <%= search_form_for @q, url: timeline_objectives_path do |f| %>
-          <%= f.label :title_cont, 'Title', class: 'label' %>
+        <%= search_form_for @q do |f| %>
+          <%= f.label :title_cont, 'Search by title', class: 'label' %>
           <%= f.search_field :title_cont, class: 'input string mb-4' %>
 
           <%= f.label :status_in, 'Status', class: 'label' %>
-          <%= f.collection_select :status_in, Objective.statuses, :last, ->(o) { o.first.humanize }, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
+          <%= f.collection_select :status_in, Project.statuses, :last, ->(o) { o.first.humanize }, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
 
           <%= f.label :members_id_in, 'People', class: 'label' %>
           <%= f.collection_select :memberships_contact_id_in, Contact.all, :id, ->(o) { "#{o.name} (#{o.email})" }, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
@@ -49,9 +57,10 @@
           <%= f.collection_select :tags_id_in, Tag.order(:title), :id, :title, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
 
           <%= f.button 'Filter', type: 'submit', class: "btn text-white bg-blue-800" %>
-          <%= link_to 'Reset', timeline_objectives_path, class: 'ml-1 btn bg-blue-200' %>
+          <%= link_to 'Reset', projects_path, class: 'ml-1 btn bg-blue-200' %>
         <% end %>
       </div>
     </div>
   </aside>
+
 </div>

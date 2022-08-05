@@ -1,0 +1,47 @@
+<div class="mb-8">
+  <div class="text-gray-700 mb-6">
+    <%= page_entries_info projects %>
+  </div>
+
+  <%- projects.each do |project| %>
+
+    <div class="rounded bg-white shadow mb-5">
+      <div class="px-4 py-3">
+        <div class="text-xs text-gray-700 mb-1">
+          <%= project.status.humanize %>
+        </div>
+        <h2 class="font-semibold text-lg text-blue-800 leading-tight mb-1">
+          <%= link_to project.title, project, class: 'hover:underline' %>
+        </h2>
+        <p><%= project.objective %></p>
+
+        <%- project.tags.each do |tag| %>
+          <%= link_to projects_path(q: { tags_id_in: tag.id }), class: 'inline-block mr-2 text-sm text-gray-700 hover:underline' do %>
+            #<%= tag.title.parameterize %>
+          <% end %>
+        <% end %>
+      </div>
+
+      <%# TODO: responsive %>
+      <div class="px-4 py-3 border-t border-gray-300 text-sm text-gray-700 flex">
+        <%= pluralize(project.team.size, "team member") %>
+        <span class="ml-2"><%= pluralize(project.sponsors.size, "sponsor") %></span>
+
+        <%- if project.indicators.any? %>
+          <span class="mx-2">&middot;</span>
+          Progress indicators:
+          <%= last_progress_updates(project.indicators.group(:last_progress_update_status).count) %>
+        <% end %>
+
+        <%- if project.impact_rating %>
+          <span class="mx-2">&middot;</span>
+          Impact rating:
+          <span class="ml-1 <%= score_color(project.impact_rating.score) %>"><%= project.impact_rating.score %></span>
+        <% end %>
+      </div>
+    </div>
+
+  <% end %>
+</div>
+
+<%= paginate projects %>
