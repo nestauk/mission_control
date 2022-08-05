@@ -2,8 +2,9 @@
   <section class="outer-container py-4 text-white">
     <div class="flex justify-between mb-2">
       <div class="mr-4">
-        <p class="text-sm text-gray-200 tracking-wide"><%= @objective.status.humanize %></p>
+        <p class="inline-flex text-white text-xs font-semibold tracking-widest uppercase bg-indigo-900 rounded px-2 py-1 mb-1"><%= @objective.status.humanize %></p>
         <h1 class="text-white text-xl font-semibold"><%= @objective.title %></h1>
+        <p><%= @objective.objective %></p>
       </div>
 
       <%= link_to 'Edit', edit_objective_path(@objective), class: 'link text-gray-200' %>
