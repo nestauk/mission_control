@@ -17,6 +17,8 @@ export default class extends Controller {
       zoomMax: 31_556_952_000 * 10, // 10 years
       minHeight: "250px",
       selectable: false,
+      stack: false,
+      stackSubgroups: true,
       // start: null,
       // end: null,
       groupTemplate: function (data, element) {
