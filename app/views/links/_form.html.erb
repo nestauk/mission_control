@@ -30,3 +30,7 @@
     <% end %>
   </div>
 <% end %>
+
+<% if ['edit', 'update'].include?(action_name) %>
+  <%= button_to 'Delete', url, method: :delete, class: 'link relative float-right bottom-7', form: { data: { turbo_confirm: 'Are you sure?' } } %>
+<% end %>

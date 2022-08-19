@@ -5,4 +5,5 @@ class Link < ApplicationRecord
     with: URI::DEFAULT_PARSER.make_regexp(%w[http https]),
     message: 'enter a valid website address e.g. http://www.example.com'
   }
+  validates :name, presence: true
 end

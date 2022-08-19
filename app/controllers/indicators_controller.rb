@@ -36,7 +36,7 @@ class IndicatorsController < ApplicationController
   def destroy
     @indicator = Indicator.find_by(id: params[:id])
     @indicator.destroy
-    redirect_to helpers.targetable_indicators_path(@targetable), notice: 'Progress indicator deleted'
+    redirect_to helpers.targetable_path(@targetable), notice: 'Progress indicator deleted'
   end
 
   private

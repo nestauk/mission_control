@@ -37,6 +37,9 @@
   <%- if ['edit', 'update'].include?(action_name) %>
     <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-blue-800 text-white' %>
     <%= link_to 'Cancel', targetable_indicator_path(@targetable, model), class: 'link ml-6' %>
-    <%= link_to 'Delete', targetable_indicator_path(@targetable, model), method: 'delete', class: 'link float-right', data: { confirm: 'Are you sure?' } %>
   <% end %>
+<% end %>
+
+<% if ['edit', 'update'].include?(action_name) %>
+  <%= button_to 'Delete', targetable_indicator_path(@targetable, model), method: :delete, class: 'link relative float-right bottom-7', form: { data: { turbo_confirm: 'Are you sure?' } } %>
 <% end %>

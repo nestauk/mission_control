@@ -168,9 +168,9 @@
 
       <%= link_to 'Cancel', memberable_memberships_path(@memberable), class: 'link ml-6' %>
     </div>
-
-    <% if ['edit', 'update'].include?(action_name) %>
-      <%= link_to 'Remove member', url, class: 'link  ml-6', data: { turbo_method: :delete, turbo_confirm: 'Are you sure?' } %>
-    <% end %>
   </div>
+<% end %>
+
+<% if ['edit', 'update'].include?(action_name) %>
+  <%= button_to 'Remove member', url, method: :delete, class: 'link relative float-right bottom-7', form: { data: { turbo_confirm: 'Are you sure?' } } %>
 <% end %>

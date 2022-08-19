@@ -32,6 +32,11 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def destroy
+    @project.destroy
+    redirect_to projects_path, notice: 'Project deleted'
+  end
+
   def timeline
     @q = Project.joins(:goals).group("projects.id", "goals.id", "goals.title")
       .select("goals.id AS goal_id", "goals.title AS goal_title", "projects.*").ransack(params[:q])
