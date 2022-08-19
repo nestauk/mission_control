@@ -13,7 +13,7 @@ class LinksController < ApplicationController
     if @link.save
       redirect_to helpers.linkable_path(@linkable), notice: 'Link created'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -27,7 +27,7 @@ class LinksController < ApplicationController
     if @link.update(form_params)
       redirect_to helpers.linkable_path(@linkable), notice: 'Link updated'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

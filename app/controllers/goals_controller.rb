@@ -18,7 +18,7 @@ class GoalsController < ApplicationController
     if @goal.save
       redirect_to goal_path(@goal), notice: 'Goal created'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class GoalsController < ApplicationController
     if @goal.update(form_params)
       redirect_to goal_path(@goal), notice: 'Goal updated'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

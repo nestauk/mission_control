@@ -12,7 +12,7 @@ class ImpactRatingsController < ApplicationController
     if @impact_rating.save
       redirect_to helpers.impactable_path(@impactable), notice: 'Impact rating created'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -26,7 +26,7 @@ class ImpactRatingsController < ApplicationController
     if @impact_rating.update(form_params)
       redirect_to helpers.impactable_path(@impactable), notice: 'Impact rating updated'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

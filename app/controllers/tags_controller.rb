@@ -15,7 +15,7 @@ class TagsController < ApplicationController
     if @tag.save
       redirect_to tags_path(@tag), notice: 'Tag created'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -25,7 +25,7 @@ class TagsController < ApplicationController
     if @tag.update(form_params)
       redirect_to tags_path(@project), notice: 'Tag updated'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

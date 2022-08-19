@@ -34,7 +34,7 @@ class PeopleController < ApplicationController
     if @person.save
       redirect_to @person, notice: 'Person created'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -44,7 +44,7 @@ class PeopleController < ApplicationController
     if @person.update(form_params)
       redirect_to @person, notice: 'Person updated'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

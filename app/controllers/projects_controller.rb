@@ -18,7 +18,7 @@ class ProjectsController < ApplicationController
     if @project.save
       redirect_to project_path(@project), notice: 'Project created'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class ProjectsController < ApplicationController
     if @project.update(form_params)
       redirect_to project_path(@project), notice: 'Project updated'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

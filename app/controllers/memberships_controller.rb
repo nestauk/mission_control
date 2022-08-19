@@ -14,7 +14,7 @@ class MembershipsController < ApplicationController
     if @membership.save
       redirect_to helpers.memberable_memberships_path(@memberable), notice: 'Membership created'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -28,7 +28,7 @@ class MembershipsController < ApplicationController
     if @membership.update(form_params)
       redirect_to helpers.memberable_memberships_path(@memberable), notice: 'Membership updated'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

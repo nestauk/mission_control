@@ -11,7 +11,7 @@ class ProgressUpdatesController < ApplicationController
     if @progress_update.save
       redirect_to helpers.targetable_indicator_path(@targetable, @indicator), notice: 'Progress update added'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
   end
 
@@ -25,7 +25,7 @@ class ProgressUpdatesController < ApplicationController
     if @progress_update.update(form_params)
       redirect_to helpers.targetable_indicator_path(@targetable, @indicator), notice: 'Progress update updated'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 
