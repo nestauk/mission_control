@@ -42,9 +42,7 @@ class IndicatorsController < ApplicationController
   private
 
   def form_params
-    params.require(:indicator).permit(
-      :end_date, :start_date, :status, :target_value, :title, :unit, :update_frequency
-    )
+    params.require(:indicator).permit(:unit, :description, :target_value, :title)
   end
 
   def load_targetable

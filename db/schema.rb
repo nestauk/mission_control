@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_16_175607) do
+ActiveRecord::Schema[7.0].define(version: 2022_08_01_115341) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -105,16 +105,11 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_16_175607) do
     t.string "targetable_type"
     t.bigint "targetable_id"
     t.string "title"
-    t.integer "status", default: 0
-    t.date "start_date"
-    t.date "end_date"
     t.string "unit"
     t.float "target_value"
     t.date "last_progress_update_date"
     t.integer "last_progress_update_status"
     t.float "last_progress_update_value"
-    t.integer "update_frequency", default: 0
-    t.datetime "last_reminded_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["targetable_type", "targetable_id"], name: "index_indicators_on_targetable"
@@ -178,12 +173,12 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_16_175607) do
     t.string "slug"
     t.integer "status", default: 0
     t.string "objective"
+    t.date "planning_start_date"
     t.date "start_date"
     t.date "end_date"
     t.integer "estimated_cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.date "planning_start_date"
   end
 
   create_table "taggings", force: :cascade do |t|

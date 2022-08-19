@@ -12,6 +12,7 @@ class AddCoreTables < ActiveRecord::Migration[7.0]
       t.string :slug
       t.integer :status, default: 0
       t.string :objective
+      t.date :planning_start_date
       t.date :start_date
       t.date :end_date
       t.integer :estimated_cost
@@ -27,16 +28,11 @@ class AddCoreTables < ActiveRecord::Migration[7.0]
     create_table :indicators do |t|
       t.references :targetable, polymorphic: true
       t.string :title
-      t.integer :status, default: 0
-      t.date :start_date
-      t.date :end_date
       t.string :unit
       t.float :target_value
       t.date :last_progress_update_date
       t.integer :last_progress_update_status
       t.float :last_progress_update_value
-      t.integer :update_frequency, default: 0
-      t.datetime :last_reminded_at
       t.timestamps
     end
 

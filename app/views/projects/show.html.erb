@@ -53,12 +53,6 @@
                   </div >
 
                   <div class="w-3/12 mr-4">
-                    <% if indicator.requires_update? %>
-                      <div class="px-2 py-1 mb-2 bg-orange-100 text-xs text-orange-800 rounded">
-                        Progress update due this <%= indicator.update_frequency.slice(0..-3) %>
-                      </div>
-                    <% end %>
-
                     <% if indicator.last_progress_update_status %>
                       <p>
                         <strong class="font-semibold <%= status_with_icon(indicator.last_progress_update_status) %>"><%= indicator.last_progress_update_status&.humanize %></strong>

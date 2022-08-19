@@ -1,62 +1,59 @@
-<% content_for :title, @indicator.title %>
+<% content_for :title, "#{@indicator.title} - #{@targetable.title}" %>
 
-<%#= render partial: polymorphic_subnav(@targetable) %>
+<div class="mx-auto max-w-prose">
+  <aside class="m-5">
+    <div class="mb-5">
+      <%= link_to "‹ Back to #{to_var(@targetable)}", targetable_path(@targetable), class: 'link' %>
+    </div>
 
-<div class="outer-container mt-5">
-  <%= link_to '‹ Back', targetable_path(@targetable), class: 'link' %>
-</div>
-
-<div class="flex flex-wrap mx-auto max-w-screen-xl">
-
-  <aside class="m-5 lg:w-64 w-full">
     <div class="rounded shadow overflow-hidden">
       <div class="p-5 bg-white">
-        <div class="text-sm text-gray-700 mb-1">
-          <%= @indicator.status.humanize %>
-        </div>
-
-        <section class="mb-5">
-          <h2 class="text-l text-blue-800 leading-tight">
+        <section class="flex items-baseline justify-between">
+          <h2 class="text-lg font-semibold leading-tight">
             <%= @indicator.title %>
           </h2>
+
+          <%= link_to 'Edit', edit_targetable_indicator_path(@targetable, @indicator), class: 'link ml-5' %>
         </section>
 
-        <%- if @indicator.last_progress_update_value && @indicator.target_value %>
-          <section class="mb-5">
-            <p class="text-xs mb-1">
-              <%= number_with_precision(@indicator.last_progress_update_value, precision: 2, delimiter: ',', strip_insignificant_zeros: true) %>
-              /
-              <%= number_with_precision(@indicator.target_value, precision: 2, delimiter: ',', strip_insignificant_zeros: true) %>
-              <%= @indicator.unit %>
-            </p>
-            <div class="relative rounded-full overflow-hidden w-full h-3">
-              <div class="absolute bg-blue-800-5 w-full h-3"></div>
-              <div class="absolute h-3 bg-opacity-50 <%= bg_status(@indicator.last_progress_update_status) %>" style="width: <%= @indicator.progress %>%"></div>
-            </div>
-          </section>
+        <%- if @indicator.description.present? %>
+          <h3 class="font-semibold text-blue-800 leading-tight mt-5 mb-1">Description</h3>
+          <%= @indicator.description %>
         <% end %>
 
-        <section class="mt-5">
-          <h2 class="text-sm text-blue-800 mb-2 leading-tight">Progress updates due</h2>
-          <%= @indicator.update_frequency.humanize %>
-        </section>
+        <%- if @indicator.target_value %>
+          <%- if @indicator.last_progress_update_value %>
+            <section class="mt-5">
+              <p class="text-xs mb-1">
+                <%= number_with_precision(@indicator.last_progress_update_value, precision: 2, delimiter: ',', strip_insignificant_zeros: true) %>
+                /
+                <%= number_with_precision(@indicator.target_value, precision: 2, delimiter: ',', strip_insignificant_zeros: true) %>
+                <%= @indicator.unit %>
+              </p>
+              <div class="relative rounded-full overflow-hidden w-full h-3">
+                <div class="absolute bg-gray-200 w-full h-3"></div>
+                <div class="absolute h-3 bg-opacity-50 <%= bg_status(@indicator.last_progress_update_status) %>" style="width: <%= @indicator.progress %>%"></div>
+              </div>
+            </section>
+          <% else %>
+            <section class="mt-5">
+              <p class="text-xs mb-1">
+                0
+                /
+                <%= number_with_precision(@indicator.target_value, precision: 2, delimiter: ',', strip_insignificant_zeros: true) %>
+                <%= @indicator.unit %>
+              </p>
+              <div class="relative rounded-full overflow-hidden w-full h-3">
+                <div class="absolute bg-gray-200 w-full h-3"></div>
+              </div>
+            </section>
+          <% end %>
+        <% end %>
       </div>
-
-      <%= link_to edit_targetable_indicator_path(@targetable, @indicator) do %>
-        <div class="px-5 py-3 text-sm text-center hover:underline bg-gray-300">
-          Edit
-        </div>
-      <% end %>
     </div>
   </aside>
 
-  <div class="mt-5 mx-5 flex-1 lg:w-0 w-full">
-
-    <% if @indicator.requires_update? %>
-      <div class="px-3 py-2 bg-orange-100 text-sm text-orange-800 mb-5">
-        Progress update due this <%= @indicator.update_frequency.slice(0..-3) %>
-      </div>
-    <% end %>
+  <div class="mt-5 mx-5">
 
     <div class="flex justify-between items-center">
       <h2 class="text-lg text-blue-800 leading-tight">Progress updates</h2>
