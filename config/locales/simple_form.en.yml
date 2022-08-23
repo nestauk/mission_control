@@ -22,6 +22,9 @@ en:
         description: "(Optional) Description"
         target_value: "(Optional) Target value"
         unit: "(Optional) Unit"
+      membership:
+        description: "(Optional) Role notes"
+        avg_weekly_time_percentage: "(Optional) Estimated average weekly % of time in this role"
       project:
         context: "Background"
         expectations: "Boundaries & expectations"

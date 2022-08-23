@@ -8,15 +8,19 @@
     <%= f.association :contact, collection: Contact.order(:first_name, :last_name), label_method: ->(o) { "#{o.name} (#{o.email})" }, input_html: { data: { controller: "choices" } }, label: "Who will be working on this #{to_var(@memberable)}?" %>
   </div>
 
-  <div class="mb-6">
+  <div class="mb-6 <%= 'field_with_errors' if model.errors[:role].any? %>">
     <%= f.label :role, class: "label", label: "What type of role will they be playing?" %>
+    <div class="hint"><%= f.hint :role %></div>
+    <div class="error"><%= f.error :role %></div>
 
     <h3 class="my-3 text-gray-700">Team - <%= role_type_description(:team) %></h3>
 
     <div class="mb-3">
       <label for="membership_role_team_lead">
         <div class="flex items-center inline-flex hover:cursor-pointer">
-          <input type="radio" value="team_lead" name="membership[role]" id="membership_role_team_lead" class="mx-3">
+          <input
+            <%= tag.attributes checked: model.role == "team_lead" ? true : false %>
+            type="radio" value="team_lead" name="membership[role]" id="membership_role_team_lead" class="mx-3">
           <strong>Team lead</strong>
         </div>
       </label>
@@ -40,7 +44,9 @@
     <div class="mb-3">
       <label for="membership_role_team_member">
         <div class="flex items-center inline-flex hover:cursor-pointer">
-          <input type="radio" value="team_member" name="membership[role]" id="membership_role_team_member" class="mx-3">
+          <input
+            <%= tag.attributes checked: model.role == "team_member" ? true : false %>
+            type="radio" value="team_member" name="membership[role]" id="membership_role_team_member" class="mx-3">
           <strong>Team member</strong>
         </div>
       </label>
@@ -60,7 +66,9 @@
     <div class="mb-3">
       <label for="membership_role_collaborator">
         <div class="flex items-center inline-flex hover:cursor-pointer">
-          <input type="radio" value="collaborator" name="membership[role]" id="membership_role_collaborator" class="mx-3">
+          <input
+            <%= tag.attributes checked: model.role == "collaborator" ? true : false %>
+            type="radio" value="collaborator" name="membership[role]" id="membership_role_collaborator" class="mx-3">
           <strong>Collaborator</strong>
         </div>
       </label>
@@ -79,7 +87,9 @@
     <div class="mb-3">
       <label for="membership_role_sponsor">
         <div class="flex items-center inline-flex hover:cursor-pointer">
-          <input type="radio" value="sponsor" name="membership[role]" id="membership_role_sponsor" class="mx-3">
+          <input
+            <%= tag.attributes checked: model.role == "sponsor" ? true : false %>
+            type="radio" value="sponsor" name="membership[role]" id="membership_role_sponsor" class="mx-3">
           <strong>Sponsor</strong>
         </div>
       </label>
@@ -109,7 +119,9 @@
     <div class="mb-3">
       <label for="membership_role_coach">
         <div class="flex items-center inline-flex hover:cursor-pointer">
-          <input type="radio" value="coach" name="membership[role]" id="membership_role_coach" class="mx-3">
+          <input
+            <%= tag.attributes checked: model.role == "coach" ? true : false %>
+            type="radio" value="coach" name="membership[role]" id="membership_role_coach" class="mx-3">
           <strong>Coach</strong>
         </div>
       </label>
@@ -133,7 +145,9 @@
     <div class="mb-3">
       <label for="membership_role_advisor">
         <div class="flex items-center inline-flex hover:cursor-pointer">
-          <input type="radio" value="advisor" name="membership[role]" id="membership_role_advisor" class="mx-3">
+          <input
+            <%= tag.attributes checked: model.role == "advisor" ? true : false %>
+            type="radio" value="advisor" name="membership[role]" id="membership_role_advisor" class="mx-3">
           <strong>Advisor</strong>
         </div>
       </label>
@@ -149,11 +163,11 @@
   </div>
 
   <div class="mb-6">
-    <%= f.input :description, label: "(Optional) Role notes" %>
+    <%= f.input :description %>
   </div>
 
   <div class="mb-6">
-    <%= f.input :avg_weekly_time_percentage, label: "(Optional) Estimated average weekly % of time in this role", hint: "E.g. Input 50 for an average 50% of someones time in this role between the start and end date for the #{to_var(@memberable)}." %>
+    <%= f.input :avg_weekly_time_percentage, hint: "E.g. Input 50 for an average 50% of someones time in this role between the start and end date for the #{to_var(@memberable)}." %>
   </div>
 
   <div class="flex justify-between items-center">
