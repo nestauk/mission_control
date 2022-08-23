@@ -24,5 +24,5 @@ class Project < ApplicationRecord
   has_rich_text :context
   has_rich_text :expectations
 
-  validates :title, :objective, presence: true
+  validates :title, :objective, :status, :start_date, presence: true
 end

@@ -23,11 +23,18 @@ en:
         target_value: "(Optional) Target value"
         unit: "(Optional) Unit"
       project:
+        context: "Background"
         expectations: "Boundaries & expectations"
     hints:
       impact_rating:
         scale_likelihood: "0 (impossible) - 100 (certain)"
         potential_reach: "E.g. 20-30 million"
+      project:
+        title: "A short, memorable and unique name."
+        objective: "What the team needs to acheve and why."
+        context: "Briefly describe why the work is being done - i.e. it's strategic relevance - and any relevant context including prior projects and learning, linking out to content as required."
+        expectations: "Make explict any boundaries or expectations the team needs to operate within. These can be implied tasks, a set timeline or budget, certain methodologies to use and more."
+        goals: "Select the goals which this project contributes to."
     # Examples
     # labels:
     #   defaults:

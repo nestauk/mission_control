@@ -16,7 +16,7 @@
   }
 
   .hint {
-    @apply text-sm mb-1 text-gray-700;
+    @apply text-sm mb-2 text-gray-700;
   }
 
   .input.string,

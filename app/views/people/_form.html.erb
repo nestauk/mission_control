@@ -1,4 +1,3 @@
-<div data-controller="nested-fields">
 <%= simple_form_for model, url: url do |f| %>
   <div class="flex flex-wrap mb-2">
     <div class="lg:w-5/12 md:w-6/12 w-full mb-4">
@@ -19,7 +18,7 @@
     <p class="text-sm text-gray-700">A person can have many contacts</p>
   </div>
 
-  <section>
+  <section data-controller="nested-fields">>
     <%= f.simple_fields_for :contacts, f.object.contacts.sort_by{ |c| c.status } do |i| %>
       <%= render 'contact_fields', f: i %>
     <% end %>
@@ -42,4 +41,3 @@
 <% if ['edit', 'update'].include?(action_name) %>
   <%= button_to 'Delete', model, method: :delete, class: 'link relative float-right bottom-7', form: { data: { turbo_confirm: 'Are you sure?' } } %>
 <% end %>
-</div>

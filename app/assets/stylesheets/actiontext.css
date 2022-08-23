@@ -42,6 +42,10 @@
 .trix-editor > * {
   margin-bottom: 0.75rem;
 }
+.trix-content > *:last-child,
+.trix-editor > *:last-child {
+  margin-bottom: 0;
+}
 
 .trix-content h1,
 .trix-editor h1 {
