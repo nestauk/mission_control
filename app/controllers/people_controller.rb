@@ -57,11 +57,8 @@ class PeopleController < ApplicationController
 
   def form_params
     params.require(:person).permit(
-      :first_name,
-      :last_name,
-      :pronouns,
-      :notes,
-      contacts_attributes: %i[_destroy id organisation_id position email phone status]
+      :first_name, :last_name, :pronouns,
+      contacts_attributes: %i[_destroy id organisation_id position email status]
     )
   end
 

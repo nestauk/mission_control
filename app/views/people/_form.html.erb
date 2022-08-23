@@ -1,3 +1,4 @@
+<div data-controller="nested-fields">
 <%= simple_form_for model, url: url do |f| %>
   <div class="flex flex-wrap mb-2">
     <div class="lg:w-5/12 md:w-6/12 w-full mb-4">
@@ -9,13 +10,13 @@
     </div>
 
     <div class="lg:w-2/12 w-full mb-4">
-      <%= f.input :pronouns, input_html: {class: 'selectize', data: {selectize: '{"maxItems": 1, "create": true, "options": [{"value": "he/him", "text": "he/him"}, {"value": "she/her", "text": "she/her"}, {"value": "they/them", "text": "they/them"}]}'}}, wrapper_html: { class: 'lg:ml-4 mr-0' } %>
+      <%= f.input :pronouns, wrapper_html: { class: 'lg:ml-4 mr-0' } %>
     </div>
   </div>
 
   <div class="mb-4">
-    <h2 class="text-lg text-blue-800 leading-tight mb-1">Contacts</h2>
-    <p class="text-gray-700">A person can have many contacts</p>
+    <h2 class="font-semibold text-lg text-blue-800 leading-tight mb-1">Contacts</h2>
+    <p class="text-sm text-gray-700">A person can have many contacts</p>
   </div>
 
   <section>
@@ -41,3 +42,4 @@
 <% if ['edit', 'update'].include?(action_name) %>
   <%= button_to 'Delete', model, method: :delete, class: 'link relative float-right bottom-7', form: { data: { turbo_confirm: 'Are you sure?' } } %>
 <% end %>
+</div>

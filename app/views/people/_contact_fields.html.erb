@@ -1,19 +1,13 @@
 <div class="mb-4 nested-fields p-4 bg-gray-100 rounded contact-row">
   <%= f.hidden_field :_destroy %>
 
-  <div class="flex flex-wrap">
-    <div class="lg:w-1/2 md:w-6/12 w-full mb-4">
-      <%= f.input :email, wrapper_html: { class: 'md:mr-2 mr-0' } %>
-    </div>
-
-    <div class="lg:w-1/2 md:w-6/12 w-full mb-4">
-      <%= f.input :phone, wrapper_html: { class: 'md:ml-2 ml-0' } %>
-    </div>
+  <div class="mb-4">
+    <%= f.input :email, wrapper_html: { class: 'md:mr-2 mr-0' } %>
   </div>
 
   <div class="flex flex-wrap">
     <div class="lg:w-1/2 md:w-6/12 w-full mb-4">
-      <%= f.association :organisation, collection: Organisation.ordered, input_html: { class: 'selectize md:mr-2 mr-0' } %>
+      <%= f.association :organisation, collection: Organisation.ordered, input_html: { class: 'md:mr-2 mr-0', data: { controller: 'choices' } } %>
     </div>
 
     <div class="lg:w-1/2 md:w-6/12 w-full mb-4">
