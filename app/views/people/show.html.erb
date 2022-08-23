@@ -7,9 +7,9 @@
   <section class="bg-white rounded shadow mb-6">
 
     <div class="px-5 pt-4 pb-3 border-b border-gray-300">
-      <h4 class="text-lg text-blue-800 leading-tight mb-3">
+      <h2 class="font-semibold text-xl text-blue-800 leading-tight mb-3">
         Contacts
-      </h4>
+      </h2>
 
       <div class="flex justify-between gap-5">
         <p class="w-6/12 text-blue-800 leading-tight">Email</p>
@@ -94,11 +94,11 @@
   <section class="bg-white rounded shadow mb-6">
     <div class="px-5 pt-4 pb-3 border-b border-gray-300">
       <h2 class="font-semibold text-xl text-blue-800 leading-tight">
-        Projects I'm part of
+        Projects
       </h2>
     </div>
     <div class="mt-5 ml-5">
-      <%= link_to 'Planning & Commited', person_path(@person), class: "link #{'font-bold no-underline' unless params[:q]}" %>
+      <%= link_to 'Scoping & Commited', person_path(@person), class: "link #{'font-bold no-underline' unless params[:q]}" %>
       &middot;
       <%= link_to 'Complete', person_path(@person, 'q[status_eq]' => Project.statuses[:complete]), class: "link #{params_active_class(params, 'status_eq', 2)}" %>
       &middot;

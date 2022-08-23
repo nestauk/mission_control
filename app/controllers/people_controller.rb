@@ -11,13 +11,13 @@ class PeopleController < ApplicationController
       @projects = @person.projects
         .select("memberships.role AS membership_role", "projects.*")
         .ransack(params[:q]).result(distinct: true)
-      @groups = @projects.pluck("memberships.role").map do |role|
+      @groups = @projects.distinct.pluck("memberships.role").map do |role|
         { id: Membership.roles[role], content: role.humanize }
       end.to_json
     else
-      @projects = @person.projects.where(status: [:planning, :committed])
+      @projects = @person.projects.where(status: [:scoping, :committed])
         .select("memberships.role AS membership_role", "projects.*")
-      @groups = @projects.pluck("memberships.role").map do |role|
+      @groups = @projects.distinct.pluck("memberships.role").map do |role|
         { id: Membership.roles[role], content: role.humanize }
       end.to_json
     end

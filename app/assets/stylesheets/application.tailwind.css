@@ -296,13 +296,13 @@ body {
 }
 
 /* TODO: refactor to use tailwind @apply - avoid css purge by ensuring class names are explicit in source files */
-.vis-item.planning_phase {
+.vis-item.scoping_phase {
   color: #eab308; /* bg-yellow-500 */
   background-color: #fef9c3; /* bg-yellow-100 */
   border-color: #eab308; /* bg-yellow-500 */
   border-style: dashed !important;
 }
-.vis-item.planning {
+.vis-item.scoping {
   background-color: #e9d5ff; /* bg-purple-200 */
   border-color: #a855f7; /* bg-purple-500 */
 }

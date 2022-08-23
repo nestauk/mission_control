@@ -11,7 +11,7 @@
     <%= f.input :status, as: :radio_buttons, collection: Project.statuses.keys, label_method: :humanize, item_wrapper_class: 'inline-block mr-6' %>
   </div>
 
-  <%= f.input :planning_start_date, html5: true, placeholder: 'dd mmm yyyy' %>
+  <%= f.input :scoping_start_date, html5: true, placeholder: 'dd mmm yyyy' %>
   <%#= TODO: flex wrap %>
   <div class="md:flex justify-between mb-4 ">
     <div class="w-full md:mr-2 md:mb-0 mb-4">

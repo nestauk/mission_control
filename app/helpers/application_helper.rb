@@ -33,6 +33,32 @@ module ApplicationHelper
     "#{to_var(polymorph)}s/subnav"
   end
 
+  def status_text_color(status)
+    case status
+    when "scoping"
+      "text-purple-700"
+    when "committed"
+      "text-blue-700"
+    when "complete"
+      "text-emerald-700"
+    when "not_pursued"
+      "text-stone-700"
+    end
+  end
+
+  def status_bg_color(status)
+    case status
+    when "scoping"
+      "bg-purple-700"
+    when "committed"
+      "bg-blue-700"
+    when "complete"
+      "bg-emerald-700"
+    when "not_pursued"
+      "bg-stone-700"
+    end
+  end
+
   def with_default(value, text: 'Not provided', check: ommitted = true)
     to_check = ommitted ? value.blank? : check.blank?
     to_check ? tag.span(text, class: 'italic text-gray-600') : value

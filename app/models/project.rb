@@ -19,7 +19,7 @@ class Project < ApplicationRecord
   has_many :sponsors, -> { where('memberships.role': Membership.roles[:sponsor]) },
            through: :memberships, source: :contact
 
-  enum status: { planning: 0, committed: 1, complete: 2, not_pursued: 3 }, _prefix: :status
+  enum status: { scoping: 0, committed: 1, complete: 2, not_pursued: 3 }, _prefix: :status
 
   has_rich_text :context
   has_rich_text :expectations

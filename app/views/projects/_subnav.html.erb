@@ -2,7 +2,7 @@
   <section class="outer-container py-4 text-white">
     <div class="flex justify-between mb-2">
       <div class="mr-4">
-        <p class="inline-flex text-white text-xs font-semibold tracking-widest uppercase bg-indigo-900 rounded px-2 py-1 mb-1"><%= @project.status.humanize %></p>
+        <p class="inline-flex text-white text-xs font-semibold tracking-widest uppercase <%= status_bg_color(@project.status) %> rounded px-2 py-1 mb-2"><%= @project.status.humanize %></p>
         <h1 class="text-white text-xl font-semibold"><%= @project.title %></h1>
         <p><%= @project.objective %></p>
       </div>

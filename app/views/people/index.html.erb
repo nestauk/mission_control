@@ -37,7 +37,7 @@
           <%= f.search_field :contacts_email_cont, class: 'input string mb-4' %>
 
           <%= f.label :contacts_organisation_id_in, 'Organisations', class: 'label' %>
-          <%= f.collection_select :contacts_organisation_id_in, Organisation.ordered, :id, :name, { include_blank: true }, { multiple: true, class: 'input selectize mb-4' } %>
+          <%= f.collection_select :contacts_organisation_id_in, Organisation.ordered, :id, :name, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
 
           <%= f.button 'Filter', type: 'submit', class: "btn text-white bg-blue-800" %>
           <%= link_to 'Reset', people_path, class: 'ml-1 btn bg-blue-200' %>
