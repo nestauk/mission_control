@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "actiontext.css";
+
 @layer components {
   .my_bg {
     @apply text-green-700;
@@ -419,4 +421,3 @@ body {
     display: block;
   }
 }
-@import "actiontext.css";
