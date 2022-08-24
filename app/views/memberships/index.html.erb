@@ -50,7 +50,7 @@
               <%= with_default(membership.description) %>
             </div>
             <div class="w-3/12 mr-4">
-              <%= with_default(membership.avg_weekly_time_percentage) %>%
+              <%= with_default(membership.avg_time_per_week) %>%
             </div>
             <div class="w-1/12">
               <%= link_to 'Edit', edit_memberable_membership_path(@memberable, membership), class: 'link' %>

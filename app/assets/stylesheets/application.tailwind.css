@@ -331,6 +331,10 @@ body {
 .vis-major {
   color: #292524; /* bg-stone-800 */
 }
+.vis-minor {
+  font-size: 0.875rem; /* 14px */
+  line-height: 1.25rem; /* 20px */
+}
 
 .vis-item a {
   text-decoration: underline;

@@ -42,7 +42,7 @@ class MembershipsController < ApplicationController
 
   def form_params
     params.require(:membership).permit(
-      :contact_id, :role, :description, :avg_weekly_time_percentage
+      :contact_id, :role, :description, :avg_time_per_week
     )
   end
 

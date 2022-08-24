@@ -7,6 +7,17 @@ class PeopleController < ApplicationController
   end
 
   def show
+    @capacity = ActiveRecord::Base.connection.execute(
+      "SELECT DATE_PART('week', p.week) AS week, sum(m.avg_time_per_week)
+      FROM (
+          SELECT * FROM projects, generate_series(start_date, end_date, '1 week') AS week
+      ) AS p
+      JOIN memberships AS m ON m.memberable_id=p.id AND memberable_type='Project'
+      WHERE m.memberable_id IN (#{@person.project_ids.join(',')})
+      GROUP BY p.week
+      ORDER BY p.week"
+    ).to_json
+
     if params[:q]
       @projects = @person.projects
         .select("memberships.role AS membership_role", "projects.*")

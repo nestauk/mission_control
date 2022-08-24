@@ -24,7 +24,7 @@ en:
         unit: "(Optional) Unit"
       membership:
         description: "(Optional) Role notes"
-        avg_weekly_time_percentage: "(Optional) Estimated average weekly % of time in this role"
+        avg_time_per_week: "(Optional) On average how much time per week is the person estimated to commit?"
       project:
         context: "Background"
         expectations: "Boundaries & expectations"

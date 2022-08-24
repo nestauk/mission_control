@@ -4,12 +4,14 @@ import { DataSet } from "https://ga.jspm.io/npm:vis-data@7.1.4/peer/umd/vis-data
 
 export default class extends Controller {
   static values = {
+    capacity: Array,
     dataUrl: String,
     groups: Array,
   };
 
   connect() {
     this.csrfToken = document.querySelector("[name='csrf-token']").content;
+    let capacityValues = this.capacityValue;
 
     const options = {
       orientation: "top",
@@ -24,6 +26,20 @@ export default class extends Controller {
       groupTemplate: function (data, element) {
         element.classList.add("vis-group-custom");
         return data.content;
+      },
+      showWeekScale: true,
+      format: {
+        minorLabels: function (date, scale, step) {
+          let days = capacityValues.find(function (i) {
+            return i["week"] === Number(date.format("W"));
+          });
+
+          if (scale === "week" && days) {
+            return `(${days.sum || 0} days) w/o ${date.format("D MMM")}`;
+          } else {
+            return date.format("Do MMM");
+          }
+        },
       },
     };
 
