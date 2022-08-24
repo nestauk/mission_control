@@ -1,0 +1,15 @@
+<% content_for :title, "New date - #{@project.title}" %>
+
+<div class="outer-container md:w-4/5 my-5">
+  <div class="mb-5">
+    <%= link_to '‹ Back', project_path(@project), class: 'link' %>
+  </div>
+
+  <section class="p-5 bg-white rounded-lg shadow mb-6">
+    <h1 class="font-semibold text-xl text-blue-800 leading-tight">
+      New key date
+    </h1>
+    <hr class="mt-2 mb-6 border-blue-800-10">
+    <%= render 'form', model: @date, url: project_key_dates_path(@project) %>
+  </section>
+</div>

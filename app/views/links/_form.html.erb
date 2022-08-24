@@ -22,7 +22,7 @@
         <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-blue-800 text-white' %>
       <% end %>
 
-      <%= link_to 'Cancel', linkable_links_path(@linkable), class: 'link ml-6' %>
+      <%= link_to 'Cancel', linkable_path(@linkable), class: 'link ml-6' %>
     </div>
 
     <% if ['edit', 'update'].include?(action_name) %>

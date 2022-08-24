@@ -49,8 +49,39 @@
     <%= f.association :tags, collection: Tag.all, input_html: { data: { controller: "choices" } } %>
   </div>
 
+  <h2 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Impact</h2>
+
   <div class="mb-4">
-    <%= f.input :estimated_cost %>
+    <%= f.input :impact_statement, as: :text %>
+  </div>
+
+  <div class="md:flex gap-5">
+    <div class="md:w-1/2 w-full mb-4 ">
+      <%= f.input :impact_type, collection: Project.impact_types.keys, label_method: ->(i) { i.humanize } %>
+    </div>
+
+    <div class="md:w-1/2 w-full mb-4 ">
+      <%= f.input :estimated_cost %>
+    </div>
+  </div>
+
+  <h2 class="font-semibold text-lg text-blue-800 leading-tight mb-2">Additional information</h2>
+
+  <div class="md:flex gap-5">
+    <div class="md:w-1/3 w-full mb-4">
+      <%= f.input :phase, collection: Project.phases, label_method: ->(i) { "#{i[1]}. #{i[0].humanize}" }, value_method: :first %>
+    </div>
+
+    <div class="md:w-1/3 w-full mb-4">
+      <%= f.input :ambition, collection: Project.ambitions.keys, label_method: ->(i) { i.humanize } %>
+    </div>
+
+    <div class="md:w-1/3 w-full mb-4">
+      <%= f.input :geography, collection: Project.geographies.keys, label_method: ->(i) { i.humanize } %>
+    </div>
+  </div>
+
+  <div class="mb-4">
   </div>
 
   <% if ['new', 'create'].include?(action_name) %>

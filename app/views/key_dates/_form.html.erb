@@ -1,0 +1,27 @@
+<%= simple_form_for model, url: url do |f| %>
+  <div class="mb-4">
+    <div class="label">Project</div>
+    <%= model.project.title %>
+  </div>
+
+  <div class="flex gap-5 mb-4">
+    <%= f.input :date, html5: true, placeholder: 'dd mmm yyyy' %>
+    <div class="w-full">
+      <%= f.input :title %>
+    </div>
+  </div>
+
+  <%- if ['new', 'create'].include?(action_name) %>
+    <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-blue-800 text-white' %>
+  <% end %>
+
+  <%- if ['edit', 'update'].include?(action_name) %>
+    <%= f.button :submit, 'Update', data: { disable_with: 'Updating...' }, class: 'btn bg-blue-800 text-white' %>
+  <% end %>
+
+  <%= link_to 'Cancel', project_path(@project), class: 'link ml-6' %>
+<% end %>
+
+<% if ['edit', 'update'].include?(action_name) %>
+  <%= button_to 'Delete', project_key_date_path(@project, model), method: :delete, class: 'link relative float-right bottom-7', form: { data: { turbo_confirm: 'Are you sure?' } } %>
+<% end %>

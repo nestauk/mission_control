@@ -51,7 +51,8 @@ class ProjectsController < ApplicationController
   def form_params
     params.require(:project).permit(
       :context, :end_date, :expectations, :objective, :start_date, :status,
-      :title, :estimated_cost, :scoping_start_date, goal_ids: [], tag_ids: []
+      :title, :estimated_cost, :scoping_start_date, :ambition, :phase,
+      :geography, :impact_statement, :impact_type, goal_ids: [], tag_ids: []
     )
   end
 

@@ -25,6 +25,7 @@ Rails.application.routes.draw do
 
   resources :projects, concerns: %i[impactable linkable memberable targetable] do
     get :timeline, on: :collection
+    resources :key_dates
   end
 
   # get "timeline", to: "projects#timeline", as: "timeline_projects"

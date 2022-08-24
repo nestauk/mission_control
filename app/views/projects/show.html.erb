@@ -147,11 +147,6 @@
     </section>
 
     <section class="py-5 border-b-2 border-gray-300">
-      <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Start date - End date</h2>
-      <%= @project.start_date %> - <%= with_default(@project.end_date) %>
-    </section>
-
-    <section class="py-5 border-b-2 border-gray-300">
       <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Contributing to goals</h2>
       <%- if @project.goals.any? %>
         <ul>
@@ -161,6 +156,31 @@
         </ul>
       <% else %>
         <%= with_default(nil, text: "None") %>
+      <% end %>
+    </section>
+
+    <section class="py-5 border-b-2 border-gray-300">
+      <div class="mb-2 flex justify-between">
+        <h2 class="text-lg font-semibold text-blue-800 leading-tight">Key dates</h2>
+        <%= link_to "+ Add", new_project_key_date_path(@project), class: 'px-1 rounded font-semibold text-blue-800 bg-blue-200' %>
+      </div>
+
+      <div class="mb-2">
+        <strong>Scoping start:</strong> <%= with_default(@project.scoping_start_date&.strftime("%e %b %Y")) %>
+      </div>
+
+      <div class="mb-2">
+        <strong>Start date:</strong> <%= @project.start_date.strftime("%e %b %Y") %>
+      </div>
+
+      <div class="mb-2">
+        <strong>End date:</strong> <%= with_default(@project.end_date&.strftime("%e %b %Y")) %>
+      </div>
+
+      <%- @project.key_dates.order(:date).each do |d| %>
+        <div class="mb-2">
+          <strong><%= d.title %>:</strong> <%= d.date.strftime("%e %b %Y") %> (<%= link_to 'Edit', edit_project_key_date_path(@project, d), class: 'link' %>)
+        </div>
       <% end %>
     </section>
 
@@ -186,6 +206,16 @@
 
     <section class="py-5 border-b-2 border-gray-300">
       <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Impact rating</h2>
+
+      <div class="mb-2">
+        <strong>Impact type:</strong> <%= with_default(@project.impact_type&.humanize) %>
+      </div>
+
+      <div class="mb-2">
+        <p class="mb-1"><strong>Impact statement</strong></p>
+        <p><%= with_default(@project.impact_statement) %></p>
+      </div>
+
       <%- if @project.impact_rating %>
         <p class="mb-2">
           <span class="text-lg font-semibold <%= score_color(@project.impact_rating.score) %>"><%= @project.impact_rating.score %></span>
@@ -197,6 +227,22 @@
       <% else %>
         <%= link_to "Add impact rating", new_project_impact_rating_path(@project), class: 'btn text-blue-800 bg-blue-200' %>
       <% end %>
+    </section>
+
+    <section class="py-5 border-b-2 border-gray-300">
+      <h2 class="text-lg font-semibold text-blue-800 mb-2 leading-tight">Additional information</h2>
+
+      <div class="mb-2">
+        <strong>Phase:</strong> <%= with_default(@project.phase&.humanize) %>
+      </div>
+
+      <div class="mb-2">
+        <strong>Ambition:</strong> <%= with_default(@project.ambition&.humanize) %>
+      </div>
+
+      <div class="mb-2">
+        <strong>Geography:</strong> <%= with_default(@project.geography&.humanize) %>
+      </div>
     </section>
   </aside>
 

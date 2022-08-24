@@ -38,6 +38,7 @@ en:
         context: "Briefly describe why the work is being done - i.e. it's strategic relevance - and any relevant context including prior projects and learning, linking out to content as required."
         expectations: "Make explict any boundaries or expectations the team needs to operate within. These can be implied tasks, a set timeline or budget, certain methodologies to use and more."
         goals: "Select the goals which this project contributes to."
+        impact_statement: "Please use an IF ... THEN ... format."
     # Examples
     # labels:
     #   defaults:
