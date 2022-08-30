@@ -99,6 +99,8 @@
           Goals
         </span>
       <% end %>
+
+      <%= button_to 'Sign out', destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'block w-full mt-4 hover:underline text-gray-400' %>
     </nav>
 
     <main id="main" class="flex flex-col h-screen">
@@ -133,14 +135,6 @@
 
         </header>
 
-        <% if current_user%>
-          <div class="bg-blue-100">
-            <div class="outer-container py-2 text-sm text-blue-800">
-              You are logged in as <%= "#{current_user.name} (#{current_user.role.name})" %>.
-              <%= link_to "Return to #{true_user.name}", stop_impersonating_users_path, method: :post, class: 'link' %>.
-            </div>
-          </div>
-        <% end %>
         <%- if notice %>
           <div class="bg-blue-100">
             <div class="outer-container py-2 text-sm text-blue-800">

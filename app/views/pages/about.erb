@@ -1,0 +1,13 @@
+<h1 class="text-2xl font-semibold mb-4"><%= link_to 'Mission Control', root_path %></h1>
+
+<p class="mb-4 text-lg">A database of our goals and projects, and the people working on them.</p>
+
+<p class="mb-4">First time here? Read the <a href="#todo" class="link">guide to getting started</a>.</p>
+
+<p>
+  <%- if user_signed_in? %>
+    <%= button_to 'Sign out', destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'link text-blue-800' %>
+  <% else %>
+    <%= button_to 'Sign in with Okta', user_okta_omniauth_authorize_path, data: { turbo: false }, class: 'btn bg-blue-800 text-white' %>
+  <% end %>
+</p>

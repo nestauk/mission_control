@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= "#{yield(:title)} | ".html_safe if content_for?(:title) %>Mission Control</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+  <body>
+    <main class="max-w-screen-md mx-auto my-8 px-5">
+      <%- if notice %>
+        <div class="bg-blue-100">
+          <div class="outer-container py-2 text-sm text-blue-800 mb-4">
+            <%= notice.html_safe %>
+          </div>
+        </div>
+      <% end %>
+      <%- if alert %>
+        <div class="bg-red-100">
+          <div class="outer-container py-2 text-sm text-red-800 mb-4">
+            <%= alert.html_safe %>
+          </div>
+        </div>
+      <% end %>
+
+      <%= yield %>
+    </main>
+  </body>
+</html>

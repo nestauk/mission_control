@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
 
-  root "projects#index"
+  authenticated :user do
+    root "projects#index", as: :authenticated_root
+  end
+
+  root "pages#about"
+  get "/about", to: "pages#about"
 
   concern :impactable do
     resources :impact_ratings

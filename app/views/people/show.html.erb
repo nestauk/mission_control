@@ -41,56 +41,6 @@
 
   </section>
 
-  <% if @person.users.any? && (can? :create, User) %>
-    <section class="bg-white rounded shadow mb-6">
-
-      <div class="px-5 pt-4 pb-3 border-b border-gray-300">
-        <h4 class="text-lg text-blue-800 leading-tight mb-3">
-          Users
-        </h4>
-
-        <div class="flex justify-between">
-          <p class="w-4/12 mr-4 text-blue-800 mb-2 leading-tight">User details</p>
-          <p class="w-3/12 mr-4 text-blue-800 mb-2 leading-tight">Role</p>
-          <p class="w-3/12 mr-4 text-blue-800 mb-2 leading-tight">Status</p>
-          <p class="w-2/12 text-blue-800 mb-2 leading-tight"></p>
-        </div>
-      </div>
-
-      <%- @person.users.each do |u| %>
-        <div class="flex justify-between border-b border-gray-300 px-5 py-3 text-sm">
-          <div class="w-4/12 truncate mr-4">
-            <%= u.name %>
-            <div class="text-gray-700 text-sm">
-              <p><%= u.email %></p>
-            </div>
-          </div >
-
-          <div class="w-3/12 truncate text-sm mr-4">
-            <%= u&.role&.name %>
-          </div>
-
-          <div class="w-3/12 truncate text-sm mr-4">
-            <% if u.last_seen_at %>
-              <div class="text-xs">Last seen</div>
-              <%= u.last_seen_at.strftime("%d %b %y") %>
-            <% else %>
-              <% if u.invitation_sent_at %>
-                <div class="text-xs">Invited on</div>
-                <%= u.invitation_sent_at.strftime("%d %b %y") %>
-              <% end %>
-            <% end %>
-          </div>
-
-          <div class="w-2/12 text-sm">
-            <%= link_to 'Edit', edit_user_path(u), class: 'link' %>
-          </div>
-        </div>
-      <% end %>
-
-    </section>
-  <% end %>
-
   <section class="bg-white rounded shadow mb-6">
     <div class="px-5 pt-4 pb-3 border-b border-gray-300">
       <h2 class="font-semibold text-xl text-blue-800 leading-tight">
