@@ -5,7 +5,7 @@ class Organisation < ApplicationRecord
   has_many :memberships, through: :contacts
 
   validates :name, presence: true
-  # validates :website, url: { allow_blank: true }
+  validates :website, url: { allow_blank: true }
 
   after_save :set_slug
 

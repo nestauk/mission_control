@@ -1,2 +1,5 @@
 organisation_1:
   name: value
+
+organisation_2:
+  name: Another value

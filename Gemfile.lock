@@ -272,6 +272,9 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
+    validate_url (1.0.15)
+      activemodel (>= 3.0.0)
+      public_suffix
     version_gem (1.1.0)
     warden (1.2.9)
       rack (>= 2.0.9)
@@ -320,6 +323,7 @@ DEPENDENCIES
   tailwindcss-rails
   turbo-rails
   tzinfo-data
+  validate_url (~> 1.0)
   web-console
   webdrivers
 
