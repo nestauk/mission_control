@@ -1,2 +1,4 @@
 project_1:
   title: value
+  objective: value
+  start_date: <%= Date.today %>
