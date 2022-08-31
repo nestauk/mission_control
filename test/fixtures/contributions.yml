@@ -1,0 +1,5 @@
+<% 2.times do |n| %>
+  contribution_<%= n %>:
+    goal: goal_1
+    project: project_1
+<% end %>

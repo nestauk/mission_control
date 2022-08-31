@@ -1,0 +1,15 @@
+<% 2.times do |n| %>
+  membership_goal_team_lead_<%= n %>:
+    memberable: goal_1 (Goal)
+    contact: contact_1
+    role: team_lead
+    role_type: team
+<% end %>
+
+<% 2.times do |n| %>
+  membership_goal_sponsor_<%= n %>:
+    memberable: goal_1 (Goal)
+    contact: contact_1
+    role: sponsor
+    role_type: supporters
+<% end %>

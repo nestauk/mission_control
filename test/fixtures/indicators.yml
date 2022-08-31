@@ -1,0 +1,5 @@
+<% 2.times do |n| %>
+  indicator_<%= n %>:
+    targetable: goal_1 (Goal)
+    title: value
+<% end %>
