@@ -12,11 +12,6 @@ class Membership < ApplicationRecord
   }
   enum role_type: { team: 0, collaborators: 1, supporters: 2 }
 
-  ROLEZ = [
-    OpenStruct.new(value: 101, title: 'Team lead', desc: 'asd'),
-    { value: 102, title: 'Team member', desc: 'asf' }
-  ]
-
   validates :role, presence: true
 
   before_validation :set_role_type
