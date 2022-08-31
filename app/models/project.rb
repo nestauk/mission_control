@@ -31,4 +31,6 @@ class Project < ApplicationRecord
   has_rich_text :expectations
 
   validates :title, :objective, :status, :start_date, presence: true
+
+  before_validation { strip_whitespace(%i[title]) }
 end
