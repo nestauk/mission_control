@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   belongs_to :contact
 
+  validates :first_name, :last_name, presence: true
+
   def self.from_omniauth(auth)
     user = User.find_or_initialize_by(provider: auth.provider, uid: auth.uid)
 
