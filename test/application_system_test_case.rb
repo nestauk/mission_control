@@ -20,4 +20,10 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
     click_button 'Sign in with Okta'
     assert_text 'Successfully authenticated from Okta account'
   end
+
+  def assert_requires_sign_in(path)
+    visit path
+    assert_equal root_path, current_path
+    assert_text 'Please sign in'
+  end
 end

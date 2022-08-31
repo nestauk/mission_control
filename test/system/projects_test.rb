@@ -3,11 +3,7 @@ require 'application_system_test_case'
 class ProjectsTest < ApplicationSystemTestCase
   setup { @project = projects(:project_1) }
 
-  test 'projects#index requires sign in' do
-    visit projects_path
-    assert_equal root_path, current_path
-    assert_text 'Please sign in'
-  end
+  test('projects#index requires sign in') { assert_requires_sign_in(projects_path) }
 
   test 'projects#index' do
     sign_in
@@ -34,6 +30,7 @@ class ProjectsTest < ApplicationSystemTestCase
     fill_in :project_title, with: 'Updated title'
     click_button 'Update'
     assert_text 'Project updated'
+    assert_text 'Updated title'
     assert_equal project_path(@project), current_path
   end
 
