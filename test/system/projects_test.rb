@@ -1,19 +1,23 @@
 require 'application_system_test_case'
 
 class ProjectsTest < ApplicationSystemTestCase
-  setup { @project = projects(:project_1) }
+  setup do
+    @project = projects(:project_1)
+    sign_in
+  end
 
-  test('projects#index requires sign in') { assert_requires_sign_in(projects_path) }
+  test 'projects#index requires sign in' do
+    click_button 'Sign out'
+    assert_requires_sign_in(projects_path)
+  end
 
   test 'projects#index' do
-    sign_in
     assert_equal root_path, current_path
     assert_text 'Projects'
     assert_link @project.title
   end
 
   test 'projects#create' do
-    sign_in
     click_link 'New project'
     fill_in :project_title, with: 'Title'
     fill_in :project_objective, with: 'Objective'
@@ -24,7 +28,6 @@ class ProjectsTest < ApplicationSystemTestCase
   end
 
   test 'projects#update' do
-    sign_in
     click_link @project.title
     click_link 'Edit', href: edit_project_path(@project)
     fill_in :project_title, with: 'Updated title'
@@ -35,7 +38,6 @@ class ProjectsTest < ApplicationSystemTestCase
   end
 
   test 'projects#destroy' do
-    sign_in
     click_link @project.title
     click_link 'Edit', href: edit_project_path(@project)
     page.accept_confirm { click_button 'Delete' }
