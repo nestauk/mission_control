@@ -13,6 +13,8 @@ class GoalTest < ActiveSupport::TestCase
 
   test('has many indicators') { assert_equal(2, @subject.indicators.size) }
 
+  test('has many links') { assert_equal(2, @subject.links.size) }
+
   test('has many memberships') { assert_equal(4, @subject.memberships.size) }
 
   test('has many members') { assert_equal(4, @subject.members.size) }
