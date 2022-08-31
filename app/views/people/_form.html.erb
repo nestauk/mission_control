@@ -18,7 +18,7 @@
     <p class="text-sm text-gray-700">A person can have many contacts</p>
   </div>
 
-  <section data-controller="nested-fields">>
+  <section data-controller="nested-fields">
     <%= f.simple_fields_for :contacts, f.object.contacts.sort_by{ |c| c.status } do |i| %>
       <%= render 'contact_fields', f: i %>
     <% end %>

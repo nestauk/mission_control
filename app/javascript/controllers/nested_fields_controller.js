@@ -37,8 +37,10 @@ export default class extends Controller {
 
     newFields ? link.insertAdjacentHTML("beforebegin", newFields) : null;
 
-    for (let node of document.querySelectorAll("select.selectize")) {
-      if (node.selectize === undefined) $(node).selectize();
+    for (let node of document.querySelectorAll(".remove_fields")) {
+      node.addEventListener("click", (e) => {
+        this.handleRemoveClick(node, e);
+      });
     }
   }
 
