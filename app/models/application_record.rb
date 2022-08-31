@@ -3,10 +3,6 @@ class ApplicationRecord < ActiveRecord::Base
 
   private
 
-  def strip_whitespace(attrs)
-    attrs.each { |attr| self[attr] = self[attr].try(:strip) }
-  end
-
   def downcase(attrs)
     attrs.each { |attr| self[attr] = self[attr].try(:downcase) }
   end
@@ -17,5 +13,9 @@ class ApplicationRecord < ActiveRecord::Base
     return slug unless send(:class).find_by(slug: slug)
 
     generate_slug(candidate, n: n + 1)
+  end
+
+  def strip_whitespace(attrs)
+    attrs.each { |attr| self[attr] = self[attr].try(:strip) }
   end
 end

@@ -26,4 +26,6 @@ class GoalTest < ActiveSupport::TestCase
   test('has many sponsors') { assert_equal(2, @subject.sponsors.size) }
 
   test('title required') { assert_present(:title) }
+
+  test('title strip_whitespace') { assert_strip_whitespace(:title) }
 end

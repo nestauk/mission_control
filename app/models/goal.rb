@@ -24,4 +24,6 @@ class Goal < ApplicationRecord
   has_rich_text :context
 
   validates :title, presence: true
+
+  before_validation { strip_whitespace(%i[title]) }
 end

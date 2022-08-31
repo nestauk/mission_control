@@ -11,6 +11,7 @@ class Person < ApplicationRecord
 
   validates :first_name, :last_name, presence: true
 
+  before_validation { strip_whitespace(%i[first_name last_name]) }
   after_save :set_slug
 
   def name

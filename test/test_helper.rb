@@ -18,4 +18,16 @@ class ActiveSupport::TestCase
     subject.valid?
     assert_error(key, msg)
   end
+
+  def assert_downcase(key, subject: @subject, value: 'UPPERCASE')
+    subject.send("#{key}=", value)
+    @subject.valid?
+    assert_equal('uppercase', @subject.send(key))
+  end
+
+  def assert_strip_whitespace(key, subject: @subject, value: ' Whitespace ')
+    subject.send("#{key}=", value)
+    @subject.valid?
+    assert_equal('Whitespace', @subject.send(key))
+  end
 end

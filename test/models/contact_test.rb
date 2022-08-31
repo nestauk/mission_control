@@ -38,6 +38,8 @@ class ContactTest < ActiveSupport::TestCase
     assert_error(:email, 'is invalid')
   end
 
+  test('email downcase') { assert_downcase(:email) }
+
   test 'sync_name' do
     @subject.person.update(first_name: 'updated', last_name: 'updated')
     assert_equal('value', @subject.first_name)

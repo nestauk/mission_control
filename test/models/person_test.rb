@@ -23,6 +23,10 @@ class PersonTest < ActiveSupport::TestCase
     assert_equal('value value', @subject.name)
   end
 
+  test('first_name strip_whitespace') { assert_strip_whitespace(:first_name) }
+
+  test('last_name strip_whitespace') { assert_strip_whitespace(:last_name) }
+
   test 'set_slug' do
     @subject.save!
     assert_equal('value-value', @subject.slug)

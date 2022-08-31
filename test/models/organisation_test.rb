@@ -19,6 +19,8 @@ class OrganisationTest < ActiveSupport::TestCase
     assert_error(:website, 'is not a valid URL')
   end
 
+  test('name strip_whitespace') { assert_strip_whitespace(:name) }
+
   test 'set_slug' do
     assert_nil(@subject.slug)
     @subject.save

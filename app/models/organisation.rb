@@ -7,6 +7,7 @@ class Organisation < ApplicationRecord
   validates :name, presence: true
   validates :website, url: { allow_blank: true }
 
+  before_validation { strip_whitespace(%i[name]) }
   after_save :set_slug
 
   private
