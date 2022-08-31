@@ -1,7 +1,7 @@
 <% 2.times do |n| %>
-  user_<%= n %>:
+  user_<%= n + 1%>:
     contact: contact_1
-    email: email_<%= n %>@example.com
+    email: email_<%= n + 1 %>@example.com
     first_name: value
     last_name: value
 <% end %>

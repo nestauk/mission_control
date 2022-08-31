@@ -1,5 +1,5 @@
 <% 2.times do |n| %>
-  tagging_<%= n %>:
+  tagging_<%= n + 1 %>:
     tag: tag_1
     taggable: goal_1 (Goal)
 <% end %>

@@ -4,9 +4,6 @@ class Contact < ApplicationRecord
 
   has_one :user
 
-  # has_many :authorships
-  # has_many :progress_updates, through: :authorships, source: :authorable, source_type: 'ProgressUpdate'
-
   has_many :memberships, dependent: :destroy
   has_many :goals, through: :memberships, source: :memberable, source_type: 'Goal'
   has_many :projects, through: :memberships, source: :memberable, source_type: 'Project'

@@ -3,8 +3,6 @@ require "test_helper"
 class GoalTest < ActiveSupport::TestCase
   setup { @subject = goals(:goal_1) }
 
-  test('title required') { assert_present(:title) }
-
   test('has many contributions') { assert_equal(2, @subject.contributions.size) }
 
   test('has many projects') { assert_equal(2, @subject.projects.size) }
@@ -24,4 +22,6 @@ class GoalTest < ActiveSupport::TestCase
   test('has many team') { assert_equal(2, @subject.team.size) }
 
   test('has many sponsors') { assert_equal(2, @subject.sponsors.size) }
+
+  test('title required') { assert_present(:title) }
 end

@@ -1,5 +1,5 @@
 <% 2.times do |n| %>
-  membership_goal_team_lead_<%= n %>:
+  membership_goal_team_lead_<%= n + 1 %>:
     memberable: goal_1 (Goal)
     contact: contact_1
     role: team_lead
@@ -7,7 +7,7 @@
 <% end %>
 
 <% 2.times do |n| %>
-  membership_goal_sponsor_<%= n %>:
+  membership_goal_sponsor_<%= n + 1 %>:
     memberable: goal_1 (Goal)
     contact: contact_1
     role: sponsor
@@ -15,7 +15,7 @@
 <% end %>
 
 <% 2.times do |n| %>
-  membership_project_team_lead_<%= n %>:
+  membership_project_team_lead_<%= n + 1%>:
     memberable: project_1 (Project)
     contact: contact_1
     role: team_lead
@@ -23,7 +23,7 @@
 <% end %>
 
 <% 2.times do |n| %>
-  membership_project_sponsor_<%= n %>:
+  membership_project_sponsor_<%= n + 1 %>:
     memberable: project_1 (Project)
     contact: contact_1
     role: sponsor
