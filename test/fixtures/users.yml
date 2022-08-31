@@ -1,7 +1,7 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-# This model initially had no columns defined. If you add columns to the
-# model remove the "{}" from the fixture names and add the columns immediately
-# below each fixture, per the syntax in the comments below
-#
-one: {}
+<% 2.times do |n| %>
+  user_<%= n %>:
+    contact: contact_1
+    email: email_<%= n %>@example.com
+    first_name: value
+    last_name: value
+<% end %>

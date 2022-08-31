@@ -13,3 +13,19 @@
     role: sponsor
     role_type: supporters
 <% end %>
+
+<% 2.times do |n| %>
+  membership_project_team_lead_<%= n %>:
+    memberable: project_1 (Project)
+    contact: contact_1
+    role: team_lead
+    role_type: team
+<% end %>
+
+<% 2.times do |n| %>
+  membership_project_sponsor_<%= n %>:
+    memberable: project_1 (Project)
+    contact: contact_1
+    role: sponsor
+    role_type: supporters
+<% end %>

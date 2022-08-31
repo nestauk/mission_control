@@ -17,10 +17,6 @@ class Person < ApplicationRecord
     "#{first_name} #{last_name}"
   end
 
-  def primary_contact
-    contacts.min_by{ |c| c.status }
-  end
-
   private
 
   def set_slug

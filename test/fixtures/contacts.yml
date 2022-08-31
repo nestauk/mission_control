@@ -1,6 +1,9 @@
-contact_1:
-  person: person_1 (Person)
-  first_name: value
-  last_name: value
-  email: email@example.com
-  status: current
+<% 2.times do |n| %>
+  contact_<%= n %>:
+    person: person_1
+    organisation: organisation_1
+    first_name: value
+    last_name: value
+    email: email@example.com
+    status: current
+<% end %>
