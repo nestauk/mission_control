@@ -23,7 +23,7 @@ class ApplicationSystemTestCase < ActionDispatch::SystemTestCase
 
   def assert_requires_sign_in(path)
     visit path
-    assert_equal root_path, current_path
+    assert_current_path root_path
     assert_text 'Please sign in'
   end
 end

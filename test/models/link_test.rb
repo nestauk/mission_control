@@ -14,6 +14,8 @@ class LinkTest < ActiveSupport::TestCase
     assert_present(:linkable, msg: 'must exist')
   end
 
+  test('url required') { assert_present(:url) }
+
   test('name required') { assert_present(:name) }
 
   test 'url' do

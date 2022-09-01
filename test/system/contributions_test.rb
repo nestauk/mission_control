@@ -6,7 +6,6 @@ class ContributionsTest < ApplicationSystemTestCase
     @goal.projects = []
     @project = projects(:project_1)
     sign_in
-    click_link 'Goals'
   end
 
   test 'goal can have projects' do
@@ -17,7 +16,7 @@ class ContributionsTest < ApplicationSystemTestCase
     end
     click_button 'Update'
     assert_text 'Goal updated'
-    assert_equal goal_path(@goal), current_path
+    assert_current_path goal_path(@goal)
     assert_link @project.title, href: project_path(@project)
   end
 
@@ -29,7 +28,7 @@ class ContributionsTest < ApplicationSystemTestCase
     end
     click_button 'Update'
     assert_text 'Project updated'
-    assert_equal project_path(@project), current_path
+    assert_current_path project_path(@project)
     assert_link @goal.title, href: goal_path(@goal)
   end
 end

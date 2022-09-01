@@ -24,13 +24,13 @@ class MembershipsTest < ApplicationSystemTestCase
   test 'goal memberships#index' do
     visit goal_path(@goal)
     click_link href: memberable_memberships_path(@goal)
-    assert_equal memberable_memberships_path(@goal), current_path
+    assert_current_path memberable_memberships_path(@goal)
   end
 
   test 'project memberships#index' do
     visit project_path(@project)
     click_link href: memberable_memberships_path(@project)
-    assert_equal memberable_memberships_path(@project), current_path
+    assert_current_path memberable_memberships_path(@project)
   end
 
   test 'goal memberships#create' do
@@ -41,7 +41,7 @@ class MembershipsTest < ApplicationSystemTestCase
     choose :membership_role_team_lead
     click_button 'Create'
     assert_text 'Membership created'
-    assert_equal memberable_memberships_path(@goal), current_path
+    assert_current_path memberable_memberships_path(@goal)
   end
 
   test 'project memberships#create' do
@@ -52,7 +52,7 @@ class MembershipsTest < ApplicationSystemTestCase
     choose :membership_role_team_lead
     click_button 'Create'
     assert_text 'Membership created'
-    assert_equal memberable_memberships_path(@project), current_path
+    assert_current_path memberable_memberships_path(@project)
   end
 
   test 'goal memberships#update' do
@@ -62,7 +62,7 @@ class MembershipsTest < ApplicationSystemTestCase
     click_button 'Update'
     assert_text 'Membership updated'
     assert_text 'Team member', count: 1
-    assert_equal memberable_memberships_path(@goal), current_path
+    assert_current_path memberable_memberships_path(@goal)
   end
 
   test 'project memberships#update' do
@@ -72,20 +72,20 @@ class MembershipsTest < ApplicationSystemTestCase
     click_button 'Update'
     assert_text 'Membership updated'
     assert_text 'Team member', count: 1
-    assert_equal memberable_memberships_path(@project), current_path
+    assert_current_path memberable_memberships_path(@project)
   end
 
   test 'goal membership#destroy' do
     visit edit_memberable_membership_path(@goal, @goal_membership)
     page.accept_confirm { click_button 'Remove member' }
     assert_text 'Membership deleted'
-    assert_equal memberable_memberships_path(@goal), current_path
+    assert_current_path memberable_memberships_path(@goal)
   end
 
   test 'project membership#destroy' do
     visit edit_memberable_membership_path(@project, @project_membership)
     page.accept_confirm { click_button 'Remove member' }
     assert_text 'Membership deleted'
-    assert_equal memberable_memberships_path(@project), current_path
+    assert_current_path memberable_memberships_path(@project)
   end
 end

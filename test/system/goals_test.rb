@@ -13,7 +13,7 @@ class GoalsTest < ApplicationSystemTestCase
   end
 
   test 'goals#index' do
-    assert_equal goals_path, current_path
+    assert_current_path goals_path
     assert_text 'Goals'
     assert_link @goal.title
   end
@@ -23,7 +23,7 @@ class GoalsTest < ApplicationSystemTestCase
     fill_in :goal_title, with: 'Title'
     click_button 'Create'
     assert_text 'Goal created'
-    assert_equal goal_path(Goal.last), current_path
+    assert_current_path goal_path(Goal.last)
   end
 
   test 'goals#update' do
@@ -33,7 +33,7 @@ class GoalsTest < ApplicationSystemTestCase
     click_button 'Update'
     assert_text 'Goal updated'
     assert_text 'Updated title'
-    assert_equal goal_path(@goal), current_path
+    assert_current_path goal_path(@goal)
   end
 
   test 'goals#destroy' do
@@ -41,6 +41,6 @@ class GoalsTest < ApplicationSystemTestCase
     click_link 'Edit', href: edit_goal_path(@goal)
     page.accept_confirm { click_button 'Delete' }
     assert_text 'Goal deleted'
-    assert_equal goals_path, current_path
+    assert_current_path goals_path
   end
 end

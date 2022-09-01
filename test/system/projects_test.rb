@@ -12,7 +12,7 @@ class ProjectsTest < ApplicationSystemTestCase
   end
 
   test 'projects#index' do
-    assert_equal root_path, current_path
+    assert_current_path root_path
     assert_text 'Projects'
     assert_link @project.title
   end
@@ -24,7 +24,7 @@ class ProjectsTest < ApplicationSystemTestCase
     fill_in :project_start_date, with: Date.today
     click_button 'Create'
     assert_text 'Project created'
-    assert_equal project_path(Project.last), current_path
+    assert_current_path project_path(Project.last)
   end
 
   test 'projects#update' do
@@ -34,7 +34,7 @@ class ProjectsTest < ApplicationSystemTestCase
     click_button 'Update'
     assert_text 'Project updated'
     assert_text 'Updated title'
-    assert_equal project_path(@project), current_path
+    assert_current_path project_path(@project)
   end
 
   test 'projects#destroy' do
@@ -42,6 +42,6 @@ class ProjectsTest < ApplicationSystemTestCase
     click_link 'Edit', href: edit_project_path(@project)
     page.accept_confirm { click_button 'Delete' }
     assert_text 'Project deleted'
-    assert_equal projects_path, current_path
+    assert_current_path projects_path
   end
 end

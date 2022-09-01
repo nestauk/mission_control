@@ -13,7 +13,7 @@ class PeopleTest < ApplicationSystemTestCase
   end
 
   test 'people#index' do
-    assert_equal people_path, current_path
+    assert_current_path people_path
     assert_text 'People'
     assert_link @person.name
   end
@@ -32,7 +32,7 @@ class PeopleTest < ApplicationSystemTestCase
     end
     click_button 'Create'
     assert_text 'Person created'
-    assert_equal person_path(Person.last), current_path
+    assert_current_path person_path(Person.last)
   end
 
   test 'person#update' do
@@ -42,7 +42,7 @@ class PeopleTest < ApplicationSystemTestCase
     click_button 'Update'
     assert_text 'Person updated'
     assert_text 'Updated value'
-    assert_equal person_path(@person), current_path
+    assert_current_path person_path(@person)
   end
 
   test 'person#destroy' do
@@ -50,6 +50,6 @@ class PeopleTest < ApplicationSystemTestCase
     click_link 'Edit', href: edit_person_path(@person)
     page.accept_confirm { click_button 'Delete' }
     assert_text 'Person deleted'
-    assert_equal people_path, current_path
+    assert_current_path people_path
   end
 end

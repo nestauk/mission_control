@@ -2,12 +2,12 @@
   link_goal_<%= n + 1 %>:
     linkable: goal_1 (Goal)
     url: http://example.com
-    name: value
+    name: Link <%= n + 1 %>
 <% end %>
 
 <% 2.times do |n| %>
   link_project_<%= n + 1 %>:
     linkable: project_1 (Project)
     url: http://example.com
-    name: value
+    name: Link <%= n + 1 %>
 <% end %>
