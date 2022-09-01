@@ -9,7 +9,7 @@ export default class extends Controller {
   };
 
   connect() {
-    this.csrfToken = document.querySelector("[name='csrf-token']").content;
+    this.csrfToken = document.querySelector("[name='csrf-token']")?.content;
 
     const options = {
       orientation: "top",
