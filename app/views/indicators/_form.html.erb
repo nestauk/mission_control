@@ -23,7 +23,7 @@
 
   <%- if ['new', 'create'].include?(action_name) %>
     <%= f.button :submit, 'Create', data: { disable_with: 'Creating...' }, class: 'btn bg-blue-800 text-white' %>
-    <%= link_to 'Cancel', targetable_indicators_path(@targetable), class: 'link ml-6' %>
+    <%= link_to 'Cancel', targetable_path(@targetable), class: 'link ml-6' %>
   <% end %>
 
   <%- if ['edit', 'update'].include?(action_name) %>
