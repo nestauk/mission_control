@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_08_30_104724) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_01_143131) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -84,6 +84,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_104724) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "impact_levels", force: :cascade do |t|
+    t.bigint "impact_rigour_id"
+    t.string "title", null: false
+    t.integer "rating", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["impact_rigour_id"], name: "index_impact_levels_on_impact_rigour_id"
+  end
+
   create_table "impact_ratings", force: :cascade do |t|
     t.string "impactable_type"
     t.bigint "impactable_id"
@@ -100,6 +109,22 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_104724) do
     t.index ["impactable_type", "impactable_id"], name: "index_impact_ratings_on_impactable"
   end
 
+  create_table "impact_rigours", force: :cascade do |t|
+    t.bigint "impact_type_id"
+    t.string "title", null: false
+    t.integer "rating", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["impact_type_id"], name: "index_impact_rigours_on_impact_type_id"
+  end
+
+  create_table "impact_types", force: :cascade do |t|
+    t.string "title", null: false
+    t.integer "category"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "indicators", force: :cascade do |t|
     t.string "targetable_type"
     t.bigint "targetable_id"
@@ -111,6 +136,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_30_104724) do
     t.float "last_progress_update_value"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "is_impact_indicator", default: false
+    t.bigint "impact_type_id"
+    t.bigint "impact_rigour_id"
+    t.bigint "impact_level_id"
+    t.index ["impact_level_id"], name: "index_indicators_on_impact_level_id"
+    t.index ["impact_rigour_id"], name: "index_indicators_on_impact_rigour_id"
+    t.index ["impact_type_id"], name: "index_indicators_on_impact_type_id"
     t.index ["targetable_type", "targetable_id"], name: "index_indicators_on_targetable"
   end
 

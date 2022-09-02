@@ -33,11 +33,14 @@ Rails.application.routes.draw do
     resources :key_dates
   end
 
-  # get "timeline", to: "projects#timeline", as: "timeline_projects"
-
   scope "indicators/:indicator_id", as: "indicator" do
     resources :progress_updates
   end
 
   resources :people, :organisations, :tags
+
+  scope :api, as: :api do
+    get "/impact_types/:id/impact_rigours", to: "impact_options#impact_rigours"
+    get "/impact_rigours/:id/impact_levels", to: "impact_options#impact_levels"
+  end
 end

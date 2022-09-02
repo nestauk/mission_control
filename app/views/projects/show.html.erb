@@ -47,9 +47,11 @@
               <%= link_to targetable_indicator_path(@project, indicator) do %>
                 <div class="flex justify-between p-2 border-b border-gray-300 hover:bg-gray-200">
                   <div class="w-9/12 text-sm mr-4">
-                    <div class="text-xs text-gray-700">
-                      <%#= indicator.status.humanize %>
-                    </div>
+                    <%- if indicator.is_impact_indicator %>
+                      <div class="mt-1 text-xs text-gray-700 font-semibold">
+                        Impact indicator
+                      </div>
+                    <% end %>
                     <%= indicator.title %>
                   </div >
 

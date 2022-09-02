@@ -1,6 +1,6 @@
 <% content_for :title, "#{@indicator.title} - #{@targetable.title}" %>
 
-<div class="mx-auto max-w-prose">
+<div class="mx-auto max-w-screen-md">
   <aside class="m-5">
     <div class="mb-5">
       <%= link_to "‹ Back to #{to_var(@targetable)}", targetable_path(@targetable), class: 'link' %>
@@ -48,6 +48,19 @@
               </div>
             </section>
           <% end %>
+        <% end %>
+
+        <%- if @indicator.is_impact_indicator %>
+          <div class="mt-5">
+            <p><strong>What type of impact are we looking to have?</strong></p>
+            <p class="mb-2"><%= @indicator.impact_type.title %></p>
+
+            <p><strong>What impact indicator are we using?</strong></p>
+            <p class="mb-2"><%= @indicator.impact_rigour.rating %>: <%= @indicator.impact_rigour.title %></p>
+
+            <p><strong>What scale of impact are we aiming for?</strong></p>
+            <p class="mb-2"><%= @indicator.impact_level.title %></p>
+          </div>
         <% end %>
       </div>
     </div>

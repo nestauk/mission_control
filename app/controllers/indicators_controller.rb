@@ -42,7 +42,10 @@ class IndicatorsController < ApplicationController
   private
 
   def form_params
-    params.require(:indicator).permit(:unit, :description, :target_value, :title)
+    params.require(:indicator).permit(
+      :unit, :description, :target_value, :title, :is_impact_indicator,
+      :impact_type_id, :impact_rigour_id, :impact_level_id
+    )
   end
 
   def load_targetable

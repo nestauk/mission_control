@@ -1,5 +1,15 @@
 <%= simple_form_for model, url: url do |f| %>
   <div class="mb-4">
+    <%- if model.targetable.class == Goal %>
+      <div class="label">Goal</div>
+      <%= model.targetable.title %>
+    <% else %>
+      <div class="label">Objective</div>
+      <%= model.targetable.objective %>
+    <% end %>
+  </div>
+
+  <div class="mb-4">
     <%= f.input :title %>
   </div>
 
@@ -18,6 +28,24 @@
     <div class="error"><%= f.error :description %></div>
     <div class="w-full">
       <%= f.rich_text_area :description, class: 'trix-editor' %>
+    </div>
+  </div>
+
+  <div data-controller="impact-select">
+    <div class="mb-4">
+      <%= f.input :is_impact_indicator, as: :radio_buttons, item_wrapper_class: 'inline-block mr-6', wrapper_html: { "data-impact-select-target" => "isImpactIndicator" }, input_html: { autocomplete: "off" } %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.input :impact_type_id, collection: ImpactType.all, input_html: { "data-impact-select-target" => "impactType" }, label_method: ->(o) { "#{o.title} (#{o.category.humanize})" }, wrapper_html: { class: model.is_impact_indicator ? "" : "hidden" } %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.input :impact_rigour_id, collection: model.impact_type&.impact_rigours || [], input_html: { "data-impact-select-target" => "impactRigour" }, wrapper_html: { class: model.impact_rigour_id ? "" : "hidden" } %>
+    </div>
+
+    <div class="mb-4">
+      <%= f.input :impact_level_id, collection: model.impact_rigour&.impact_levels || [], input_html: { "data-impact-select-target" => "impactLevel" }, wrapper_html: { class: model.impact_rigour_id || model.impact_level_id ? "" : "hidden" } %>
     </div>
   </div>
 

@@ -19,9 +19,14 @@ en:
         potential_reach: "What is the size of the potential attainable market for this hypothesis?"
         scale_likelihood: "How likely is it that the full attainable market will be reached by 2030?"
       indicator:
+        title: "Indicator"
         description: "(Optional) Description"
         target_value: "(Optional) Target value"
         unit: "(Optional) Unit"
+        is_impact_indicator: "Is this an impact indicator?"
+        impact_type_id: "What type of impact are we looking to have?"
+        impact_rigour_id: "What impact indicator are we using?"
+        impact_level_id: "What scale of impact are we aiming for?"
       membership:
         description: "(Optional) Role notes"
         avg_weekly_time_percentage: "(Optional) Estimated average weekly % of time in this role"
@@ -29,6 +34,14 @@ en:
         context: "Background"
         expectations: "Boundaries & expectations"
     hints:
+      indicator:
+        title: "What do we need to see to know we're on the right track?"
+        target_value: "E.g. 50 or 12.5"
+        unit: "E.g. people or %"
+        description: "Further information about the indicator."
+        is_impact_indicator: "Select 'Yes' to link this indicator to our impact measurement framework."
+        impact_rigour_id: "Pick one most similar to your situation."
+        impact_level_id: "Pick one most similar to your situation."
       impact_rating:
         scale_likelihood: "0 (impossible) - 100 (certain)"
         potential_reach: "E.g. 20-30 million"

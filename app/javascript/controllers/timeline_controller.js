@@ -9,8 +9,6 @@ export default class extends Controller {
   };
 
   connect() {
-    this.csrfToken = document.querySelector("[name='csrf-token']")?.content;
-
     const options = {
       orientation: "top",
       zoomMin: 604_800_000, // 7 days
@@ -29,10 +27,7 @@ export default class extends Controller {
 
     let groups = new DataSet(this.groupsValue);
 
-    fetch(this.dataUrlValue + window.location.search, {
-      method: "GET",
-      headers: { "X-CSRF-Token": this.csrfToken },
-    })
+    fetch(this.dataUrlValue + window.location.search)
       .then((res) => res.json())
       .then((data) => {
         if (this.groupsValue.length === 0) {

@@ -18,6 +18,23 @@ class IndicatorTest < ActiveSupport::TestCase
 
   test('title required') { assert_present(:title) }
 
+  test('is_impact_indicator required') { assert_present(:is_impact_indicator) }
+
+  test 'impact_type_id required if is_impact_indicator' do
+    @subject.is_impact_indicator = true
+    assert_present(:impact_type_id)
+  end
+
+  test 'impact_rigour_id required if is_impact_indicator' do
+    @subject.is_impact_indicator = true
+    assert_present(:impact_rigour_id)
+  end
+
+  test 'impact_level_id required if is_impact_indicator' do
+    @subject.is_impact_indicator = true
+    assert_present(:impact_level_id)
+  end
+
   test('title strip_whitespace') { assert_strip_whitespace(:title) }
 
   test 'progress returns unless target_value' do
