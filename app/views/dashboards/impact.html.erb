@@ -1,0 +1,67 @@
+<% content_for :title, 'Impact Dashboard' %>
+
+<div class="overflow-auto m-5">
+  <table class="impact-table text-sm bg-white">
+    <thead>
+      <tr class="text-left align-top bg-gray-200 text-gray-700">
+        <th>Project</th>
+        <th>Impact category</th>
+        <th>Impact type</th>
+        <th>Goals</th>
+        <th>Impact statement</th>
+        <th>Duration</th>
+        <th>Estimated cost</th>
+        <th>Impact rating</th>
+        <th>Indicator</th>
+        <th>Rigour</th>
+        <th>Confidence</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <%- @indicators.each do |i| %>
+        <tr class="align-top">
+          <td>
+            <%= link_to i.targetable.title, i.targetable, class: 'link' %>
+          </td>
+          <td>
+            <%= i.impact_type.category.humanize %>
+          </td>
+          <td>
+            <%= i.impact_type.title %>
+          </td>
+          <td>
+            <%- i.targetable.goals.each do |g| %>
+              <%= link_to g.title, g, class: 'link' %>
+            <% end %>
+          </td>
+          <td>
+            <%= with_default i.targetable.impact_statement %>
+          </td>
+          <td>
+            <%- if i.targetable.start_date %>
+              <%= distance_of_time_in_words(i.targetable.start_date, i.targetable.end_date) %>
+            <% end %>
+          </td>
+          <td>
+            <%= with_default i.targetable.estimated_cost %>
+          </td>
+          <td>
+            ?
+          </td>
+          <td>
+            <%= i.title %>
+          </td>
+          <td>
+            <%= i.impact_rigour.rating %>
+            <%#= i.impact_rigour.title %>
+          </td>
+          <td>
+            <%= i.impact_level.rating %>
+            <%#= i.impact_level.title %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

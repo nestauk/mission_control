@@ -5,8 +5,10 @@
 @import "actiontext.css";
 
 @layer components {
-  .my_bg {
-    @apply text-green-700;
+  .impact-table th,
+  .impact-table td {
+    @apply p-2 border-2 border-stone-200;
+    min-width: 7rem;
   }
 
   /* Form */
@@ -281,6 +283,7 @@ body {
 @media (min-width: 768px) {
   #main {
     margin-left: 80px;
+    width: calc(100% - 80px);
     opacity: 1;
   }
   #nav {
