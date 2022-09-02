@@ -9,7 +9,7 @@ class Indicator < ApplicationRecord
 
   enum last_progress_update_status: { on_track: 0, at_risk: 1, off_track: 2 }
 
-  validates :title, :is_impact_indicator, presence: true
+  validates :title, presence: true
   validates :impact_type_id, :impact_rigour_id, :impact_level_id, presence: true, if: :is_impact_indicator
 
   has_rich_text :description

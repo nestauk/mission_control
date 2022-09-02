@@ -18,8 +18,6 @@ class IndicatorTest < ActiveSupport::TestCase
 
   test('title required') { assert_present(:title) }
 
-  test('is_impact_indicator required') { assert_present(:is_impact_indicator) }
-
   test 'impact_type_id required if is_impact_indicator' do
     @subject.is_impact_indicator = true
     assert_present(:impact_type_id)
