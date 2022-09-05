@@ -56,4 +56,16 @@
     </div>
     <div class="p-5" data-controller="timeline" data-timeline-data-url-value="<%= person_path(format: :json) %>" data-timeline-groups-value="<%= @groups %>"></div>
   </section>
+
+  <section class="bg-white rounded shadow mb-6">
+    <div class="px-5 pt-4 pb-3 border-b border-gray-300">
+      <h2 class="font-semibold text-xl text-blue-800 leading-tight mb-2">
+        Average days per week
+      </h2>
+      <p class="text-sm text-gray-700 mt-1 mb-2">Estimates for scoping and committed projects.</p>
+    </div>
+    <div class="p-5">
+      <%= line_chart api_people_capacity_path(@person), curve: false, suffix: " days" %>
+    </div>
+  </section>
 </div>

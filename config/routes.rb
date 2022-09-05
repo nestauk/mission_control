@@ -42,6 +42,7 @@ Rails.application.routes.draw do
   get "/dashboards/impact", to: "dashboards#impact", as: "impact_dashboard"
 
   scope :api, as: :api do
+    get "/people/:id/capacity", to: "people#capacity", as: "people_capacity"
     get "/impact_types/:id/impact_rigours", to: "impact_options#impact_rigours"
     get "/impact_rigours/:id/impact_levels", to: "impact_options#impact_levels"
   end

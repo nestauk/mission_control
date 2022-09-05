@@ -167,7 +167,7 @@
   </div>
 
   <div class="mb-6">
-    <%= f.input :avg_weekly_time_percentage, hint: "E.g. Input 50 for an average 50% of someones time in this role between the start and end date for the #{to_var(@memberable)}." %>
+    <%= f.input :avg_time_per_week, as: :select, collection: Membership::AVG_TIME_PER_WEEK %>
   </div>
 
   <div class="flex justify-between items-center">

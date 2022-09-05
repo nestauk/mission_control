@@ -75,11 +75,13 @@ group :test do
   gem "webdrivers"
 end
 
+gem "chartkick", "~> 4.2.1"
 gem "devise", "~> 4.8.1"
+gem "groupdate", "~> 6.1.0"
 gem "kaminari", "~> 1.2.2"
-gem "omniauth", "~> 2.1.0"
 gem "omniauth-okta", "~> 2.0.0"
 gem "omniauth-rails_csrf_protection", "~> 1.0.1"
+gem "omniauth", "~> 2.1.0"
 gem "ransack", "~> 3.2.1"
 gem "simple_form", "~> 5.1.0"
 gem "validate_url", "~> 1.0"

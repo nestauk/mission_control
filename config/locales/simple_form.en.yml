@@ -29,7 +29,7 @@ en:
         impact_level_id: "What scale of impact are we aiming for?"
       membership:
         description: "(Optional) Role notes"
-        avg_weekly_time_percentage: "(Optional) Estimated average weekly % of time in this role"
+        avg_time_per_week: "(Optional) On average how much time per week is this person estimated to commit?"
       project:
         context: "Background"
         expectations: "Boundaries & expectations"

@@ -26,7 +26,7 @@
             <p class="w-3/12 mr-4 text-blue-800 leading-tight">Name</p>
             <p class="w-3/12 mr-4 text-blue-800 leading-tight">Role</p>
             <p class="w-5/12 mr-4 text-blue-800 leading-tight">Role notes</p>
-            <p class="w-3/12 mr-4 text-blue-800 leading-tight">Avg. % of time</p>
+            <p class="w-3/12 mr-4 text-blue-800 leading-tight">Avg. time per week</p>
             <p class="w-1/12 text-blue-800 leading-tight"></p>
           </div>
         </div>
@@ -40,17 +40,16 @@
             </div>
             <div class="w-3/12 mr-4">
               <%= membership.role.humanize %>
-              <%# if membership.contact.organisation %>
-                <%#= link_to membership.contact.organisation.name, membership.contact.organisation, class: 'link' %>
-              <%# else %>
-                <%#= with_default(nil) %>
-              <%# end %>
             </div>
             <div class="w-5/12 mr-4">
               <%= with_default(membership.description) %>
             </div>
             <div class="w-3/12 mr-4">
-              <%= with_default(membership.avg_weekly_time_percentage) %>%
+              <%- if membership.avg_time_per_week %>
+                <%= membership.avg_time_per_week %> days
+              <% else %>
+                <%= with_default(nil) %>
+              <% end %>
             </div>
             <div class="w-1/12">
               <%= link_to 'Edit', edit_memberable_membership_path(@memberable, membership), class: 'link' %>

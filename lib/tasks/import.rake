@@ -118,7 +118,7 @@ namespace :import do
         contact: Contact.find_by(email: row["memberships_contact_email"]),
         role: Membership.roles[row["memberships_role"]],
         description: row["memberships_description"],
-        avg_weekly_time_percentage: row["memberships_avg_weekly_time_percentage"],
+        avg_time_per_week: row["memberships_avg_time_per_week"],
       )
     end
   end
