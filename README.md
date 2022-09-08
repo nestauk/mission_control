@@ -17,7 +17,7 @@ These instructions will get a copy of the project up and running on your local m
 2. `cd mission_control`
 3. `bundle install`
 4. `rails db:setup`
-5. Create an account an [Okta developer account](https://developer.okta.com/) and create a new app integration for a Web Application using OICD. Change the 'Sign-in redirect URIs' to `http://localhost:3000/users/auth/okta/callback`, and the 'Sign-out redirect URIs' to `http://localhost:3000`.
+5. Create an account an [Okta developer account](https://developer.okta.com/) and create a new app integration for a Web Application using OIDC. Change the 'Sign-in redirect URIs' to `http://localhost:3000/users/auth/okta/callback`, and the 'Sign-out redirect URIs' to `http://localhost:3000`.
 6. Create `.env` file with the appropriate configuration:
    ```env
    OKTA_CLIENT_ID=<your_client_id>

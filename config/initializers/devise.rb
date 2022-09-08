@@ -277,8 +277,10 @@ Devise.setup do |config|
     ENV['OKTA_CLIENT_ID'],
     ENV['OKTA_CLIENT_SECRET'],
     client_options: {
-      site:          ENV['OKTA_URL'],
-
+      site:          'http://nesta.okta.com/oauth2/default',
+      authorize_url: 'http://nesta.okta.com/oauth2/default/v1/authorize',
+      token_url:     'http://nesta.okta.com/oauth2/default/v1/token',
+      user_info_url: 'http://nesta.okta.com/oauth2/default/v1/userinfo'
     })
 
   # ==> Warden configuration
