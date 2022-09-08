@@ -278,9 +278,7 @@ Devise.setup do |config|
     ENV['OKTA_CLIENT_SECRET'],
     client_options: {
       site:          ENV['OKTA_URL'],
-      authorize_url: ENV['OKTA_URL'] + '/v1/authorize',
-      token_url:     ENV['OKTA_URL'] + '/v1/token',
-      user_info_url: ENV['OKTA_URL'] + '/v1/userinfo'
+
     })
 
   # ==> Warden configuration
