@@ -18,12 +18,7 @@ These instructions will get a copy of the project up and running on your local m
 3. `bundle install`
 4. `rails db:setup`
 5. Create an account an [Okta developer account](https://developer.okta.com/) and create a new app integration for a Web Application using OIDC. Change the 'Sign-in redirect URIs' to `http://localhost:3000/users/auth/okta/callback`, and the 'Sign-out redirect URIs' to `http://localhost:3000`.
-6. Create `.env` file with the appropriate configuration:
-   ```env
-   OKTA_CLIENT_ID=<your_client_id>
-   OKTA_CLIENT_SECRET=<your_secret>
-   OKTA_URL=<your_okta_domain>.okta.com/oauth2/default
-   ```
+6. Create `.env` file with the appropriate configuration using `.env.template` as a basis
 7. `bin/dev rails` to start a local development server. This will run [foreman](https://github.com/ddollar/foreman) which will run `rails server` and `rails tailwindcss:watch`.
 
 ### Running tests
