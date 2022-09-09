@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  before_action :check_logged_in
+  # before_action :check_logged_in
 
   private
 
