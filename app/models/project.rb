@@ -2,6 +2,8 @@ class Project < ApplicationRecord
   audited
   has_associated_audits
 
+  generate_public_uid generator: PublicUid::Generators::NumberRandom.new(100_000..999_999)
+
   has_one :impact_rating, as: :impactable, dependent: :destroy
 
   has_many :key_dates, dependent: :destroy
@@ -36,4 +38,12 @@ class Project < ApplicationRecord
   validates :title, :objective, :status, :start_date, presence: true
 
   before_validation { strip_whitespace(%i[title]) }
+
+  def self.find_puid(param)
+    find_by(public_uid: param&.split('-')&.last)
+  end
+
+  def to_param
+    "proj-#{public_uid}"
+  end
 end

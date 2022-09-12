@@ -44,7 +44,7 @@ class LinksController < ApplicationController
   end
 
   def load_linkable
-    @linkable = Goal.find_by(id: params[:goal_id]) || Project.find_by(id: params[:project_id])
+    @linkable = Goal.find_puid(params[:goal_id]) || Project.find_puid(params[:project_id])
     @project = @linkable
     @goal = @linkable
     redirect_back fallback_location: root_path, alert: 'Project or Goal not found' if @linkable.nil?

@@ -64,6 +64,6 @@ class ProjectsController < ApplicationController
   end
 
   def load_project
-    @project = Project.find_by(id: params[:id] || params[:project_id])
+    @project = Project.find_puid(params[:id] || params[:project_id])
   end
 end

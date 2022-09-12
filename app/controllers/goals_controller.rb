@@ -48,6 +48,6 @@ class GoalsController < ApplicationController
   end
 
   def load_goal
-    @goal = Goal.find_by(id: params[:id] || params[:goal_id])
+    @goal = Goal.find_puid(params[:id] || params[:goal_id])
   end
 end
