@@ -40,4 +40,13 @@ class IndicatorsTest < ApplicationSystemTestCase
     assert_current_path project_path(@project)
   end
 
+  test 'indicators#delete' do
+    visit project_path(@project)
+    click_link @indicator.title
+    click_link 'Edit', href: edit_project_indicator_path(project_id: @project.id, id: @indicator.id)
+    page.accept_confirm { click_button 'Delete' }
+    assert_text 'Progress indicator deleted'
+    assert_current_path project_path(@project)
+  end
+
 end
