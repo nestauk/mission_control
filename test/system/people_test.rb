@@ -41,7 +41,8 @@ class PeopleTest < ApplicationSystemTestCase
     fill_in :person_first_name, with: 'Updated'
     click_button 'Update'
     assert_text 'Person updated'
-    assert_text 'Updated value'
+    assert_text 'Updated Last'
+    @person.reload
     assert_current_path person_path(@person)
   end
 

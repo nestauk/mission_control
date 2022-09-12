@@ -19,14 +19,16 @@ class PersonTest < ActiveSupport::TestCase
 
   test('last_name required') { assert_present(:last_name) }
 
-  test('name') { assert_equal('value value', @subject.name) }
+  test('name') { assert_equal('First Last', @subject.name) }
 
   test('first_name strip_whitespace') { assert_strip_whitespace(:first_name) }
 
   test('last_name strip_whitespace') { assert_strip_whitespace(:last_name) }
 
   test 'set_slug' do
+    @subject.slug = nil
+    assert_nil(@subject.slug)
     @subject.save!
-    assert_equal('value-value', @subject.slug)
+    assert_equal('first-last', @subject.slug)
   end
 end

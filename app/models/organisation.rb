@@ -8,13 +8,13 @@ class Organisation < ApplicationRecord
   validates :website, url: { allow_blank: true }
 
   before_validation { strip_whitespace(%i[name]) }
-  after_save :set_slug
+  before_validation :set_slug
 
   private
 
   def set_slug
-    return unless slug.nil? || name_changed?
+    return if name.blank?
 
-    update(slug: generate_slug(name))
+    self[:slug] = generate_slug(name)
   end
 end
