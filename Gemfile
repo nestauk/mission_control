@@ -75,6 +75,7 @@ group :test do
   gem "webdrivers"
 end
 
+gem "audited", "~> 5.0.2"
 gem "chartkick", "~> 4.2.1"
 gem "devise", "~> 4.8.1"
 gem "groupdate", "~> 6.1.0"

@@ -1,0 +1,40 @@
+<% content_for :title, "Activity - #{@project.title}" %>
+
+<%= render partial: 'subnav' %>
+
+<div class="outer-container py-5">
+  <div class="text-gray-700 mb-6">
+    <%= page_entries_info @audits %>
+  </div>
+
+  <div class="flex justify-between pb-3">
+    <div class="w-2/12 mr-4 font-lexenddeca text-brand-navy leading-tight">Created at</div>
+    <div class="w-2/12 mr-4 font-lexenddeca text-brand-navy leading-tight">Action</div>
+    <div class="w-2/12 mr-4 font-lexenddeca text-brand-navy leading-tight">Author</div>
+    <div class="w-6/12 font-lexenddeca text-brand-navy leading-tight">Changes</div>
+  </div>
+
+  <%- @audits.each do |audit| %>
+    <div class="flex justify-between py-2 border-t border-gray-500 text-sm">
+      <div class="w-2/12 mr-4">
+        <%= audit.created_at.strftime("%e %b %Y %H:%M ") %>
+      </div>
+      <div class="w-2/12 mr-4">
+        <%= audit.action %>
+        <div class="text-xs text-gray-700">
+          <%= audit.auditable_type %>
+        </div>
+      </div>
+      <div class="w-2/12 mr-4">
+        <%= audit.user&.name %>
+      </div>
+      <div class="w-6/12">
+        <%= audit.audited_changes %>
+      </div>
+    </div>
+  <% end %>
+
+  <div class="mt-6">
+    <%= paginate @audits %>
+  </div>
+</div>

@@ -95,7 +95,8 @@
           <div class="my-2"><%= update.content %></div>
 
           <p class="text-sm text-gray-700">
-            <%= update.date&.strftime("%e %b %Y") %> by <%#= update.author.name %>
+            <%# TODO: test & avoid excessive object chaning %>
+            <%= update.date&.strftime("%e %b %Y") %> by <%= link_to update.author.name, update.author.person, class: 'link' %>
           </p>
         </div>
       <% end %>

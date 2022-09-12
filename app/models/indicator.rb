@@ -1,4 +1,7 @@
 class Indicator < ApplicationRecord
+  audited associated_with: :targetable
+  has_associated_audits
+
   belongs_to :impact_type, optional: true
   belongs_to :impact_rigour, optional: true
   belongs_to :impact_level, optional: true

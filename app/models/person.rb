@@ -1,4 +1,7 @@
 class Person < ApplicationRecord
+  audited
+  has_associated_audits
+
   has_many :contacts, dependent: :destroy
   has_many :users, through: :contacts
   has_many :organisations, through: :contacts

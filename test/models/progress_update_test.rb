@@ -14,6 +14,11 @@ class ProgressUpdateTest < ActiveSupport::TestCase
     assert_present(:indicator, msg: 'must exist')
   end
 
+  test 'belongs to author' do
+    assert_instance_of(User, @subject.author)
+    assert_present(:author, msg: 'must exist')
+  end
+
   test('date required') { assert_present(:date) }
 
   test('status required') { assert_present(:status) }

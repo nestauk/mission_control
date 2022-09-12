@@ -1,4 +1,7 @@
 class Project < ApplicationRecord
+  audited
+  has_associated_audits
+
   has_one :impact_rating, as: :impactable, dependent: :destroy
 
   has_many :key_dates, dependent: :destroy

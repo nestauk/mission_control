@@ -1,5 +1,6 @@
 <% 2.times do |n| %>
   progress_update_goal_<%= n + 1 %>:
+    author: user_1
     indicator: indicator_goal_1
     date: <%= Date.today %>
     status: on_track
@@ -7,6 +8,7 @@
 
 <% 2.times do |n| %>
   progress_update_project_<%= n + 1 %>:
+    author: user_1
     indicator: indicator_project_1
     date: <%= Date.today %>
     status: on_track
