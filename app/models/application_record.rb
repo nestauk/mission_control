@@ -10,6 +10,9 @@ class ApplicationRecord < ActiveRecord::Base
   def generate_slug(candidate, n: 1)
     slug = candidate.parameterize
     slug += "-#{n}" if n > 1
+    existing = send(:class).find_by(slug: slug)
+
+    return slug if self == existing
     return slug unless send(:class).find_by(slug: slug)
 
     generate_slug(candidate, n: n + 1)

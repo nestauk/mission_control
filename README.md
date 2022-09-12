@@ -26,6 +26,8 @@ These instructions will get a copy of the project up and running on your local m
    ```
 7. `bin/dev rails` to start a local development server. This will run [foreman](https://github.com/ddollar/foreman) which will run `rails server` and `rails tailwindcss:watch`.
 
+<!-- TODO: importing data, rake tasks, etc. -->
+
 ### Running tests
 
 - `rails test` to run unit tests.

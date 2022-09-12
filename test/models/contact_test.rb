@@ -40,10 +40,12 @@ class ContactTest < ActiveSupport::TestCase
 
   test('email downcase') { assert_downcase(:email) }
 
+  test('name') { assert_equal("First Last", @subject.name) }
+
   test 'sync_name' do
     @subject.person.update(first_name: 'updated', last_name: 'updated')
-    assert_equal('value', @subject.first_name)
-    assert_equal('value', @subject.last_name)
+    assert_equal('First', @subject.first_name)
+    assert_equal('Last', @subject.last_name)
     @subject.valid?
     assert_equal('updated', @subject.first_name)
     assert_equal('updated', @subject.last_name)

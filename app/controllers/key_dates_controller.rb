@@ -38,7 +38,7 @@ class KeyDatesController < ApplicationController
   end
 
   def load_project
-    @project = Project.find_by(id: params[:project_id])
+    @project = Project.find_puid(params[:project_id])
   end
 
   def load_key_date

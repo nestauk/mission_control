@@ -2,8 +2,8 @@
   contact_<%= n + 1 %>:
     person: person_1
     organisation: organisation_1
-    first_name: value
-    last_name: value
+    first_name: First
+    last_name: Last
     email: email_<%= n + 1 %>@example.com
     status: current
 <% end %>

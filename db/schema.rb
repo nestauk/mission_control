@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_09_01_143131) do
+ActiveRecord::Schema[7.0].define(version: 2022_09_12_124103) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -52,12 +52,33 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_143131) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "audits", force: :cascade do |t|
+    t.integer "auditable_id"
+    t.string "auditable_type"
+    t.integer "associated_id"
+    t.string "associated_type"
+    t.integer "user_id"
+    t.string "user_type"
+    t.string "username"
+    t.string "action"
+    t.jsonb "audited_changes"
+    t.integer "version", default: 0
+    t.string "comment"
+    t.string "remote_address"
+    t.string "request_uuid"
+    t.datetime "created_at"
+    t.index ["associated_type", "associated_id"], name: "associated_index"
+    t.index ["auditable_type", "auditable_id", "version"], name: "auditable_index"
+    t.index ["created_at"], name: "index_audits_on_created_at"
+    t.index ["request_uuid"], name: "index_audits_on_request_uuid"
+    t.index ["user_id", "user_type"], name: "user_index"
+  end
+
   create_table "contacts", force: :cascade do |t|
     t.bigint "person_id"
     t.bigint "organisation_id"
     t.string "first_name"
     t.string "last_name"
-    t.string "slug"
     t.string "email"
     t.string "position"
     t.integer "status", null: false
@@ -82,6 +103,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_143131) do
     t.integer "status", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "public_uid"
+    t.index ["public_uid"], name: "index_goals_on_public_uid", unique: true
   end
 
   create_table "impact_levels", force: :cascade do |t|
@@ -185,6 +208,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_143131) do
     t.string "website"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_organisations_on_slug", unique: true
   end
 
   create_table "people", force: :cascade do |t|
@@ -194,6 +218,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_143131) do
     t.string "slug"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["slug"], name: "index_people_on_slug", unique: true
   end
 
   create_table "progress_updates", force: :cascade do |t|
@@ -210,7 +235,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_143131) do
 
   create_table "projects", force: :cascade do |t|
     t.string "title"
-    t.string "slug"
     t.integer "status", default: 0
     t.string "objective"
     t.date "scoping_start_date"
@@ -225,6 +249,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_143131) do
     t.string "project_code"
     t.string "impact_statement"
     t.integer "impact_type"
+    t.string "public_uid"
+    t.index ["public_uid"], name: "index_projects_on_public_uid", unique: true
   end
 
   create_table "taggings", force: :cascade do |t|

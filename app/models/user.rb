@@ -6,6 +6,7 @@ class User < ApplicationRecord
          :omniauthable, omniauth_providers: %i[okta]
 
   belongs_to :contact
+  has_one :person, through: :contact
 
   validates :first_name, :last_name, presence: true
 
@@ -27,5 +28,9 @@ class User < ApplicationRecord
     end
 
     user
+  end
+
+  def name
+    "#{first_name} #{last_name}"
   end
 end
