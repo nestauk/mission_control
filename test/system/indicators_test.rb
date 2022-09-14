@@ -35,7 +35,7 @@ class IndicatorsTest < ApplicationSystemTestCase
     assert_text 'Progress indicator updated'
     assert_text 'Updated title'
     assert_text 'This is what the indicator is all about'
-    assert_current_path project_path(@project)
+    assert_current_path project_indicator_path(project_id: @project.id, id: @indicator.id)
   end
 
   test 'indicators#delete' do
