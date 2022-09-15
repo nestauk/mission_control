@@ -1,0 +1,954 @@
+[
+  {
+    "title": "Effect size",
+    "category": "direct",
+    "impact_rigours": [
+      {
+        "title": "Very low impact effect size: <0.1",
+        "rating": 1,
+        "impact_levels": [
+          {
+            "title": "Level 1: You can describe what you do and why it matters, logically, coherently and convincingly",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: You capture data that shows positive change, but you cannot confirm you caused this",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: You can demonstrate causality through a quasi-experimental design",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: You can demonstrate causality through a randomised control trial",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: You have one + independent replication evaluations that confirms these conclusions",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Low impact effect size: 0.1 - 0.2",
+        "rating": 2,
+        "impact_levels": [
+          {
+            "title": "Level 1: You can describe what you do and why it matters, logically, coherently and convincingly",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: You capture data that shows positive change, but you cannot confirm you caused this",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: You can demonstrate causality through a quasi-experimental design",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: You can demonstrate causality through a randomised control trial",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: You have one + independent replication evaluations that confirms these conclusions",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Moderate impact effect size: 0.2 - 0.35",
+        "rating": 3,
+        "impact_levels": [
+          {
+            "title": "Level 1: You can describe what you do and why it matters, logically, coherently and convincingly",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: You capture data that shows positive change, but you cannot confirm you caused this",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: You can demonstrate causality through a quasi-experimental design",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: You can demonstrate causality through a randomised control trial",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: You have one + independent replication evaluations that confirms these conclusions",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "High impact effect size: 0.35 - 0.5",
+        "rating": 4,
+        "impact_levels": [
+          {
+            "title": "Level 1: You can describe what you do and why it matters, logically, coherently and convincingly",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: You capture data that shows positive change, but you cannot confirm you caused this",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: You can demonstrate causality through a quasi-experimental design",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: You can demonstrate causality through a randomised control trial",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: You have one + independent replication evaluations that confirms these conclusions",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Very high impact effect size: >0.5",
+        "rating": 5,
+        "impact_levels": [
+          {
+            "title": "Level 1: You can describe what you do and why it matters, logically, coherently and convincingly",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: You capture data that shows positive change, but you cannot confirm you caused this",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: You can demonstrate causality through a quasi-experimental design",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: You can demonstrate causality through a randomised control trial",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: You have one + independent replication evaluations that confirms these conclusions",
+            "rating": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Learning to inform our work",
+    "category": "indirect",
+    "impact_rigours": [
+      {
+        "title": "Judgement",
+        "rating": 1,
+        "impact_levels": [
+          {
+            "title": "Level 1: Our work has not informed what future direction we take or meaningfully progressed our understanding of the problem",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: Our work has helped us learn more about the problem, but not informed what future direction our work takes",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: Our work has helped us prove or disprove a hypothesis that opens up avenues for future work, or closes off avenues",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: Our work has given us significantly more confidence in our direction of travel, or helped us make a change in approach that we can be more sure will have impact",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: Our work has answered a foundational research question that unlocks new avenues of exploration that could make a big difference to our missions",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Cross-sectional internal survey: % of respondents say the research has proved/disproved a hypothesis and informed future direction of their work",
+        "rating": 2,
+        "impact_levels": [
+          {
+            "title": "Level 1: 0-10% agree",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 10 - 25% agree",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 25 - 50% agree",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 50 - 75% agree",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: 75 - 100% agree",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Longitudinal internal survey: % of respondents say the research has proved/disproved a hypothesis and informed future direction of their work, and continues to inform their work",
+        "rating": 3,
+        "impact_levels": [
+          {
+            "title": "Level 1: 0-10% agree",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 10 - 25% agree",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 25 - 50% agree",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 50 - 75% agree",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: 75 - 100% agree",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Quality and strength of the result",
+        "rating": 4,
+        "impact_levels": [
+          {
+            "title": "Level 1: very weak result based on approach similar to Level 1 of Nesta's Standards of Evidence",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: weak result based on approach similar to Level 2 of Nesta's Standards of Evidence",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: moderate result based on approach similar to Level 3 of Nesta's Standards of Evidence",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: strong result based on approach similar to Level 4 of Nesta's Standards of Evidence",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: very strong result based on approach similar to Level 5 of Nesta's Standards of Evidence",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Learning published online and legitimised by key sector bodies",
+        "rating": 5,
+        "impact_levels": [
+          {
+            "title": "Level 1: Validated by 1 org",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: Validated by 2-3 orgs",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: Validated by 3-5 orgs",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: Validted by 5-10 orgs",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: Validated by >10 orgs",
+            "rating": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Share evidence of what works",
+    "category": "indirect",
+    "impact_rigours": [
+      {
+        "title": "Judgement",
+        "rating": 1,
+        "impact_levels": [
+          {
+            "title": "Level 1: Our work has not registered as credible with key stakeholders and has not shifted the conversation",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: Our work has been noticed by others, but it has not started to inform their understanding of the problem or approach to tackle it",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: Our work has has been discussed in niche areas of the sector, and they have made small changes to their approach based on the new evidence",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: Our work has been picked up by a few key players in the sector, and they have made some key changes to their approach based on the new evidence",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: Our work has made a meaningful contribution to the most influential stakeholders' understanding of the problem, and they have changed their approach to the problem in line with the our work",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# unique views of a publication",
+        "rating": 2,
+        "impact_levels": [
+          {
+            "title": "Level 1: <100 views",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 100 - 1,000 views",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 1,000 - 10,000 views",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 10,000 - 50,000 views",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >100,000 viewse",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# people attended an event to share learning / evidence",
+        "rating": 3,
+        "impact_levels": [
+          {
+            "title": "Level 1: <25 attendees",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 25 - 50 attendees",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 50 - 100 attendees",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 100 - 500 attendees",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >500 attendees",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# references to research by key sector bodies",
+        "rating": 4,
+        "impact_levels": [
+          {
+            "title": "Level 1: 1 org",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 2-3 orgs",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 3-5 orgs",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 5-10 org",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >10 orgs",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# academic citations of a published paper",
+        "rating": 5,
+        "impact_levels": [
+          {
+            "title": "Level 1: 1 - 3 citations",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 4 - 7 citations",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 8 - 11 citations",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 12 - 20 citations",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >20 citations",
+            "rating": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Convening others",
+    "category": "indirect",
+    "impact_rigours": [
+      {
+        "title": "Judgement",
+        "rating": 1,
+        "impact_levels": [
+          {
+            "title": "Level 1: Our work has not built new or maintained existing relationships that support our missions",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: Our work has maintained existing relationships that help raise our profile",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: Our work has maintained and strengthened existing relationships that can make a difference to our missions",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: Our work has built new, meaningful relationships with people or organisations that can make a difference to our missions",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: Our work has built novel cross-sector coalitions that have the potential to turbocharge our missions",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# unique views of a joint publication",
+        "rating": 2,
+        "impact_levels": [
+          {
+            "title": "Level 1: <100 views",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 100 - 1,000 views",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 1,000 - 10,000 views",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 10,000 - 50,000 views",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >100,000 viewse",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# people attended a convening event",
+        "rating": 3,
+        "impact_levels": [
+          {
+            "title": "Level 1: <25 attendees",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 25 - 50 attendees",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 50 - 100 attendees",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 100 - 500 attendees",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >500 attendees",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Reach of org partnered with",
+        "rating": 4,
+        "impact_levels": [
+          {
+            "title": "Level 1: org has <25% reach compared with Nesta",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: org has 25-50% reach compared with Nesta",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: org has 50-100% reach compared with Nesta",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: org has 100-200% reach compared with Nesta",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: org has >200% reach compared with Nesta",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# of orgs partnered with through coalition + potential reach",
+        "rating": 5,
+        "impact_levels": [
+          {
+            "title": "Level 1: we have partnered with 1 small organisation (cf Nesta)",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: we have established a coalition with 2-3 small organisations (cf Nesta)",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: we have established a coalition with 1-3 medium sized organisations (cf Nesta)",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: we have established a coalition with 2-3 large organisations (cf Nesta)",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: we have established a coalition with over 5 large organisations (cf Nesta)",
+            "rating": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Changing perceptions",
+    "category": "indirect",
+    "impact_rigours": [
+      {
+        "title": "Judgement",
+        "rating": 1,
+        "impact_levels": [
+          {
+            "title": "Level 1: Our work has not changed the target populations perceptions in any noticeable way",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: Our work has made a small target population slightly more favourable towards our desired position",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: Our work has made a sizable target population more favourable towards our desired position",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: Our work has made a large and / or influential target population much more favourable towards our desired position",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: Our work has made a very large and / or highly influential target population highly favourable towards our desired position",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# unique views of a publication",
+        "rating": 2,
+        "impact_levels": [
+          {
+            "title": "Level 1: <100 views",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 100 - 1,000 views",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 1,000 - 10,000 views",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 10,000 - 50,000 views",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >100,000 viewse",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# people attended an event",
+        "rating": 3,
+        "impact_levels": [
+          {
+            "title": "Level 1: <25 attendees",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 25 - 50 attendees",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 50 - 100 attendees",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 100 - 500 attendees",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >500 attendees",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Cross-sectional survey: % of respondents to a survey agree with x position after activity is complete",
+        "rating": 4,
+        "impact_levels": [
+          {
+            "title": "Level 1: 0-10% agree",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 10 - 25% agree",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 25 - 50% agree",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 50 - 75% agree",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: 75 - 100% agree",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Longitudinal survey: % of respondents to a survey agree with x position after activity is complete, and tested over time",
+        "rating": 5,
+        "impact_levels": [
+          {
+            "title": "Level 1: 0-10% agree",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 10 - 25% agree",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 25 - 50% agree",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 50 - 75% agree",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: 75 - 100% agree",
+            "rating": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Work adopted by others",
+    "category": "indirect",
+    "impact_rigours": [
+      {
+        "title": "Judgement",
+        "rating": 1,
+        "impact_levels": [
+          {
+            "title": "Level 1: Our work has not been adopted by others at all",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: Our work has been picked up by a few niche organisations, but they aren't doing things differently because of it",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: Our work has a small community of supporters, and they are big advocates for it and / or have changed their practice, but is unlikely to scale larger",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: Our work has been adopted by some influential supporters who have a big reach and could scale it",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: Our work has been adopted by the all the key players in the sector, and their adoption has led to an outsized impact on our mission goal",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Cross-sectional survey: % of respondents to a survey say they have adopted x practice after activity is complete",
+        "rating": 2,
+        "impact_levels": [
+          {
+            "title": "Level 1: 0-10% agree",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 10 - 25% agree",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 25 - 50% agree",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 50 - 75% agree",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: 75 - 100% agree",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Longitudinal survey: % of respondents to a survey say they have adopted x practice after activity is complete, and tested over time",
+        "rating": 3,
+        "impact_levels": [
+          {
+            "title": "Level 1: 0-10% agree",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 10 - 25% agree",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 25 - 50% agree",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 50 - 75% agree",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: 75 - 100% agree",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# key sector bodies making reference to our work in their practice materials",
+        "rating": 4,
+        "impact_levels": [
+          {
+            "title": "Level 1: 1 org",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 2-3 orgs",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 3-5 orgs",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 5-10 orgs",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >10 orgs",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Size of organisation that has formally signed up to or adopted a Nesta advocated practice",
+        "rating": 5,
+        "impact_levels": [
+          {
+            "title": "Level 1: org has <25% reach compared with Nesta",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: org has 25-50% reach compared with Nesta",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: org has 50-100% reach compared with Nesta",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: org has 100-200% reach compared with Nesta",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: org has >200% reach compared with Nesta",
+            "rating": 5
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "title": "Influence policy or regulation",
+    "category": "indirect",
+    "impact_rigours": [
+      {
+        "title": "Judgement",
+        "rating": 1,
+        "impact_levels": []
+      },
+      {
+        "title": "# meetings held with key stakeholders",
+        "rating": 2,
+        "impact_levels": [
+          {
+            "title": "Level 1: 1 stakeholder AND / OR >10 stakeholders with little influence",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 2-3 stakeholders AND / OR 5-10 stakeholders with some influence",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 4-5 stakeholders with reasonable influence",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 5-10 stakeholders AND / OR 2-3 stakeholders with large influence",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >10 stakeholders AND / OR 2-3 stakeholders with outsized influence",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# unique views of a Nesta advocated policy position in a national / sector relevant news outlet",
+        "rating": 3,
+        "impact_levels": [
+          {
+            "title": "Level 1: <100 views",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 100 - 1,000 views",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 1,000 - 10,000 views",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 10,000 - 50,000 views",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >100,000 views",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "# mentions of Nesta advocated policy position made in hansard / central and local govt policy documents",
+        "rating": 4,
+        "impact_levels": [
+          {
+            "title": "Level 1: 1 mention",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 2-3 mentions",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 3-5 mentions",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 5-10 mentions",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >10 mentions",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "Policy",
+        "rating": 5,
+        "impact_levels": []
+      }
+    ]
+  },
+  {
+    "title": "Influence investment flows",
+    "category": "indirect",
+    "impact_rigours": [
+      {
+        "title": "Judgement",
+        "rating": 1,
+        "impact_levels": []
+      },
+      {
+        "title": "# meetings held with key stakeholders",
+        "rating": 2,
+        "impact_levels": [
+          {
+            "title": "Level 1: 1 stakeholder AND / OR >10 stakeholders with little influence",
+            "rating": 1
+          },
+          {
+            "title": "Level 2: 2-3 stakeholders AND / OR 5-10 stakeholders with some influence",
+            "rating": 2
+          },
+          {
+            "title": "Level 3: 4-5 stakeholders with reasonable influence",
+            "rating": 3
+          },
+          {
+            "title": "Level 4: 5-10 stakeholders AND / OR 2-3 stakeholders with large influence",
+            "rating": 4
+          },
+          {
+            "title": "Level 5: >10 stakeholders AND / OR 2-3 stakeholders with outsized influence",
+            "rating": 5
+          }
+        ]
+      },
+      {
+        "title": "£ commissioned by government aligned to Nesta advocated policy position",
+        "rating": 5,
+        "impact_levels": []
+      }
+    ]
+  }
+]
