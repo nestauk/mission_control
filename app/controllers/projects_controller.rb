@@ -37,6 +37,13 @@ class ProjectsController < ApplicationController
     redirect_to projects_path, notice: 'Project deleted'
   end
 
+  def activity
+    progress_updates = ProgressUpdate.where(indicator: @project.indicators)
+    @audits = Audited::Audit.includes(:user).where(auditable: @project).or(
+      Audited::Audit.includes(:user).where(associated: [@project] + @project.indicators + progress_updates)
+    ).order(created_at: :desc).page(params[:page])
+  end
+
   def timeline
     @q = Project.joins(:goals).group("projects.id", "goals.id", "goals.title")
       .select("goals.id AS goal_id", "goals.title AS goal_title", "projects.*").ransack(params[:q])
@@ -57,6 +64,6 @@ class ProjectsController < ApplicationController
   end
 
   def load_project
-    @project = Project.find_by(id: params[:id])
+    @project = Project.find_puid(params[:id] || params[:project_id])
   end
 end

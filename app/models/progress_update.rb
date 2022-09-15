@@ -1,10 +1,11 @@
 class ProgressUpdate < ApplicationRecord
+  audited associated_with: :indicator
+  has_associated_audits
+
   scope :order_recent, -> { order(date: :desc, value: :desc) }
 
   belongs_to :indicator
-
-  # has_one :authorship, as: :authorable
-  # has_one :author, through: :authorship, source: :contact
+  belongs_to :author, class_name: "User", foreign_key: :user_id
 
   enum status: { on_track: 0, at_risk: 1, off_track: 2 }
 

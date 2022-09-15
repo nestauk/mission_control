@@ -1,4 +1,7 @@
 class Contact < ApplicationRecord
+  audited associated_with: :person
+  has_associated_audits
+
   belongs_to :person
   belongs_to :organisation, optional: true
 

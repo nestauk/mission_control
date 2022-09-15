@@ -6,7 +6,6 @@ class PeopleController < ApplicationController
     @people = @q.result(distinct: true).order(:first_name, :last_name).page(params[:page])
   end
 
-
   def capacity
     render json: @capacity = ActiveRecord::Base.connection.execute(
       "SELECT date_trunc('week', p.week)::date AS week_of, coalesce(sum(m.avg_time_per_week), 0) AS sum
@@ -80,6 +79,6 @@ class PeopleController < ApplicationController
   end
 
   def load_person
-    @person = Person.find_by(id: params[:id])
+    @person = Person.find_by(slug: params[:id])
   end
 end

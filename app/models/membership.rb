@@ -9,6 +9,8 @@ class Membership < ApplicationRecord
     ["5 days", 5.0]
   ]
 
+  audited associated_with: :memberable
+
   belongs_to :contact
   belongs_to :memberable, polymorphic: true
 

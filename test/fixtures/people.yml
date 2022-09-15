@@ -1,3 +1,4 @@
 person_1:
-  first_name: value
-  last_name: value
+  first_name: First
+  last_name: Last
+  slug: first-last

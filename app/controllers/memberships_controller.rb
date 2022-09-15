@@ -47,7 +47,7 @@ class MembershipsController < ApplicationController
   end
 
   def load_memberable
-    @memberable = Goal.find_by(id: params[:goal_id]) || Project.find_by(id: params[:project_id])
+    @memberable = Goal.find_puid(params[:goal_id]) || Project.find_puid(params[:project_id])
     @project = @memberable
     @goal = @memberable
     redirect_back fallback_location: root_path, alert: 'Project or Goal not found' if @memberable.nil?

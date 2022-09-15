@@ -3,6 +3,8 @@ require 'application_system_test_case'
 class KeyDatesTest < ApplicationSystemTestCase
   setup do
     @project = projects(:project_1)
+    @project._run_create_callbacks
+    @project.save!
     sign_in
   end
 

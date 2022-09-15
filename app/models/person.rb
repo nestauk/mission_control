@@ -1,4 +1,7 @@
 class Person < ApplicationRecord
+  audited
+  has_associated_audits
+
   has_many :contacts, dependent: :destroy
   has_many :users, through: :contacts
   has_many :organisations, through: :contacts
@@ -12,7 +15,15 @@ class Person < ApplicationRecord
   validates :first_name, :last_name, presence: true
 
   before_validation { strip_whitespace(%i[first_name last_name]) }
-  after_save :set_slug
+  before_validation :set_slug
+
+  ransacker :name do
+    Arel.sql("CONCAT_WS(' ', people.first_name, people.last_name)")
+  end
+
+  def to_param
+    slug
+  end
 
   def name
     "#{first_name} #{last_name}"
@@ -21,12 +32,8 @@ class Person < ApplicationRecord
   private
 
   def set_slug
-    return unless slug.nil? || first_name_changed? || last_name_changed?
+    return if name.blank?
 
-    update(slug: generate_slug(name))
-  end
-
-  ransacker :name do
-    Arel.sql("CONCAT_WS(' ', people.first_name, people.last_name)")
+    self[:slug] = generate_slug(name)
   end
 end

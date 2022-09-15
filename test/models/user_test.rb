@@ -8,6 +8,10 @@ class UserTest < ActiveSupport::TestCase
     assert_present(:contact, msg: 'must exist')
   end
 
+  test 'has one person' do
+    assert_instance_of(Person, @subject.person)
+  end
+
   test('first_name required') { assert_present(:first_name) }
 
   test('last_name required') { assert_present(:last_name) }
@@ -27,4 +31,6 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test('from_omniauth') { skip('todo') }
+
+  test('name') { assert_equal("First Last", @subject.name) }
 end

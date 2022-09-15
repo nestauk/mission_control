@@ -1,4 +1,9 @@
 class Goal < ApplicationRecord
+  audited
+  has_associated_audits
+
+  generate_public_uid generator: PublicUid::Generators::NumberRandom.new(100_000..999_999)
+
   has_one :impact_rating, as: :impactable, dependent: :destroy
 
   has_many :contributions, dependent: :destroy
@@ -26,4 +31,12 @@ class Goal < ApplicationRecord
   validates :title, presence: true
 
   before_validation { strip_whitespace(%i[title]) }
+
+  def self.find_puid(param)
+    find_by(public_uid: param&.split('-')&.last)
+  end
+
+  def to_param
+    "goal-#{public_uid}"
+  end
 end

@@ -29,6 +29,7 @@ Rails.application.routes.draw do
   end
 
   resources :projects, concerns: %i[impactable linkable memberable targetable] do
+    get :activity
     get :timeline, on: :collection
     resources :key_dates
   end
