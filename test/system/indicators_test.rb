@@ -3,7 +3,11 @@ require 'application_system_test_case'
 class IndicatorsTest < ApplicationSystemTestCase
   setup do
     @project = projects(:project_1)
+    @project._run_create_callbacks
+    @project.save!
     @indicator =indicators(:indicator_project_1)
+    @indicator._run_create_callbacks
+    @indicator.save!
     sign_in
   end
 
