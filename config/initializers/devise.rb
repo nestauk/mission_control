@@ -271,17 +271,8 @@ Devise.setup do |config|
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
-  # config.omniauth :okta, ENV['OKTA_CLIENT_ID'], ENV['OKTA_CLIENT_SECRET'], {}
 
-  config.omniauth(:okta,
-    ENV['OKTA_CLIENT_ID'],
-    ENV['OKTA_CLIENT_SECRET'],
-    client_options: {
-      site:          ENV['OKTA_URL'],
-      authorize_url: ENV['OKTA_URL'] + '/v1/authorize',
-      token_url:     ENV['OKTA_URL'] + '/v1/token',
-      user_info_url: ENV['OKTA_URL'] + '/v1/userinfo'
-    })
+  config.omniauth :google_oauth2, ENV['GOOGLE_APP_ID'], ENV['GOOGLE_APP_SECRET']
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

@@ -8,6 +8,7 @@
   <%- if user_signed_in? %>
     <%= button_to 'Sign out', destroy_user_session_path, method: :delete, data: { turbo: false }, class: 'link text-blue-800' %>
   <% else %>
-    <%= button_to 'Sign in with Okta', user_okta_omniauth_authorize_path, data: { turbo: false }, class: 'btn bg-blue-800 text-white' %>
+    <%= button_to 'Sign in with Google', user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: 'btn bg-blue-800 text-white' %>
+    <small class="text-gray-700">Only your nesta.org.uk work account will work.</small>
   <% end %>
 </p>
