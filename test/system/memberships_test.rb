@@ -5,12 +5,8 @@ class MembershipsTest < ApplicationSystemTestCase
 
   setup do
     @goal = goals(:goal_1)
-    @goal._run_create_callbacks
-    @goal.save!
     @goal_membership = memberships(:membership_goal_team_lead_1)
     @project = projects(:project_1)
-    @project._run_create_callbacks
-    @project.save!
     @project_membership = memberships(:membership_project_team_lead_1)
     sign_in
   end

@@ -1,11 +1,11 @@
 <% 2.times do |n| %>
   indicator_goal_<%= n + 1 %>:
     targetable: goal_1 (Goal)
-    title: value
+    title: Indicator for a goal <%= n + 1 %>
 <% end %>
 
 <% 2.times do |n| %>
   indicator_project_<%= n + 1 %>:
     targetable: project_1 (Project)
-    title: value
+    title: Indicator for a project <%= n + 1 %>
 <% end %>

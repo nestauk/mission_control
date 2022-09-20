@@ -5,11 +5,7 @@ class LinksTest < ApplicationSystemTestCase
 
   setup do
     @goal = goals(:goal_1)
-    @goal._run_create_callbacks
-    @goal.save!
     @project = projects(:project_1)
-    @project._run_create_callbacks
-    @project.save!
     sign_in
   end
 

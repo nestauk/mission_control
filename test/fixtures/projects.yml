@@ -2,3 +2,4 @@ project_1:
   title: Project 1
   objective: Project objective
   start_date: <%= Date.today %>
+  public_uid: <%= SecureRandom.random_number(1_000_000) %> # generate public_uid

@@ -17,14 +17,18 @@ These instructions will get a copy of the project up and running on your local m
 2. `cd mission_control`
 3. `bundle install`
 4. `rails db:setup`
-5. Create an account an [Okta developer account](https://developer.okta.com/) and create a new app integration for a Web Application using OICD. Change the 'Sign-in redirect URIs' to `http://localhost:3000/users/auth/okta/callback`, and the 'Sign-out redirect URIs' to `http://localhost:3000`.
-6. Create `.env` file with the appropriate configuration:
+5. Seed reference data to database using either:
+    - remote url e.g. `rake import:impact_indicators'[https://drive.google.com/file/d/1093kU6XK9tGURo0psv5qM-20ODUaEB2J/view?usp=sharing]'` or
+    - local file e.g. `rake RAILS_ENV=test import:impact_indicators_local\['./db/seed_data/impact_indicators_seed_data.json'\]`
+   Repeat for each seed file, per environment
+6. Create an account an [Okta developer account](https://developer.okta.com/) and create a new app integration for a Web Application using OICD. Change the 'Sign-in redirect URIs' to `http://localhost:3000/users/auth/okta/callback`, and the 'Sign-out redirect URIs' to `http://localhost:3000`.
+7. Create `.env` file with the appropriate configuration:
    ```env
    OKTA_CLIENT_ID=<your_client_id>
    OKTA_CLIENT_SECRET=<your_secret>
    OKTA_URL=<your_okta_domain>.okta.com/oauth2/default
    ```
-7. `bin/dev rails` to start a local development server. This will run [foreman](https://github.com/ddollar/foreman) which will run `rails server` and `rails tailwindcss:watch`.
+8. `bin/dev rails` to start a local development server. This will run [foreman](https://github.com/ddollar/foreman) which will run `rails server` and `rails tailwindcss:watch`.
 
 <!-- TODO: importing data, rake tasks, etc. -->
 

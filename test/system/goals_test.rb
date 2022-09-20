@@ -3,8 +3,6 @@ require 'application_system_test_case'
 class GoalsTest < ApplicationSystemTestCase
   setup do
     @goal = goals(:goal_1)
-    @goal._run_create_callbacks
-    @goal.save!
     sign_in
     click_link 'Goals'
   end

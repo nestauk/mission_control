@@ -171,4 +171,32 @@ namespace :import do
       end
     end
   end
+
+  desc "Add impact indicators seed data from a local JSON, usage: `rake import:impact_indicators'[http://...]'`"
+  task :impact_indicators_local, [:filepath] => [:environment] do |_task, args|
+    raise 'No filepath supplied' unless args.filepath.present?
+
+    JSON.parse(File.read(args.filepath)).each do |it|
+      impact_type = ImpactType.find_or_create_by!(
+        title: it["title"],
+        category: it["category"]
+      )
+
+      it["impact_rigours"].each do |ir|
+        impact_rigour = ImpactRigour.find_or_create_by!(
+          impact_type: impact_type,
+          title: ir["title"],
+          rating: ir["rating"]
+        )
+
+        ir["impact_levels"].each do |il|
+          ImpactLevel.find_or_create_by!(
+            impact_rigour: impact_rigour,
+            title: il["title"],
+            rating: il["rating"]
+          )
+        end
+      end
+    end
+  end
 end
