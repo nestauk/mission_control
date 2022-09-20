@@ -19,14 +19,16 @@ namespace :import do
 
       person = Person.find_or_create_by!(
         first_name: row["contacts_first_name"],
-        last_name: row["contacts_last_name"]
+        last_name: row["contacts_last_name"],
+        pronouns: row["people_pronouns"]
       )
 
       Contact.find_or_create_by!(
         person: person,
         email: row["contacts_email"],
         organisation: org,
-        status: :current
+        status: :current,
+        position: row["contacts_position"]
       )
     end
   end
