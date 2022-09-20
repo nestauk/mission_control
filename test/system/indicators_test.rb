@@ -3,11 +3,7 @@ require 'application_system_test_case'
 class IndicatorsTest < ApplicationSystemTestCase
   setup do
     @project = projects(:project_1)
-    @project._run_create_callbacks
-    @project.save!
-    @indicator =indicators(:indicator_project_1)
-    @indicator._run_create_callbacks
-    @indicator.save!
+    @indicator = indicators(:indicator_project_1)
     sign_in
   end
 
@@ -32,23 +28,22 @@ class IndicatorsTest < ApplicationSystemTestCase
   test 'indicators#update' do
     visit project_path(@project)
     click_link @indicator.title
-    click_link 'Edit', href: edit_project_indicator_path(project_id: @project.id, id: @indicator.id)
+    click_link 'Edit', href: edit_project_indicator_path(@project, @indicator)
     fill_in :indicator_title, with: 'Updated title'
     find("trix-editor").set('This is what the indicator is all about')
     click_button 'Update'
     assert_text 'Progress indicator updated'
     assert_text 'Updated title'
     assert_text 'This is what the indicator is all about'
-    assert_current_path project_indicator_path(project_id: @project.id, id: @indicator.id)
+    assert_current_path project_indicator_path(@project, @indicator)
   end
 
-  test 'indicators#delete' do
+  test 'indicators#destroy' do
     visit project_path(@project)
     click_link @indicator.title
-    click_link 'Edit', href: edit_project_indicator_path(project_id: @project.id, id: @indicator.id)
+    click_link 'Edit', href: edit_project_indicator_path(@project, @indicator)
     page.accept_confirm { click_button 'Delete' }
     assert_text 'Progress indicator deleted'
     assert_current_path project_path(@project)
   end
-
 end

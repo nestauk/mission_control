@@ -1,2 +1,3 @@
 goal_1:
   title: Goal 1
+  public_uid: <%= SecureRandom.random_number(1_000_000) %> # generate public_uid

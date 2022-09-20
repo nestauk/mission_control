@@ -38,13 +38,10 @@ class ProjectTest < ActiveSupport::TestCase
   test('title strip_whitespace') { assert_strip_whitespace(:title) }
 
   test 'self.find_puid' do
-    @subject._run_create_callbacks
-    @subject.save!
     assert_not_nil(Project.find_puid(@subject.to_param))
   end
 
   test 'to_param' do
-    @subject._run_create_callbacks
     assert_equal("proj-#{@subject.public_uid}", @subject.to_param)
   end
 end

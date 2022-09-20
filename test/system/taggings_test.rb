@@ -4,12 +4,8 @@ class TaggingsTest < ApplicationSystemTestCase
   setup do
     @goal = goals(:goal_1)
     @goal.tags = []
-    @goal._run_create_callbacks
-    @goal.save!
     @project = projects(:project_1)
     @project.tags = []
-    @project._run_create_callbacks
-    @project.save!
     sign_in
   end
 
