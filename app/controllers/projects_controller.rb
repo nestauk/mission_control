@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   def index
     @q = Project.ransack(params[:q])
-    @projects = @q.result(distinct: true).page(params[:page])
+    @projects = @q.result(distinct: true).order(:status, :title).page(params[:page])
   end
 
   def show; end
@@ -48,7 +48,8 @@ class ProjectsController < ApplicationController
     @q = Project.joins(:goals).group("projects.id", "goals.id", "goals.title")
       .select("goals.id AS goal_id", "goals.title AS goal_title", "projects.*").ransack(params[:q])
     @projects = @q.result(distinct: true)
-    @groups = Goal.pluck(:id, :title).map do |id, title|
+
+    @groups = @projects.pluck('goals.id', 'goals.title').map do |id, title|
       { id: id, content: helpers.link_to(title, goal_path(id)) }
     end.to_json
   end

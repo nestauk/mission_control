@@ -64,11 +64,17 @@ namespace :import do
       project = Project.find_or_initialize_by(title: row["projects_title"])
       project.status = row["projects_status"]
       project.objective = row["projects_objective"]
+      project.scoping_start_date = row["projects_scoping_start_date"]
       project.start_date = row["projects_start_date"]
       project.end_date = row["projects_end_date"]
       project.context = row["projects_context"]
       project.expectations = row["projects_expectations"]
       project.save!
+
+      project.key_dates.create(title: 'Baseline end date', date: row["projects_key_dates_baseline_end_date"])
+      project.key_dates.create(title: 'Emerald', date: row["projects_key_dates_emerald_date"])
+      project.key_dates.create(title: 'Review', date: row["projects_key_dates_review_date"])
+      project.key_dates.create(title: 'Retrospective', date: row["projects_key_dates_retrospective_date"])
     end
   end
 

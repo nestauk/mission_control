@@ -20,6 +20,8 @@
 
       <%# TODO: responsive %>
       <div class="px-4 py-3 border-t border-gray-300 text-sm text-gray-700 flex">
+        <%= pluralize(goal.projects.size, "project") %>
+        <span class="mx-2">&middot;</span>
         <%= pluralize(goal.team.size, "team member") %>
         <span class="ml-2"><%= pluralize(goal.sponsors.size, "sponsor") %></span>
 
