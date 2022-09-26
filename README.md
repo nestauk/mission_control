@@ -40,9 +40,6 @@ Assuming you have created a Heroku account, and been added to/set up an app on t
 
 If you've made changes to the database you may need to run `heroku run rails db:migrate`
 
-For production...
-OKTA_URL=<your_okta_domain>.okta.com/oauth2
-
 ## Contributing
 
 First of all, **thank you** for your help!
