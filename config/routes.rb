@@ -38,7 +38,11 @@ Rails.application.routes.draw do
     resources :progress_updates
   end
 
-  resources :people, :organisations, :tags
+  resources :people do
+    get :capacity_index, on: :collection
+  end
+
+  resources :organisations, :tags
 
   get "/dashboards/impact", to: "dashboards#impact", as: "impact_dashboard"
 
