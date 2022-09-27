@@ -8,6 +8,10 @@
   <div class="flex flex-wrap">
     <div class="lg:w-1/2 md:w-6/12 w-full mb-4">
       <%= f.association :organisation, collection: Organisation.ordered, input_html: { class: 'md:mr-2 mr-0', data: { controller: 'choices' } } %>
+      <small class="text-gray-700 text-sm mt-1">
+        <a href="https://forms.gle/gPz9DJQYKWbivHDk7" target="_blank" rel="noopener noreferrer" class="link">Submit a request here</a>
+        if you need to add an organisation.
+      </small>
     </div>
 
     <div class="lg:w-1/2 md:w-6/12 w-full mb-4">

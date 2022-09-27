@@ -10,7 +10,7 @@ json.array! @projects do |o|
 end
 
 json.array! @projects.where('scoping_start_date IS NOT NULL') do |p|
-  json.id "scoping_#{p.id}"
+  json.id "#{p.membership_role}_scoping_#{p.id}"
   json.title "Scoping"
   json.content "Scoping"
   json.start p.scoping_start_date

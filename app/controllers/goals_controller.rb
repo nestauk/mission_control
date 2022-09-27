@@ -3,7 +3,7 @@ class GoalsController < ApplicationController
 
   def index
     @q = Goal.ransack(params[:q])
-    @goals = @q.result(distinct: true).page(params[:page])
+    @goals = @q.result(distinct: true).order(:status, :title).page(params[:page])
   end
 
   def show; end

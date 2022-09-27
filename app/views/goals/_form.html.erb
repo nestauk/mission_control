@@ -24,6 +24,10 @@
 
   <div class="mb-4">
     <%= f.association :tags, collection: Tag.all, input_html: { data: { controller: "choices" } } %>
+    <small class="text-gray-700 text-sm mt-1">
+      <a href="https://forms.gle/gPz9DJQYKWbivHDk7" target="_blank" rel="noopener noreferrer" class="link">Submit a request here</a>
+      if you need to add or edit a tag.
+    </small>
   </div>
 
   <% if ['new', 'create'].include?(action_name) %>
