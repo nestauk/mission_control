@@ -52,6 +52,8 @@ en:
         expectations: "Make explict any boundaries or expectations the team needs to operate within. These can be implied tasks, a set timeline or budget, certain methodologies to use and more."
         goals: "Select the goals which this project contributes to."
         impact_statement: "Please use an IF ... THEN ... format."
+      membership:
+        avg_time_per_week: "Assuming 8 hours per working day. E.g. 0.25 = 2 hours per week, 1 = 8 hours or 1 day per week."
     # Examples
     # labels:
     #   defaults:
