@@ -3,7 +3,7 @@
 <div class="overflow-auto m-5">
   <table class="impact-table text-sm bg-white">
     <thead>
-      <tr class="text-left align-top bg-gray-200 text-gray-700">
+      <tr class="text-left bg-gray-200 text-gray-700">
         <th>Project</th>
         <th>Impact category</th>
         <th>Impact type</th>
@@ -20,7 +20,7 @@
 
     <tbody>
       <%- @indicators.each do |i| %>
-        <tr class="align-top">
+        <tr>
           <td>
             <%= link_to i.targetable.title, i.targetable, class: 'link' %>
           </td>

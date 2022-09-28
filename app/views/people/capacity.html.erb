@@ -36,13 +36,14 @@
 
   <%- if @capacity.by_person&.present? %>
     <p class="mb-2">
-      Showing weekly estimates for projects where the following people have been added as members and an average days per week figure has been set.
+      Weekly estimates for projects where people have been added as members and an average days per week figure has been set.
+      <a href="#" data-controller="capacity" class="btn text-sm bg-blue-200">Show/hide project breakdown</a>
     </p>
 
     <div class="overflow-auto">
       <table class="impact-table text-sm bg-white">
         <thead>
-          <tr class="text-left align-top bg-gray-200 text-gray-700">
+          <tr class="text-left bg-gray-200 text-gray-700">
             <th class="w-40 bg-gray-200 left-0 sticky">Person</th>
             <%- @weeks.each do |week| %>
               <th class="text-xs"><%= week.strftime("w/o %e %b %y") %></th>
@@ -56,11 +57,21 @@
               <td class="w-40 bg-gray-200 left-0 sticky">
                 <%= link_to person.titleize, person_path(person), class: 'link whitespace-nowrap' %>
               </td>
-              <%- weeks.each do |data| %>
-                <% count = data.select { |i| i['slug'] == person }.sum { |week| week.try(:[], 'avg_time_per_week') || 0 } %>
+              <%- weeks.each do |week| %>
+                <% count = week.select { |i| i['slug'] == person }.sum { |week| week.try(:[], 'avg_time_per_week') || 0 } %>
+                <% projects = week.select { |i| i['slug'] == person } %>
 
                 <td class="text-sm <%= cell_bg_color(count) %>">
                   <%= pluralize(count, 'day') %>
+
+                  <div class="proj-capacity hidden">
+                    <%- projects.each do |project| %>
+                      <p class="truncate">
+                        (<%= project['avg_time_per_week'] %>)
+                        <%= link_to project['title'], edit_project_membership_path(project['public_uid'], project['id']), class: 'hover:underline', title: project['title'] %>
+                      </p>
+                    <% end %>
+                  </div>
                 </td>
               <% end %>
             </tr>

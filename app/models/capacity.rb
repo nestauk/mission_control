@@ -5,7 +5,7 @@ class Capacity
     return unless q_params
 
     @data = ActiveRecord::Base.connection.execute(
-      "SELECT date_trunc('week', p.week)::date AS week_of, people.slug, m.avg_time_per_week
+      "SELECT date_trunc('week', p.week)::date AS week_of, people.slug, m.id, m.avg_time_per_week, p.title, p.public_uid
       FROM (
         SELECT * FROM projects, generate_series(start_date, end_date, '1 week') AS week
         WHERE status IN (#{validate_param(q_params, :status_in, '0, 1, 2, 3')})

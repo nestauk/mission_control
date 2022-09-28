@@ -7,8 +7,13 @@
 @layer components {
   .impact-table th,
   .impact-table td {
-    @apply p-2 border-2 border-stone-200;
+    @apply p-2 border-2 border-stone-200 align-top;
     min-width: 7rem;
+  }
+
+  .proj-capacity {
+    @apply text-xs text-gray-700 mt-2;
+    max-width: 7rem;
   }
 
   /* Form */
