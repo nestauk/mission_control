@@ -38,6 +38,8 @@ These instructions will get a copy of the project up and running on your local m
 
 Assuming you have created a Heroku account, and been added to/set up an app on the platform, and configured your local environment you can run `git push heroku`. See the Heroku docs for more.
 
+On Heroku be sure to set the `GOOGLE_APP_ID`, `GOOGLE_APP_SECRET` and `ROLLBAR_ACCESS_TOKEN` environment variables. See the documentation for each of these services to generate credentials.
+
 If you've made changes to the database you may need to run `heroku run rails db:migrate`
 
 ## Contributing
