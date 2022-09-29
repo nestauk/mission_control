@@ -11,7 +11,8 @@ class Capacity
         WHERE status IN (#{validate_param(q_params, :status_in, '0, 1, 2, 3')})
       ) AS p
       JOIN memberships AS m ON m.memberable_id=p.id AND memberable_type='Project'
-      JOIN people ON people.id = m.contact_id
+      JOIN contacts ON contacts.id = m.contact_id
+      JOIN people ON people.id = contacts.person_id
       WHERE m.contact_id IN (#{validate_param(q_params, :memberships_contact_id_in)})"
       )
       .group_by_week(week_start: :monday, series: true) { |a| a["week_of"].to_datetime }

@@ -30,15 +30,24 @@
     </div>
   </aside>
 
-  <%# TODO: add tests %>
   <%# TODO: highlight current week %>
   <%# TODO: jump to current week %>
 
   <%- if @capacity.by_person&.present? %>
-    <p class="mb-2">
-      Weekly estimates for projects where people have been added as members and an average days per week figure has been set.
+    <h3 class="text-lg font-semibold mb-1">
+      Weekly estimates for projects where people have been added as members
+    </h3>
+
+    <details class="text-sm mb-2 text-gray-800">
+      <summary><span class="cursor-pointer hover:underline">Not seeing what your expect?</span></summary>
+      <p class="mt-1">
+        Only projects that have a start date and end date, and where the people selected above have been added as memebers are inlcuded. In other words, if you don't see dates for a given person in the table below it's because they are assigned to no projects during that period. In order to see the number of days someone is estimated be sure to add a value to the relevant field when assigning someone to a project. Otherwise the value will be zero.
+      </p>
+    </details>
+
+    <div class="mb-2">
       <a href="#" data-controller="capacity" class="btn text-sm bg-blue-200">Show/hide project breakdown</a>
-    </p>
+    </div>
 
     <div class="overflow-auto">
       <table class="impact-table text-sm bg-white">
@@ -67,7 +76,7 @@
                   <div class="proj-capacity hidden">
                     <%- projects.each do |project| %>
                       <p class="truncate">
-                        (<%= project['avg_time_per_week'] %>)
+                        (<%= project['avg_time_per_week'] || 0 %>)
                         <%= link_to project['title'], edit_project_membership_path(project['public_uid'], project['id']), class: 'hover:underline', title: project['title'] %>
                       </p>
                     <% end %>
