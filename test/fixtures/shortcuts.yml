@@ -1,0 +1,17 @@
+shortcut_goal:
+  category: Goal
+  title: Goal Shortcut
+  path: /goals
+  description: Desc...
+
+shortcut_person:
+  category: Person
+  title: Person Shortcut
+  path: /people
+  description: Desc...
+
+shortcut_project:
+  category: Project
+  title: Project Shortcut
+  path: /projects
+  description: Desc...
