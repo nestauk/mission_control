@@ -231,8 +231,8 @@ body {
 #nav {
   position: fixed;
   overflow-y: auto;
-  left: -80px;
-  width: 80px;
+  left: -170px;
+  width: 170px;
   height: 100%;
   transition: left 0.35s ease;
   z-index: 20;
@@ -265,11 +265,11 @@ body {
     left: 0;
   }
   #nav-toggle:checked ~ label #nav-open {
-    left: 80px;
+    left: 170px;
     opacity: 0;
   }
   #nav-toggle:checked ~ label #nav-close {
-    left: 80px;
+    left: 170px;
     position: fixed;
   }
   #nav-open {
@@ -287,15 +287,15 @@ body {
 
 @media (min-width: 768px) {
   #main {
-    margin-left: 80px;
-    width: calc(100% - 80px);
+    margin-left: 170px;
+    width: calc(100% - 170px);
     opacity: 1;
   }
   #nav {
     left: 0;
   }
   #nav-open {
-    left: 80px;
+    left: 170px;
     opacity: 0;
   }
   #nav-toggle:checked ~ #nav-controls #nav-close {
@@ -403,7 +403,7 @@ body {
   display: block;
 }
 #filter-toggle:checked ~ #filter-control #chevron-down {
-  transform: rotate(180deg);
+  transform: rotate(170deg);
 }
 
 @media (max-width: 767px) {
@@ -423,7 +423,7 @@ body {
     display: none;
   }
   #filter-toggle:checked ~ #chevron-down {
-    transform: rotate(180deg);
+    transform: rotate(170deg);
   }
   #filter-body {
     display: block;
