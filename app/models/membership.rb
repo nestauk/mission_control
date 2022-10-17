@@ -1,14 +1,4 @@
 class Membership < ApplicationRecord
-  AVG_TIME_PER_WEEK = [
-    ["2 hours or less", 0.25],
-    ["Between 2-4 hours", 0.5],
-    ["1 day", 1.0],
-    ["2 days", 2.0],
-    ["3 days", 3.0],
-    ["4 days", 4.0],
-    ["5 days", 5.0]
-  ]
-
   audited associated_with: :memberable
 
   belongs_to :contact

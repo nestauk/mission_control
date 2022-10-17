@@ -1,0 +1,98 @@
+<% content_for :title, 'Weekly capacity estimates' %>
+
+<div class="bg-teal-800">
+  <section class="mx-5 py-4 text-white">
+    <h1 class="leading-tight text-xl font-semibold">Weekly capacity estimates</h1>
+  </section>
+</div>
+
+<div class="m-5">
+  <aside class="mb-5">
+    <input type="checkbox" id="filter-toggle">
+    <label id="filter-control" for="filter-toggle" class="px-4 py-2 block w-full bg-white">
+      <div class="flex justify-between align-items font-semibold">
+        Filter
+        <%= image_tag 'chevron-down.svg', id: 'chevron-down' %>
+      </div>
+    </label>
+
+    <div id="filter-body" class="p-4 bg-white rounded-b">
+      <%= search_form_for @q, url: capacity_people_path do |f| %>
+        <%= f.label :members_id_in, 'People', class: 'label' %>
+        <%= f.collection_select :memberships_contact_id_in, Contact.all, :id, ->(o) { "#{o.name} (#{o.email})" }, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
+
+        <%= f.label :status_in, 'Project status', class: 'label' %>
+        <%= f.collection_select :status_in, Project.statuses, :last, ->(o) { o.first.humanize }, { include_blank: true }, { multiple: true, class: 'input mb-4', data: { controller: "choices" } } %>
+
+        <%= f.button 'Filter', type: 'submit', class: "btn text-white bg-blue-800" %>
+        <%= link_to 'Reset', capacity_people_path, class: 'ml-1 btn bg-blue-200' %>
+      <% end %>
+    </div>
+  </aside>
+
+  <%# TODO: highlight current week %>
+  <%# TODO: jump to current week %>
+
+  <%- if @capacity.by_person&.present? %>
+    <h3 class="text-lg font-semibold mb-1">
+      Weekly estimates for projects where people have been added as members
+    </h3>
+
+    <details class="text-sm mb-2 text-gray-800">
+      <summary><span class="cursor-pointer hover:underline">Not seeing what your expect?</span></summary>
+      <p class="mt-1">
+        Only projects that have a start date and end date, and where the people selected above have been added as memebers are inlcuded. In other words, if you don't see dates for a given person in the table below it's because they are assigned to no projects during that period. In order to see the number of days someone is estimated be sure to add a value to the relevant field when assigning someone to a project. Otherwise the value will be zero.
+      </p>
+    </details>
+
+    <div class="mb-2">
+      <a href="#" data-controller="capacity" class="btn text-sm bg-blue-200">Show/hide project breakdown</a>
+    </div>
+
+    <div class="overflow-auto">
+      <table class="impact-table text-sm bg-white">
+        <thead>
+          <tr class="text-left bg-gray-200 text-gray-700">
+            <th class="w-40 bg-gray-200 left-0 sticky">Person</th>
+            <%- @weeks.each do |week| %>
+              <th class="text-xs"><%= week.strftime("w/o %e %b %y") %></th>
+            <% end %>
+          </tr>
+        </thead>
+
+        <tbody>
+          <%- @by_person.each do |person, weeks| %>
+            <tr>
+              <td class="w-40 bg-gray-200 left-0 sticky">
+                <%= link_to person.titleize, person_path(person), class: 'link whitespace-nowrap' %>
+              </td>
+              <%- weeks.each do |week| %>
+                <% count = week.select { |i| i['slug'] == person }.sum { |week| week.try(:[], 'avg_time_per_week') || 0 } %>
+                <% projects = week.select { |i| i['slug'] == person } %>
+
+                <td class="text-sm <%= cell_bg_color(count) %>">
+                  <%= pluralize(count, 'day') %>
+
+                  <div class="proj-capacity hidden">
+                    <%- projects.each do |project| %>
+                      <p class="truncate">
+                        (<%= project['avg_time_per_week'] || 0 %>)
+                        <%= link_to project['title'], edit_project_membership_path(project['public_uid'], project['id']), class: 'hover:underline', title: project['title'] %>
+                      </p>
+                    <% end %>
+                  </div>
+                </td>
+              <% end %>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="border-2 border-gray-400 border-dashed text-gray-700 text-center rounded w-full p-10">
+      <h3 class="text-lg font-semibold mb-1">Nothing to show</h3>
+      <p>Select some people using the filter to see an overview.</p>
+    </div>
+  <% end %>
+
+</div>

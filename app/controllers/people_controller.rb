@@ -6,22 +6,6 @@ class PeopleController < ApplicationController
     @people = @q.result(distinct: true).order(:first_name, :last_name).page(params[:page])
   end
 
-  def capacity
-    render json: @capacity = ActiveRecord::Base.connection.execute(
-      "SELECT date_trunc('week', p.week)::date AS week_of, coalesce(sum(m.avg_time_per_week), 0) AS sum
-      FROM (
-        SELECT * FROM projects, generate_series(start_date, end_date, '1 week') AS week
-        WHERE status in (0, 1)
-      ) AS p
-      JOIN memberships AS m ON m.memberable_id=p.id AND memberable_type='Project'
-      WHERE m.contact_id = #{@person.id}
-      GROUP BY 1
-      ORDER BY 1"
-      ).group_by_week(week_start: :monday, series: true) { |a| a["week_of"].to_datetime }
-        .map { |date, array| [ date, array.empty? ? 0 : array[0]["sum"] ] }
-        .to_h
-  end
-
   def show
     if params[:q]
       @projects = @person.projects
@@ -67,6 +51,31 @@ class PeopleController < ApplicationController
   def destroy
     @person.destroy
     redirect_to people_path, notice: 'Person deleted'
+  end
+
+  def capacity
+    @q = Project.ransack(params[:q])
+    @projects_search = @q.result(distinct: true)
+
+    @capacity = Capacity.new(params[:q])
+    @weeks = @capacity.weeks
+    @by_person = @capacity.by_person
+  end
+
+  def capacity_chart
+    render json: @capacity = ActiveRecord::Base.connection.execute(
+      "SELECT date_trunc('week', p.week)::date AS week_of, sum(m.avg_time_per_week) AS sum
+      FROM (
+        SELECT * FROM projects, generate_series(start_date, end_date, '1 week') AS week
+        WHERE status in (0, 1)
+      ) AS p
+      JOIN memberships AS m ON m.memberable_id=p.id AND memberable_type='Project'
+      WHERE m.contact_id = #{@person.id}
+      GROUP BY 1
+      ORDER BY 1"
+      ).group_by_week(week_start: :monday, series: true) { |a| a["week_of"].to_datetime }
+        .map { |date, array| [ date, array.empty? ? 0 : array[0]["sum"] ] }
+        .to_h
   end
 
   private
